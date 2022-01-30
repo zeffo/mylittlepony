@@ -1,0 +1,150 @@
+generator db {
+  provider  = "prisma-client-py"
+  interface = "asyncio"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:ponydb.sqlite"
+}
+
+model characters {
+  CharacterID       Int                      @id @default(autoincrement())
+  Name              String                   @unique(map: "sqlite_autoindex_characters_1")
+  Alias             String?
+  Sex               String?
+  Residences        String?
+  Occupations       String?
+  Url               String
+  characters_images characters_images[]      @ignore
+  characters_kinds  characters_kinds[]       @ignore
+
+  @@index([Occupations], map: "idx_characters_Occupations")
+  @@index([Residences], map: "idx_characters_Residences")
+  @@index([Alias], map: "idx_characters_Alias")
+}
+
+model characters_images {
+  CharacterID Int        
+  ImageID     Int
+  characters  characters @relation(fields: [CharacterID], references: [CharacterID], onDelete: NoAction)
+  images      images     @relation(fields: [ImageID], references: [ImageID], onDelete: Cascade)
+
+  @@index([CharacterID], map: "idx_characters_images_CharacterID")
+  @@index([ImageID], map: "idx_characters_images_ImageID")
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model characters_kinds {
+  CharacterID Int       
+  KindID      Int
+  Comment     String?
+  characters  characters @relation(fields: [CharacterID], references: [CharacterID], onDelete: NoAction)
+  kinds       kinds      @relation(fields: [KindID], references: [KindID], onDelete: NoAction)
+
+  @@index([KindID], map: "idx_characters_kinds_KindID")
+  @@index([CharacterID], map: "idx_characters_kinds_CharacterID")
+  @@ignore
+}
+
+model comics_issues {
+  ComicsIssueID  Int            @id @default(autoincrement())
+  IssueNo        Int?
+  ComicsStoryID  Int
+  PublishDate    DateTime
+  Annotation     String?
+  comics_stories comics_stories @relation(fields: [ComicsStoryID], references: [ComicsStoryID], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([IssueNo], map: "idx_comics_issues_IssueNo")
+  @@index([ComicsStoryID], map: "idx_comics_issues_ComicsStoryID")
+}
+
+model comics_series {
+  ComicsSeriesID Int              @id @default(autoincrement())
+  Name           String           @unique(map: "sqlite_autoindex_comics_series_1")
+  Url            String
+  comics_stories comics_stories[]
+}
+
+model comics_stories {
+  ComicsStoryID  Int             @id @default(autoincrement())
+  Name           String          @unique(map: "sqlite_autoindex_comics_stories_1")
+  ComicsSeriesID Int
+  ImageID        Int?
+  Url            String?         @unique(map: "sqlite_autoindex_comics_stories_2")
+  Writer         String?
+  Artist         String?
+  Colorist       String?
+  Letterer       String?
+  Editor         String?
+  comics_series  comics_series   @relation(fields: [ComicsSeriesID], references: [ComicsSeriesID], onDelete: NoAction)
+  images         images?         @relation(fields: [ImageID], references: [ImageID], onDelete: Cascade)
+  comics_issues  comics_issues[]
+
+  @@index([Editor], map: "idx_comics_stories_Editor")
+  @@index([Letterer], map: "idx_comics_stories_Letterer")
+  @@index([Colorist], map: "idx_comics_stories_Colorist")
+  @@index([Artist], map: "idx_comics_stories_Artist")
+  @@index([Writer], map: "idx_comics_stories_Writer")
+  @@index([ComicsSeriesID], map: "idx_comics_stories_ComicsSeriesID")
+  @@index([ImageID], map: "idx_comics_stories_ImageID")
+}
+
+model episodes {
+  EpisodeID      Int      @id @default(autoincrement())
+  Name           String   @unique(map: "sqlite_autoindex_episodes_1")
+  ImageID        Int
+  Season         Int?
+  Episode        Int?
+  OverallEpisode Int?     @unique(map: "sqlite_autoindex_episodes_2")
+  Airdate        DateTime
+  StoryBy        String?
+  WrittenBy      String?
+  Storyboard     String?
+  Url            String
+  images         images   @relation(fields: [ImageID], references: [ImageID], onDelete: NoAction)
+  songs          songs[]
+
+  @@index([Storyboard], map: "idx_episodes_Storyboard")
+  @@index([WrittenBy], map: "idx_episodes_WrittenBy")
+  @@index([StoryBy], map: "idx_episodes_StoryBy")
+  @@index([ImageID], map: "idx_episodes_ImageID")
+  @@index([Episode], map: "idx_episodes_Episode")
+  @@index([Season], map: "idx_episodes_Season")
+}
+
+model images {
+  ImageID           Int                 @id @default(autoincrement())
+  Name              String              @unique(map: "sqlite_autoindex_images_1")
+  Url               String
+  Comment           String?
+  characters_images characters_images[] @ignore
+  comics_stories    comics_stories[]
+  episodes          episodes[]
+}
+
+model kinds {
+  KindID           Int                @id @default(autoincrement())
+  Name             String
+  Url              String?            @unique(map: "sqlite_autoindex_kinds_1")
+  characters_kinds characters_kinds[] @ignore
+}
+
+model songs {
+  SongID        Int                      @id @default(autoincrement())
+  Name          String                   @unique(map: "sqlite_autoindex_songs_1")
+  EpisodeID     Int
+  VideoUrl      String
+  Length        String
+  MusicBy       String?
+  LyricsBy      String?
+  KeySignatures String?
+  Url           String
+  episodes      episodes                 @relation(fields: [EpisodeID], references: [EpisodeID], onDelete: NoAction)
+
+  @@index([KeySignatures], map: "idx_songs_KeySignatures")
+  @@index([LyricsBy], map: "idx_songs_LyricsBy")
+  @@index([MusicBy], map: "idx_songs_MusicBy")
+  @@index([EpisodeID], map: "idx_songs_EpisodeID")
+}
