@@ -74,9 +74,9 @@ model characters {
   @@index([Alias], map: "idx_characters_Alias")
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model characters_images {
-  CharacterID Int
+  uid         Int        @id @default(autoincrement())
+  CharacterID Int        
   ImageID     Int
   characters  characters @relation(fields: [CharacterID], references: [CharacterID], onDelete: NoAction)
   images      images     @relation(fields: [ImageID], references: [ImageID], onDelete: Cascade)
@@ -88,7 +88,8 @@ model characters_images {
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model characters_kinds {
-  CharacterID Int
+  uid         Int        @id @default(autoincrement())
+  CharacterID Int        
   KindID      Int
   Comment     String?
   characters  characters @relation(fields: [CharacterID], references: [CharacterID], onDelete: NoAction)
@@ -286,7 +287,6 @@ def get_client() -> 'Client':
 
 
 class Client:
-    """Prisma Client"""
     characters: 'actions.charactersActions'
     comics_issues: 'actions.comics_issuesActions'
     comics_series: 'actions.comics_seriesActions'
