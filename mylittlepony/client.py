@@ -1,17 +1,11 @@
-import prisma
-import asyncio
-import importlib
+from .prisma import client
 
 class Client:
-    async def validate_client(self):
-        if not hasattr(prisma, 'Client'):
-            process = await asyncio.create_subprocess_exec('prisma', 'db', 'push')
-            await process.wait()
-        importlib.reload(prisma)
-        self.db = prisma.Client(datasource={'url': 'file:./ponydb.sqlite'}, auto_register=True)
+    def __init__(self):
+        root = "\\".join(__file__.split("\\")[:-1])  
+        self.db = client.Client(datasource={'url': f'file:{root}\\db.sqlite'}, auto_register=True)
             
     async def connect(self):
-        await self.validate_client()
         await self.db.connect()
 
     async def disconnect(self):
@@ -24,12 +18,6 @@ class Client:
     async def __aexit__(self, *_):
         await self.disconnect()
 
-    async def test(self) -> None:
-        ponies = await prisma.models.characters.prisma().find_many(where={"CharacterID": 2})
-        print(ponies)
-
-async def main():
-    async with Client() as c:
-        await c.test()
-
-asyncio.run(main())
+    @property
+    def query(self) -> client.Client:
+        return self.db

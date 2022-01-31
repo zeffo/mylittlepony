@@ -1,0 +1,9 @@
+*.pdf
+__pycache__/
+*.py[cod]
+*$py.class
+*.env
+.vscode/
+*.log
+custom/
+test.py

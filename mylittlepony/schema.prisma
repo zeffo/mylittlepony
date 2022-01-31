@@ -1,11 +1,12 @@
 generator db {
   provider  = "prisma-client-py"
   interface = "asyncio"
+  output = "prisma"
 }
 
 datasource db {
   provider = "sqlite"
-  url      = "file:ponydb.sqlite"
+  url      = "file:db.sqlite"
 }
 
 model characters {
@@ -24,8 +25,9 @@ model characters {
   @@index([Alias], map: "idx_characters_Alias")
 }
 
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model characters_images {
-  CharacterID Int        
+  CharacterID Int
   ImageID     Int
   characters  characters @relation(fields: [CharacterID], references: [CharacterID], onDelete: NoAction)
   images      images     @relation(fields: [ImageID], references: [ImageID], onDelete: Cascade)
@@ -37,7 +39,7 @@ model characters_images {
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model characters_kinds {
-  CharacterID Int       
+  CharacterID Int
   KindID      Int
   Comment     String?
   characters  characters @relation(fields: [CharacterID], references: [CharacterID], onDelete: NoAction)
