@@ -1,0 +1,5 @@
+[build-system]
+requires = [
+    "prisma"
+]
+build-backend = "setuptools.build_meta"
