@@ -70,6 +70,8 @@ class characters(BaseModel):
     Residences: Optional[str]
     Occupations: Optional[str]
     Url: str
+    characters_images: Optional[List['models.characters_images']]
+    characters_kinds: Optional[List['models.characters_kinds']]
 
     Config = Config
 
@@ -150,12 +152,291 @@ class characters(BaseModel):
                     fields[field] = fields[field].copy()
                     fields[field]['optional'] = True
 
+            if exclude_relational_fields:
+                fields = {
+                    key: data
+                    for key, data in _characters_fields.items()
+                    if key not in _characters_relational_fields
+                }
 
             if relations:
-                raise ValueError('Model: "characters" has no relational fields.')
+                for field, type_ in relations.items():
+                    if field not in _characters_relational_fields:
+                        raise errors.UnknownRelationalFieldError('characters', field)
+
+                    # TODO: this method of validating types is not ideal
+                    # as it means we cannot two create partial types that
+                    # reference each other
+                    if type_ not in _created_partial_types:
+                        raise ValueError(
+                            f'Unknown partial type: "{type_}". '
+                            f'Did you remember to generate the {type_} type before this one?'
+                        )
+
+                    # TODO: support non prisma.partials models
+                    info = fields[field]
+                    if info['is_list']:
+                        info['type'] = f'List[\'partials.{type_}\']'
+                    else:
+                        info['type'] = f'\'partials.{type_}\''
         except KeyError as exc:
             raise ValueError(
                 f'{exc.args[0]} is not a valid characters / {name} field.'
+            ) from None
+
+        models = partial_models_ctx.get()
+
+        # mypy does not like this as we are assigning a
+        # Dict[Literal[str]] to a Dict[str] but this is fine
+        models[name] = fields  # type: ignore[assignment]
+        partial_models_ctx.set(models)
+        _created_partial_types.add(name)
+
+
+class characters_images(BaseModel):
+    uid: int
+    CharacterID: int
+    ImageID: int
+    characters: Optional['models.characters']
+    images: Optional['models.images']
+
+    Config = Config
+
+    @classmethod
+    def prisma(cls) -> 'actions.characters_imagesActions':
+        from .client import get_client
+
+        return actions.characters_imagesActions(get_client(), cls)
+
+    # take *args and **kwargs so that other metaclasses can define arguments
+    def __init_subclass__(
+        cls,
+        *args: Any,
+        warn_subclass: bool = True,
+        **kwargs: Any,
+    ) -> None:
+        super().__init_subclass__()
+        if warn_subclass:
+            _warn_subclassing(cls.__name__, 'characters_images')
+
+    @staticmethod
+    def create_partial(
+        name: str,
+        include: Optional[Iterable['types.characters_imagesKeys']] = None,
+        exclude: Optional[Iterable['types.characters_imagesKeys']] = None,
+        required: Optional[Iterable['types.characters_imagesKeys']] = None,
+        optional: Optional[Iterable['types.characters_imagesKeys']] = None,
+        relations: Optional[Mapping['types.characters_imagesRelationalFieldKeys', str]] = None,
+        exclude_relational_fields: bool = False,
+    ) -> None:
+        if not os.environ.get('PRISMA_GENERATOR_INVOCATION'):
+            raise RuntimeError(
+                'Attempted to create a partial type outside of client generation.'
+            )
+
+        if name in _created_partial_types:
+            raise ValueError(f'Partial type "{name}" has already been created.')
+
+        if include is not None and exclude is not None:
+            raise TypeError(f'Exclude and include are mutually exclusive.')
+
+        if required and optional:
+            shared = set(required) & set(optional)
+            if shared:
+                raise ValueError(f'Cannot make the same field(s) required and optional {shared}')
+
+        if exclude_relational_fields and relations:
+            raise ValueError(
+                'exclude_relational_fields and relations are mutually exclusive'
+            )
+
+        fields: Dict['types.characters_imagesKeys', PartialModelField] = {}
+
+        try:
+            if include:
+                for field in include:
+                    fields[field] = _characters_images_fields[field]
+            elif exclude:
+                for field in exclude:
+                    if field not in _characters_images_fields:
+                        raise KeyError(field)
+
+                fields = {
+                    key: data
+                    for key, data in _characters_images_fields.items()
+                    if key not in exclude
+                }
+            else:
+                fields = _characters_images_fields.copy()
+
+            if required:
+                for field in required:
+                    fields[field] = fields[field].copy()
+                    fields[field]['optional'] = False
+
+            if optional:
+                for field in optional:
+                    fields[field] = fields[field].copy()
+                    fields[field]['optional'] = True
+
+            if exclude_relational_fields:
+                fields = {
+                    key: data
+                    for key, data in _characters_images_fields.items()
+                    if key not in _characters_images_relational_fields
+                }
+
+            if relations:
+                for field, type_ in relations.items():
+                    if field not in _characters_images_relational_fields:
+                        raise errors.UnknownRelationalFieldError('characters_images', field)
+
+                    # TODO: this method of validating types is not ideal
+                    # as it means we cannot two create partial types that
+                    # reference each other
+                    if type_ not in _created_partial_types:
+                        raise ValueError(
+                            f'Unknown partial type: "{type_}". '
+                            f'Did you remember to generate the {type_} type before this one?'
+                        )
+
+                    # TODO: support non prisma.partials models
+                    info = fields[field]
+                    if info['is_list']:
+                        info['type'] = f'List[\'partials.{type_}\']'
+                    else:
+                        info['type'] = f'\'partials.{type_}\''
+        except KeyError as exc:
+            raise ValueError(
+                f'{exc.args[0]} is not a valid characters_images / {name} field.'
+            ) from None
+
+        models = partial_models_ctx.get()
+
+        # mypy does not like this as we are assigning a
+        # Dict[Literal[str]] to a Dict[str] but this is fine
+        models[name] = fields  # type: ignore[assignment]
+        partial_models_ctx.set(models)
+        _created_partial_types.add(name)
+
+
+class characters_kinds(BaseModel):
+    uid: int
+    CharacterID: int
+    KindID: int
+    Comment: Optional[str]
+    characters: Optional['models.characters']
+    kinds: Optional['models.kinds']
+
+    Config = Config
+
+    @classmethod
+    def prisma(cls) -> 'actions.characters_kindsActions':
+        from .client import get_client
+
+        return actions.characters_kindsActions(get_client(), cls)
+
+    # take *args and **kwargs so that other metaclasses can define arguments
+    def __init_subclass__(
+        cls,
+        *args: Any,
+        warn_subclass: bool = True,
+        **kwargs: Any,
+    ) -> None:
+        super().__init_subclass__()
+        if warn_subclass:
+            _warn_subclassing(cls.__name__, 'characters_kinds')
+
+    @staticmethod
+    def create_partial(
+        name: str,
+        include: Optional[Iterable['types.characters_kindsKeys']] = None,
+        exclude: Optional[Iterable['types.characters_kindsKeys']] = None,
+        required: Optional[Iterable['types.characters_kindsKeys']] = None,
+        optional: Optional[Iterable['types.characters_kindsKeys']] = None,
+        relations: Optional[Mapping['types.characters_kindsRelationalFieldKeys', str]] = None,
+        exclude_relational_fields: bool = False,
+    ) -> None:
+        if not os.environ.get('PRISMA_GENERATOR_INVOCATION'):
+            raise RuntimeError(
+                'Attempted to create a partial type outside of client generation.'
+            )
+
+        if name in _created_partial_types:
+            raise ValueError(f'Partial type "{name}" has already been created.')
+
+        if include is not None and exclude is not None:
+            raise TypeError(f'Exclude and include are mutually exclusive.')
+
+        if required and optional:
+            shared = set(required) & set(optional)
+            if shared:
+                raise ValueError(f'Cannot make the same field(s) required and optional {shared}')
+
+        if exclude_relational_fields and relations:
+            raise ValueError(
+                'exclude_relational_fields and relations are mutually exclusive'
+            )
+
+        fields: Dict['types.characters_kindsKeys', PartialModelField] = {}
+
+        try:
+            if include:
+                for field in include:
+                    fields[field] = _characters_kinds_fields[field]
+            elif exclude:
+                for field in exclude:
+                    if field not in _characters_kinds_fields:
+                        raise KeyError(field)
+
+                fields = {
+                    key: data
+                    for key, data in _characters_kinds_fields.items()
+                    if key not in exclude
+                }
+            else:
+                fields = _characters_kinds_fields.copy()
+
+            if required:
+                for field in required:
+                    fields[field] = fields[field].copy()
+                    fields[field]['optional'] = False
+
+            if optional:
+                for field in optional:
+                    fields[field] = fields[field].copy()
+                    fields[field]['optional'] = True
+
+            if exclude_relational_fields:
+                fields = {
+                    key: data
+                    for key, data in _characters_kinds_fields.items()
+                    if key not in _characters_kinds_relational_fields
+                }
+
+            if relations:
+                for field, type_ in relations.items():
+                    if field not in _characters_kinds_relational_fields:
+                        raise errors.UnknownRelationalFieldError('characters_kinds', field)
+
+                    # TODO: this method of validating types is not ideal
+                    # as it means we cannot two create partial types that
+                    # reference each other
+                    if type_ not in _created_partial_types:
+                        raise ValueError(
+                            f'Unknown partial type: "{type_}". '
+                            f'Did you remember to generate the {type_} type before this one?'
+                        )
+
+                    # TODO: support non prisma.partials models
+                    info = fields[field]
+                    if info['is_list']:
+                        info['type'] = f'List[\'partials.{type_}\']'
+                    else:
+                        info['type'] = f'\'partials.{type_}\''
+        except KeyError as exc:
+            raise ValueError(
+                f'{exc.args[0]} is not a valid characters_kinds / {name} field.'
             ) from None
 
         models = partial_models_ctx.get()
@@ -696,6 +977,7 @@ class images(BaseModel):
     Name: str
     Url: str
     Comment: Optional[str]
+    characters_images: Optional[List['models.characters_images']]
     comics_stories: Optional[List['models.comics_stories']]
     episodes: Optional[List['models.episodes']]
 
@@ -823,6 +1105,7 @@ class kinds(BaseModel):
     KindID: int
     Name: str
     Url: Optional[str]
+    characters_kinds: Optional[List['models.characters_kinds']]
 
     Config = Config
 
@@ -903,9 +1186,33 @@ class kinds(BaseModel):
                     fields[field] = fields[field].copy()
                     fields[field]['optional'] = True
 
+            if exclude_relational_fields:
+                fields = {
+                    key: data
+                    for key, data in _kinds_fields.items()
+                    if key not in _kinds_relational_fields
+                }
 
             if relations:
-                raise ValueError('Model: "kinds" has no relational fields.')
+                for field, type_ in relations.items():
+                    if field not in _kinds_relational_fields:
+                        raise errors.UnknownRelationalFieldError('kinds', field)
+
+                    # TODO: this method of validating types is not ideal
+                    # as it means we cannot two create partial types that
+                    # reference each other
+                    if type_ not in _created_partial_types:
+                        raise ValueError(
+                            f'Unknown partial type: "{type_}". '
+                            f'Did you remember to generate the {type_} type before this one?'
+                        )
+
+                    # TODO: support non prisma.partials models
+                    info = fields[field]
+                    if info['is_list']:
+                        info['type'] = f'List[\'partials.{type_}\']'
+                    else:
+                        info['type'] = f'\'partials.{type_}\''
         except KeyError as exc:
             raise ValueError(
                 f'{exc.args[0]} is not a valid kinds / {name} field.'
@@ -1053,7 +1360,10 @@ class songs(BaseModel):
 
 
 
-_characters_relational_fields: Set[str] = set()  # pyright: reportUnusedVariable=false
+_characters_relational_fields: Set[str] = {
+        'characters_images',
+        'characters_kinds',
+    }
 _characters_fields: Dict['types.charactersKeys', PartialModelField] = {
     'CharacterID': {
         'name': 'CharacterID',
@@ -1096,6 +1406,98 @@ _characters_fields: Dict['types.charactersKeys', PartialModelField] = {
         'is_list': False,
         'optional': False,
         'type': 'str',
+    },
+    'characters_images': {
+        'name': 'characters_images',
+        'is_list': True,
+        'optional': True,
+        'type': 'List[\'models.characters_images\']',
+    },
+    'characters_kinds': {
+        'name': 'characters_kinds',
+        'is_list': True,
+        'optional': True,
+        'type': 'List[\'models.characters_kinds\']',
+    },
+}
+
+_characters_images_relational_fields: Set[str] = {
+        'characters',
+        'images',
+    }
+_characters_images_fields: Dict['types.characters_imagesKeys', PartialModelField] = {
+    'uid': {
+        'name': 'uid',
+        'is_list': False,
+        'optional': False,
+        'type': 'int',
+    },
+    'CharacterID': {
+        'name': 'CharacterID',
+        'is_list': False,
+        'optional': False,
+        'type': 'int',
+    },
+    'ImageID': {
+        'name': 'ImageID',
+        'is_list': False,
+        'optional': False,
+        'type': 'int',
+    },
+    'characters': {
+        'name': 'characters',
+        'is_list': False,
+        'optional': True,
+        'type': 'models.characters',
+    },
+    'images': {
+        'name': 'images',
+        'is_list': False,
+        'optional': True,
+        'type': 'models.images',
+    },
+}
+
+_characters_kinds_relational_fields: Set[str] = {
+        'characters',
+        'kinds',
+    }
+_characters_kinds_fields: Dict['types.characters_kindsKeys', PartialModelField] = {
+    'uid': {
+        'name': 'uid',
+        'is_list': False,
+        'optional': False,
+        'type': 'int',
+    },
+    'CharacterID': {
+        'name': 'CharacterID',
+        'is_list': False,
+        'optional': False,
+        'type': 'int',
+    },
+    'KindID': {
+        'name': 'KindID',
+        'is_list': False,
+        'optional': False,
+        'type': 'int',
+    },
+    'Comment': {
+        'name': 'Comment',
+        'is_list': False,
+        'optional': True,
+        'type': 'str',
+    },
+    'characters': {
+        'name': 'characters',
+        'is_list': False,
+        'optional': True,
+        'type': 'models.characters',
+    },
+    'kinds': {
+        'name': 'kinds',
+        'is_list': False,
+        'optional': True,
+        'type': 'models.kinds',
     },
 }
 
@@ -1343,6 +1745,7 @@ _episodes_fields: Dict['types.episodesKeys', PartialModelField] = {
 }
 
 _images_relational_fields: Set[str] = {
+        'characters_images',
         'comics_stories',
         'episodes',
     }
@@ -1371,6 +1774,12 @@ _images_fields: Dict['types.imagesKeys', PartialModelField] = {
         'optional': True,
         'type': 'str',
     },
+    'characters_images': {
+        'name': 'characters_images',
+        'is_list': True,
+        'optional': True,
+        'type': 'List[\'models.characters_images\']',
+    },
     'comics_stories': {
         'name': 'comics_stories',
         'is_list': True,
@@ -1385,7 +1794,9 @@ _images_fields: Dict['types.imagesKeys', PartialModelField] = {
     },
 }
 
-_kinds_relational_fields: Set[str] = set()  # pyright: reportUnusedVariable=false
+_kinds_relational_fields: Set[str] = {
+        'characters_kinds',
+    }
 _kinds_fields: Dict['types.kindsKeys', PartialModelField] = {
     'KindID': {
         'name': 'KindID',
@@ -1404,6 +1815,12 @@ _kinds_fields: Dict['types.kindsKeys', PartialModelField] = {
         'is_list': False,
         'optional': True,
         'type': 'str',
+    },
+    'characters_kinds': {
+        'name': 'characters_kinds',
+        'is_list': True,
+        'optional': True,
+        'type': 'List[\'models.characters_kinds\']',
     },
 }
 
@@ -1481,6 +1898,8 @@ from . import models, actions
 
 # required to support relationships between models
 characters.update_forward_refs()
+characters_images.update_forward_refs()
+characters_kinds.update_forward_refs()
 comics_issues.update_forward_refs()
 comics_series.update_forward_refs()
 comics_stories.update_forward_refs()

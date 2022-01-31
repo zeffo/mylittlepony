@@ -952,6 +952,1834 @@ class charactersActions:
         return resp['data']['result']  # type: ignore[no-any-return]
 
 
+class characters_imagesActions:
+    def __init__(self, client: 'Client', model: Type['models.characters_images']) -> None:
+        self._client = client
+        self._model = model
+
+    async def query_raw(
+        self,
+        query: str,
+        *args: Any,
+    ) -> List['models.characters_images']:
+        """Execute a raw SQL query
+
+        Parameters
+        ----------
+        query
+            The raw SQL query string to be executed
+        *args
+            Parameters to be passed to the SQL query, these MUST be used over
+            string formatting to avoid an SQL injection vulnerability
+
+        Returns
+        -------
+        List[prisma.models.characters_images]
+            The records returned by the SQL query
+
+        Raises
+        ------
+        prisma_errors.RawQueryError
+            This could be due to invalid syntax, mismatched number of parameters or any other error
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        users = await characters_images.prisma().query_raw(
+            'SELECT * FROM characters_images WHERE uid = ?',
+            790425851,
+        )
+        ```
+        """
+        return await self._client.query_raw(query, *args, model=self._model)
+
+    async def query_first(
+        self,
+        query: str,
+        *args: Any,
+    ) -> Optional['models.characters_images']:
+        """Execute a raw SQL query, returning the first result
+
+        Parameters
+        ----------
+        query
+            The raw SQL query string to be executed
+        *args
+            Parameters to be passed to the SQL query, these MUST be used over
+            string formatting to avoid an SQL injection vulnerability
+
+        Returns
+        -------
+        prisma.models.characters_images
+            The first record returned by the SQL query
+        None
+            The raw SQL query did not return any records
+
+        Raises
+        ------
+        prisma_errors.RawQueryError
+            This could be due to invalid syntax, mismatched number of parameters or any other error
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        user = await characters_images.prisma().query_first(
+            'SELECT * FROM characters_images WHERE CharacterID = ?',
+            2111915288,
+        )
+        ```
+        """
+        return await self._client.query_first(query, *args, model=self._model)
+
+    async def create(
+        self,
+        data: types.characters_imagesCreateInput,
+        include: Optional[types.characters_imagesInclude] = None
+    ) -> 'models.characters_images':
+        """Create a new characters_images record.
+
+        Parameters
+        ----------
+        data
+            characters_images record data
+        include
+            Specifies which relations should be loaded on the returned characters_images model
+
+        Returns
+        -------
+        prisma.models.characters_images
+            The created characters_images record
+
+        Raises
+        ------
+        prisma.errors.MissingRequiredValueError
+            Value is required but was not found
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # create a characters_images record from just the required fields
+        characters_images = await characters_images.prisma().create(
+            data={
+                # data to create a characters_images record
+                'CharacterID': 1149758321,
+                'ImageID': 1644289366,
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            operation='mutation',
+            method='createOne',
+            model='characters_images',
+            arguments={
+                'data': data,
+                'include': include,
+            },
+        )
+        return self._model.parse_obj(resp['data']['result'])
+
+    async def create_many(
+        self,
+        data: List[types.characters_imagesCreateWithoutRelationsInput],
+        *,
+        skip_duplicates: Optional[bool] = None,
+    ) -> int:
+        """Create multiple characters_images records at once.
+
+        This function is *not* available when using SQLite.
+
+        Parameters
+        ----------
+        data
+            List of characters_images record data
+        skip_duplicates
+            Boolean flag for ignoring unique constraint errors
+
+        Returns
+        -------
+        int
+            The total number of records created
+
+        Raises
+        ------
+        prisma.errors.UnsupportedDatabaseError
+            Attempting to query when using SQLite
+        prisma.errors.UniqueViolationError
+            A unique constraint check has failed, these can be ignored with the `skip_duplicates` argument
+        prisma.errors.MissingRequiredValueError
+            Value is required but was not found
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        total = await characters_images.prisma().create_many(
+            data=[
+                {
+                    # data to create a characters_images record
+                    'CharacterID': 1388290519,
+                    'ImageID': 1647418052,
+                },
+                {
+                    # data to create a characters_images record
+                    'CharacterID': 1675546029,
+                    'ImageID': 1767274722,
+                },
+            ],
+            skip_duplicates=True,
+        )
+        ```
+        """
+        if self._client._active_provider == 'sqlite':
+            raise errors.UnsupportedDatabaseError('sqlite', 'create_many()')
+
+        resp = await self._client._execute(
+            operation='mutation',
+            method='createMany',
+            model='characters_images',
+            arguments={
+                'data': data,
+                'skipDuplicates': skip_duplicates,
+            },
+            root_selection=['count'],
+        )
+        return int(resp['data']['result']['count'])
+
+    async def delete(
+        self,
+        where: types.characters_imagesWhereUniqueInput,
+        include: Optional[types.characters_imagesInclude] = None
+    ) -> Optional['models.characters_images']:
+        """Delete a single characters_images record.
+
+        Parameters
+        ----------
+        where
+            characters_images filter to select the record to be deleted, must be unique
+        include
+            Specifies which relations should be loaded on the returned characters_images model
+
+        Returns
+        -------
+        prisma.models.characters_images
+            The deleted characters_images record
+        None
+            Could not find a record to delete
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+        prisma.errors.MissingRequiredValueError
+            Value is required but was not found
+
+        Example
+        -------
+        ```py
+        characters_images = await characters_images.prisma().delete(
+            where={
+                'uid': 326272115,
+            },
+        )
+        ```
+        """
+        try:
+            resp = await self._client._execute(
+                operation='mutation',
+                method='deleteOne',
+                model='characters_images',
+                arguments={
+                    'where': where,
+                    'include': include,
+                },
+            )
+        except errors.RecordNotFoundError:
+            return None
+
+        return self._model.parse_obj(resp['data']['result'])
+
+    async def find_unique(
+        self,
+        where: types.characters_imagesWhereUniqueInput,
+        include: Optional[types.characters_imagesInclude] = None
+    ) -> Optional['models.characters_images']:
+        """Find a unique characters_images record.
+
+        Parameters
+        ----------
+        where
+            characters_images filter to find the record, must be unique
+        include
+            Specifies which relations should be loaded on the returned characters_images model
+
+        Returns
+        -------
+        prisma.models.characters_images
+            The found characters_images record
+        None
+            No record matching the given input could be found
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+        prisma.errors.MissingRequiredValueError
+            Value is required but was not found
+
+        Example
+        -------
+        ```py
+        characters_images = await characters_images.prisma().find_unique(
+            where={
+                'uid': 1343201072,
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            operation='query',
+            method='findUnique',
+            model='characters_images',
+            arguments={
+                'where': where,
+                'include': include,
+            },
+        )
+        result = resp['data']['result']
+        if result is None:
+            return None
+        return self._model.parse_obj(result)
+
+    async def find_many(
+        self,
+        take: Optional[int] = None,
+        skip: Optional[int] = None,
+        where: Optional[types.characters_imagesWhereInput] = None,
+        cursor: Optional[types.characters_imagesWhereUniqueInput] = None,
+        include: Optional[types.characters_imagesInclude] = None,
+        order: Optional[Union[types.characters_imagesOrderByInput, List[types.characters_imagesOrderByInput]]] = None,
+    ) -> List['models.characters_images']:
+        """Find multiple characters_images records.
+
+        An empty list is returned if no records could be found.
+
+        Parameters
+        ----------
+        take
+            Limit the maximum number of characters_images records returned
+        skip
+            Ignore the first N results
+        where
+            characters_images filter to select records
+        cursor
+            Specifies the position in the list to start returning results from, (typically an ID field)
+        include
+            Specifies which relations should be loaded on the returned characters_images model
+        order
+            Order the returned characters_images records by any field
+
+        Returns
+        -------
+        List[prisma.models.characters_images]
+            The list of all characters_images records that could be found
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # find the first 10 characters_images records
+        characters_images = await characters_images.prisma().find_many(take=10)
+
+        # find the first 5 characters_images records ordered by the ImageID field
+        characters_images = await characters_images.prisma().find_many(
+            take=5,
+            order={
+                'ImageID': 'desc',
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            operation='query',
+            method='findMany',
+            model='characters_images',
+            arguments={
+                'take': take,
+                'skip': skip,
+                'where': where,
+                'order_by': order,
+                'cursor': cursor,
+                'include': include,
+            },
+        )
+        return [self._model.parse_obj(r) for r in resp['data']['result']]
+
+    async def find_first(
+        self,
+        skip: Optional[int] = None,
+        where: Optional[types.characters_imagesWhereInput] = None,
+        cursor: Optional[types.characters_imagesWhereUniqueInput] = None,
+        include: Optional[types.characters_imagesInclude] = None,
+        order: Optional[Union[types.characters_imagesOrderByInput, List[types.characters_imagesOrderByInput]]] = None,
+    ) -> Optional['models.characters_images']:
+        """Find a single characters_images record.
+
+        Parameters
+        ----------
+        skip
+            Ignore the first N records
+        where
+            characters_images filter to select the record
+        cursor
+            Specifies the position in the list to start returning results from, (typically an ID field)
+        include
+            Specifies which relations should be loaded on the returned characters_images model
+        order
+            Order the returned characters_images records by any field
+
+        Returns
+        -------
+        prisma.models.characters_images
+            The first characters_images record found, matching the given arguments
+        None
+            No record could be found
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # find the second characters_images record ordered by the uid field
+        characters_images = await characters_images.prisma().find_first(
+            skip=1,
+            order={
+                'uid': 'desc',
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            operation='query',
+            method='findFirst',
+            model='characters_images',
+            arguments={
+                'skip': skip,
+                'where': where,
+                'order_by': order,
+                'cursor': cursor,
+                'include': include
+            },
+        )
+        result = resp['data']['result']
+        if result is None:
+            return None
+        return self._model.parse_obj(result)
+
+    async def update(
+        self,
+        data: types.characters_imagesUpdateInput,
+        where: types.characters_imagesWhereUniqueInput,
+        include: Optional[types.characters_imagesInclude] = None
+    ) -> Optional['models.characters_images']:
+        """Update a single characters_images record.
+
+        Parameters
+        ----------
+        data
+            characters_images record data specifying what to update
+        where
+            characters_images filter to select the unique record to create / update
+        include
+            Specifies which relations should be loaded on the returned characters_images model
+
+        Returns
+        -------
+        prisma.models.characters_images
+            The updated characters_images record
+        None
+            No record could be found
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        characters_images = await characters_images.prisma().update(
+            where={
+                'uid': 675780521,
+            },
+            data={
+                # data to update the characters_images record to
+            },
+        )
+        ```
+        """
+        try:
+            resp = await self._client._execute(
+                operation='mutation',
+                method='updateOne',
+                model='characters_images',
+                arguments={
+                    'data': data,
+                    'where': where,
+                    'include': include,
+                },
+            )
+        except errors.RecordNotFoundError:
+            return None
+
+        return self._model.parse_obj(resp['data']['result'])
+
+    async def upsert(
+        self,
+        where: types.characters_imagesWhereUniqueInput,
+        data: types.characters_imagesUpsertInput,
+        include: Optional[types.characters_imagesInclude] = None,
+    ) -> 'models.characters_images':
+        """Updates an existing record or create a new one
+
+        Parameters
+        ----------
+        where
+            characters_images filter to select the unique record to create / update
+        data
+            Data specifying what fields to set on create and update
+        include
+            Specifies which relations should be loaded on the returned characters_images model
+
+        Returns
+        -------
+        prisma.models.characters_images
+            The created or updated characters_images record
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+        prisma.errors.MissingRequiredValueError
+            Value is required but was not found
+
+        Example
+        -------
+        ```py
+        characters_images = await characters_images.prisma().upsert(
+            where={
+                'uid': 744964398,
+            },
+            data={
+                'create': {
+                    'uid': 744964398,
+                    'CharacterID': 1675546029,
+                    'ImageID': 1767274722,
+                },
+                'update': {
+                    'CharacterID': 1675546029,
+                    'ImageID': 1767274722,
+                },
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            operation='mutation',
+            method='upsertOne',
+            model='characters_images',
+            arguments={
+                'where': where,
+                'include': include,
+                'create': data.get('create'),
+                'update': data.get('update'),
+            },
+        )
+        return self._model.parse_obj(resp['data']['result'])
+
+    async def update_many(
+        self,
+        data: types.characters_imagesUpdateManyMutationInput,
+        where: types.characters_imagesWhereInput,
+    ) -> int:
+        """Update multiple characters_images records
+
+        Parameters
+        ----------
+        data
+            characters_images data to update the selected characters_images records to
+        where
+            Filter to select the characters_images records to update
+
+        Returns
+        -------
+        int
+            The total number of characters_images records that were updated
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # update all characters_images records
+        total = await characters_images.prisma().update_many(
+            data={
+                'CharacterID': 1969681615
+            },
+            where={}
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            operation='mutation',
+            method='updateMany',
+            model='characters_images',
+            arguments={'data': data, 'where': where,},
+            root_selection=['count'],
+        )
+        return int(resp['data']['result']['count'])
+
+    @overload
+    async def count(
+        self,
+        select: None = None,
+        take: Optional[int] = None,
+        skip: Optional[int] = None,
+        where: Optional[types.characters_imagesWhereInput] = None,
+        cursor: Optional[types.characters_imagesWhereUniqueInput] = None,
+    ) -> int:
+        """Count the number of characters_images records present in the database
+
+        Parameters
+        ----------
+        select
+            Select the characters_images fields to be counted
+        take
+            Limit the maximum result
+        skip
+            Ignore the first N records
+        where
+            characters_images filter to find records
+        cursor
+            Specifies the position in the list to start counting results from, (typically an ID field)
+        order
+            This parameter is deprecated and will be removed in a future release
+
+        Returns
+        -------
+        int
+            The total number of records found, returned if `select` is not given
+
+        prisma.types.characters_imagesCountAggregateOutput
+            Data returned when `select` is used, the fields present in this dictionary will
+            match the fields passed in the `select` argument
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # total: int
+        total = await characters_images.prisma().count()
+
+        # results: prisma.types.characters_imagesCountAggregateOutput
+        results = await characters_images.prisma().count(
+            select={
+                '_all': True,
+                'ImageID': True,
+            },
+        )
+        ```
+        """
+
+
+    @overload
+    async def count(
+        self,
+        select: types.characters_imagesCountAggregateInput,
+        take: Optional[int] = None,
+        skip: Optional[int] = None,
+        where: Optional[types.characters_imagesWhereInput] = None,
+        cursor: Optional[types.characters_imagesWhereUniqueInput] = None,
+    ) -> types.characters_imagesCountAggregateOutput:
+        ...
+
+    async def count(
+        self,
+        select: Optional[types.characters_imagesCountAggregateInput] = None,
+        take: Optional[int] = None,
+        skip: Optional[int] = None,
+        where: Optional[types.characters_imagesWhereInput] = None,
+        cursor: Optional[types.characters_imagesWhereUniqueInput] = None,
+    ) -> Union[int, types.characters_imagesCountAggregateOutput]:
+        """Count the number of characters_images records present in the database
+
+        Parameters
+        ----------
+        select
+            Select the characters_images fields to be counted
+        take
+            Limit the maximum result
+        skip
+            Ignore the first N records
+        where
+            characters_images filter to find records
+        cursor
+            Specifies the position in the list to start counting results from, (typically an ID field)
+        order
+            This parameter is deprecated and will be removed in a future release
+
+        Returns
+        -------
+        int
+            The total number of records found, returned if `select` is not given
+
+        prisma.types.characters_imagesCountAggregateOutput
+            Data returned when `select` is used, the fields present in this dictionary will
+            match the fields passed in the `select` argument
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # total: int
+        total = await characters_images.prisma().count()
+
+        # results: prisma.types.characters_imagesCountAggregateOutput
+        results = await characters_images.prisma().count(
+            select={
+                '_all': True,
+                'uid': True,
+            },
+        )
+        ```
+        """
+
+        # TODO: this selection building should be moved to the QueryBuilder
+        #
+        # note the distinction between checking for `not select` here and `select is None`
+        # later is to handle the case that the given select dictionary is empty, this
+        # is a limitation of our types.
+        if not select:
+            root_selection = ['_count { _all }']
+        else:
+
+            root_selection = [
+                '_count {{ {0} }}'.format(' '.join(k for k, v in select.items() if v is True))
+            ]
+
+        resp = await self._client._execute(
+            operation='query',
+            method='aggregate',
+            model='characters_images',
+            arguments={
+                'take': take,
+                'skip': skip,
+                'where': where,
+                'cursor': cursor,
+            },
+            root_selection=root_selection,
+        )
+
+        if select is None:
+            return cast(int, resp['data']['result']['_count']['_all'])
+        else:
+            return cast(types.characters_imagesCountAggregateOutput, resp['data']['result']['_count'])
+
+    async def delete_many(
+        self,
+        where: Optional[types.characters_imagesWhereInput] = None
+    ) -> int:
+        """Delete multiple characters_images records.
+
+        Parameters
+        ----------
+        where
+            Optional characters_images filter to find the records to be deleted
+
+        Returns
+        -------
+        int
+            The total number of characters_images records that were deleted
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # delete all characters_images records
+        total = await characters_images.prisma().delete_many()
+        ```
+        """
+        resp = await self._client._execute(
+            operation='mutation',
+            method='deleteMany',
+            model='characters_images',
+            arguments={'where': where},
+            root_selection=['count'],
+        )
+        return int(resp['data']['result']['count'])
+
+    # TODO: make this easier to work with safely, currently output fields are typed as
+    #       not required, we should refactor the return type
+    # TODO: consider returning a Dict where the keys are a Tuple of the `by` selection
+    # TODO: statically type that the order argument is required when take or skip are present
+    async def group_by(
+        self,
+        by: List['types.characters_imagesScalarFieldKeys'],
+        *,
+        where: Optional['types.characters_imagesWhereInput'] = None,
+        take: Optional[int] = None,
+        skip: Optional[int] = None,
+        avg: Optional['types.characters_imagesAvgAggregateInput'] = None,
+        sum: Optional['types.characters_imagesSumAggregateInput'] = None,
+        min: Optional['types.characters_imagesMinAggregateInput'] = None,
+        max: Optional['types.characters_imagesMaxAggregateInput'] = None,
+        having: Optional['types.characters_imagesScalarWhereWithAggregatesInput'] = None,
+        count: Optional[Union[bool, 'types.characters_imagesCountAggregateInput']] = None,
+        order: Optional[Union[Mapping['types.characters_imagesScalarFieldKeys', 'types.SortOrder'], List[Mapping['types.characters_imagesScalarFieldKeys', 'types.SortOrder']]]] = None,
+    ) -> List['types.characters_imagesGroupByOutput']:
+        """Group characters_images records by one or more field values and perform aggregations
+        each group such as finding the average.
+
+        Parameters
+        ----------
+        by
+            List of scalar characters_images fields to group records by
+        where
+            characters_images filter to select records
+        take
+            Limit the maximum number of characters_images records returned
+        skip
+            Ignore the first N records
+        avg
+            Adds the average of all values of the specified fields to the `_avg` field
+            in the returned data.
+        sum
+            Adds the sum of all values of the specified fields to the `_sum` field
+            in the returned data.
+        min
+            Adds the smallest available value for the specified fields to the `_min` field
+            in the returned data.
+        max
+            Adds the largest available value for the specified fields to the `_max` field
+            in the returned data.
+        count
+            Adds a count of non-fields to the `_count` field in the returned data.
+        having
+            Allows you to filter groups by an aggregate value - for example only return
+            groups having an average age less than 50.
+        order
+            Lets you order the returned list by any property that is also present in `by`.
+            Only **one** field is allowed at a time.
+
+        Returns
+        -------
+        List[prisma.types.characters_imagesGroupByOutput]
+            A list of dictionaries representing the characters_images record,
+            this will also have additional fields present if aggregation arguments
+            are used (see the above parameters)
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # group characters_images records by CharacterID values
+        # and count how many records are in each group
+        results = await characters_images.prisma().group_by(
+            ['CharacterID'],
+            count=True,
+        )
+        ```
+        """
+        if order is None:
+            if take is not None:
+                raise TypeError('Missing argument: \'order\' which is required when \'take\' is present')
+
+            if skip is not None:
+                raise TypeError('Missing argument: \'order\' which is required when \'skip\' is present')
+
+        root_selection: List[str] = [*by]
+        if avg is not None:
+            root_selection.append(_select_fields('_avg', avg))
+
+        if min is not None:
+            root_selection.append(_select_fields('_min', min))
+
+        if sum is not None:
+            root_selection.append(_select_fields('_sum', sum))
+
+        if max is not None:
+            root_selection.append(_select_fields('_max', max))
+
+        if count is not None:
+            if count is True:
+                root_selection.append('_count { _all }')
+            elif isinstance(count, dict):
+                root_selection.append(_select_fields('_count', count))
+
+        resp = await self._client._execute(
+            operation='query',
+            method='groupBy',
+            model='characters_images',
+            arguments={
+                'by': by,
+                'take': take,
+                'skip': skip,
+                'where': where,
+                'having': having,
+                'orderBy': order,
+            },
+            root_selection=root_selection,
+        )
+        return resp['data']['result']  # type: ignore[no-any-return]
+
+
+class characters_kindsActions:
+    def __init__(self, client: 'Client', model: Type['models.characters_kinds']) -> None:
+        self._client = client
+        self._model = model
+
+    async def query_raw(
+        self,
+        query: str,
+        *args: Any,
+    ) -> List['models.characters_kinds']:
+        """Execute a raw SQL query
+
+        Parameters
+        ----------
+        query
+            The raw SQL query string to be executed
+        *args
+            Parameters to be passed to the SQL query, these MUST be used over
+            string formatting to avoid an SQL injection vulnerability
+
+        Returns
+        -------
+        List[prisma.models.characters_kinds]
+            The records returned by the SQL query
+
+        Raises
+        ------
+        prisma_errors.RawQueryError
+            This could be due to invalid syntax, mismatched number of parameters or any other error
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        users = await characters_kinds.prisma().query_raw(
+            'SELECT * FROM characters_kinds WHERE uid = ?',
+            1116175964,
+        )
+        ```
+        """
+        return await self._client.query_raw(query, *args, model=self._model)
+
+    async def query_first(
+        self,
+        query: str,
+        *args: Any,
+    ) -> Optional['models.characters_kinds']:
+        """Execute a raw SQL query, returning the first result
+
+        Parameters
+        ----------
+        query
+            The raw SQL query string to be executed
+        *args
+            Parameters to be passed to the SQL query, these MUST be used over
+            string formatting to avoid an SQL injection vulnerability
+
+        Returns
+        -------
+        prisma.models.characters_kinds
+            The first record returned by the SQL query
+        None
+            The raw SQL query did not return any records
+
+        Raises
+        ------
+        prisma_errors.RawQueryError
+            This could be due to invalid syntax, mismatched number of parameters or any other error
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        user = await characters_kinds.prisma().query_first(
+            'SELECT * FROM characters_kinds WHERE CharacterID = ?',
+            861472101,
+        )
+        ```
+        """
+        return await self._client.query_first(query, *args, model=self._model)
+
+    async def create(
+        self,
+        data: types.characters_kindsCreateInput,
+        include: Optional[types.characters_kindsInclude] = None
+    ) -> 'models.characters_kinds':
+        """Create a new characters_kinds record.
+
+        Parameters
+        ----------
+        data
+            characters_kinds record data
+        include
+            Specifies which relations should be loaded on the returned characters_kinds model
+
+        Returns
+        -------
+        prisma.models.characters_kinds
+            The created characters_kinds record
+
+        Raises
+        ------
+        prisma.errors.MissingRequiredValueError
+            Value is required but was not found
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # create a characters_kinds record from just the required fields
+        characters_kinds = await characters_kinds.prisma().create(
+            data={
+                # data to create a characters_kinds record
+                'CharacterID': 1303003706,
+                'KindID': 1686638315,
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            operation='mutation',
+            method='createOne',
+            model='characters_kinds',
+            arguments={
+                'data': data,
+                'include': include,
+            },
+        )
+        return self._model.parse_obj(resp['data']['result'])
+
+    async def create_many(
+        self,
+        data: List[types.characters_kindsCreateWithoutRelationsInput],
+        *,
+        skip_duplicates: Optional[bool] = None,
+    ) -> int:
+        """Create multiple characters_kinds records at once.
+
+        This function is *not* available when using SQLite.
+
+        Parameters
+        ----------
+        data
+            List of characters_kinds record data
+        skip_duplicates
+            Boolean flag for ignoring unique constraint errors
+
+        Returns
+        -------
+        int
+            The total number of records created
+
+        Raises
+        ------
+        prisma.errors.UnsupportedDatabaseError
+            Attempting to query when using SQLite
+        prisma.errors.UniqueViolationError
+            A unique constraint check has failed, these can be ignored with the `skip_duplicates` argument
+        prisma.errors.MissingRequiredValueError
+            Value is required but was not found
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        total = await characters_kinds.prisma().create_many(
+            data=[
+                {
+                    # data to create a characters_kinds record
+                    'CharacterID': 2000430152,
+                    'KindID': 1868141281,
+                },
+                {
+                    # data to create a characters_kinds record
+                    'CharacterID': 1860847622,
+                    'KindID': 1448521415,
+                },
+            ],
+            skip_duplicates=True,
+        )
+        ```
+        """
+        if self._client._active_provider == 'sqlite':
+            raise errors.UnsupportedDatabaseError('sqlite', 'create_many()')
+
+        resp = await self._client._execute(
+            operation='mutation',
+            method='createMany',
+            model='characters_kinds',
+            arguments={
+                'data': data,
+                'skipDuplicates': skip_duplicates,
+            },
+            root_selection=['count'],
+        )
+        return int(resp['data']['result']['count'])
+
+    async def delete(
+        self,
+        where: types.characters_kindsWhereUniqueInput,
+        include: Optional[types.characters_kindsInclude] = None
+    ) -> Optional['models.characters_kinds']:
+        """Delete a single characters_kinds record.
+
+        Parameters
+        ----------
+        where
+            characters_kinds filter to select the record to be deleted, must be unique
+        include
+            Specifies which relations should be loaded on the returned characters_kinds model
+
+        Returns
+        -------
+        prisma.models.characters_kinds
+            The deleted characters_kinds record
+        None
+            Could not find a record to delete
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+        prisma.errors.MissingRequiredValueError
+            Value is required but was not found
+
+        Example
+        -------
+        ```py
+        characters_kinds = await characters_kinds.prisma().delete(
+            where={
+                'uid': 1628650740,
+            },
+        )
+        ```
+        """
+        try:
+            resp = await self._client._execute(
+                operation='mutation',
+                method='deleteOne',
+                model='characters_kinds',
+                arguments={
+                    'where': where,
+                    'include': include,
+                },
+            )
+        except errors.RecordNotFoundError:
+            return None
+
+        return self._model.parse_obj(resp['data']['result'])
+
+    async def find_unique(
+        self,
+        where: types.characters_kindsWhereUniqueInput,
+        include: Optional[types.characters_kindsInclude] = None
+    ) -> Optional['models.characters_kinds']:
+        """Find a unique characters_kinds record.
+
+        Parameters
+        ----------
+        where
+            characters_kinds filter to find the record, must be unique
+        include
+            Specifies which relations should be loaded on the returned characters_kinds model
+
+        Returns
+        -------
+        prisma.models.characters_kinds
+            The found characters_kinds record
+        None
+            No record matching the given input could be found
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+        prisma.errors.MissingRequiredValueError
+            Value is required but was not found
+
+        Example
+        -------
+        ```py
+        characters_kinds = await characters_kinds.prisma().find_unique(
+            where={
+                'uid': 1249606685,
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            operation='query',
+            method='findUnique',
+            model='characters_kinds',
+            arguments={
+                'where': where,
+                'include': include,
+            },
+        )
+        result = resp['data']['result']
+        if result is None:
+            return None
+        return self._model.parse_obj(result)
+
+    async def find_many(
+        self,
+        take: Optional[int] = None,
+        skip: Optional[int] = None,
+        where: Optional[types.characters_kindsWhereInput] = None,
+        cursor: Optional[types.characters_kindsWhereUniqueInput] = None,
+        include: Optional[types.characters_kindsInclude] = None,
+        order: Optional[Union[types.characters_kindsOrderByInput, List[types.characters_kindsOrderByInput]]] = None,
+    ) -> List['models.characters_kinds']:
+        """Find multiple characters_kinds records.
+
+        An empty list is returned if no records could be found.
+
+        Parameters
+        ----------
+        take
+            Limit the maximum number of characters_kinds records returned
+        skip
+            Ignore the first N results
+        where
+            characters_kinds filter to select records
+        cursor
+            Specifies the position in the list to start returning results from, (typically an ID field)
+        include
+            Specifies which relations should be loaded on the returned characters_kinds model
+        order
+            Order the returned characters_kinds records by any field
+
+        Returns
+        -------
+        List[prisma.models.characters_kinds]
+            The list of all characters_kinds records that could be found
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # find the first 10 characters_kinds records
+        characters_kinds = await characters_kinds.prisma().find_many(take=10)
+
+        # find the first 5 characters_kinds records ordered by the KindID field
+        characters_kinds = await characters_kinds.prisma().find_many(
+            take=5,
+            order={
+                'KindID': 'desc',
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            operation='query',
+            method='findMany',
+            model='characters_kinds',
+            arguments={
+                'take': take,
+                'skip': skip,
+                'where': where,
+                'order_by': order,
+                'cursor': cursor,
+                'include': include,
+            },
+        )
+        return [self._model.parse_obj(r) for r in resp['data']['result']]
+
+    async def find_first(
+        self,
+        skip: Optional[int] = None,
+        where: Optional[types.characters_kindsWhereInput] = None,
+        cursor: Optional[types.characters_kindsWhereUniqueInput] = None,
+        include: Optional[types.characters_kindsInclude] = None,
+        order: Optional[Union[types.characters_kindsOrderByInput, List[types.characters_kindsOrderByInput]]] = None,
+    ) -> Optional['models.characters_kinds']:
+        """Find a single characters_kinds record.
+
+        Parameters
+        ----------
+        skip
+            Ignore the first N records
+        where
+            characters_kinds filter to select the record
+        cursor
+            Specifies the position in the list to start returning results from, (typically an ID field)
+        include
+            Specifies which relations should be loaded on the returned characters_kinds model
+        order
+            Order the returned characters_kinds records by any field
+
+        Returns
+        -------
+        prisma.models.characters_kinds
+            The first characters_kinds record found, matching the given arguments
+        None
+            No record could be found
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # find the second characters_kinds record ordered by the Comment field
+        characters_kinds = await characters_kinds.prisma().find_first(
+            skip=1,
+            order={
+                'Comment': 'desc',
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            operation='query',
+            method='findFirst',
+            model='characters_kinds',
+            arguments={
+                'skip': skip,
+                'where': where,
+                'order_by': order,
+                'cursor': cursor,
+                'include': include
+            },
+        )
+        result = resp['data']['result']
+        if result is None:
+            return None
+        return self._model.parse_obj(result)
+
+    async def update(
+        self,
+        data: types.characters_kindsUpdateInput,
+        where: types.characters_kindsWhereUniqueInput,
+        include: Optional[types.characters_kindsInclude] = None
+    ) -> Optional['models.characters_kinds']:
+        """Update a single characters_kinds record.
+
+        Parameters
+        ----------
+        data
+            characters_kinds record data specifying what to update
+        where
+            characters_kinds filter to select the unique record to create / update
+        include
+            Specifies which relations should be loaded on the returned characters_kinds model
+
+        Returns
+        -------
+        prisma.models.characters_kinds
+            The updated characters_kinds record
+        None
+            No record could be found
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        characters_kinds = await characters_kinds.prisma().update(
+            where={
+                'uid': 835903122,
+            },
+            data={
+                # data to update the characters_kinds record to
+            },
+        )
+        ```
+        """
+        try:
+            resp = await self._client._execute(
+                operation='mutation',
+                method='updateOne',
+                model='characters_kinds',
+                arguments={
+                    'data': data,
+                    'where': where,
+                    'include': include,
+                },
+            )
+        except errors.RecordNotFoundError:
+            return None
+
+        return self._model.parse_obj(resp['data']['result'])
+
+    async def upsert(
+        self,
+        where: types.characters_kindsWhereUniqueInput,
+        data: types.characters_kindsUpsertInput,
+        include: Optional[types.characters_kindsInclude] = None,
+    ) -> 'models.characters_kinds':
+        """Updates an existing record or create a new one
+
+        Parameters
+        ----------
+        where
+            characters_kinds filter to select the unique record to create / update
+        data
+            Data specifying what fields to set on create and update
+        include
+            Specifies which relations should be loaded on the returned characters_kinds model
+
+        Returns
+        -------
+        prisma.models.characters_kinds
+            The created or updated characters_kinds record
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+        prisma.errors.MissingRequiredValueError
+            Value is required but was not found
+
+        Example
+        -------
+        ```py
+        characters_kinds = await characters_kinds.prisma().upsert(
+            where={
+                'uid': 763719779,
+            },
+            data={
+                'create': {
+                    'uid': 763719779,
+                    'CharacterID': 1860847622,
+                    'KindID': 1448521415,
+                },
+                'update': {
+                    'CharacterID': 1860847622,
+                    'KindID': 1448521415,
+                },
+            },
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            operation='mutation',
+            method='upsertOne',
+            model='characters_kinds',
+            arguments={
+                'where': where,
+                'include': include,
+                'create': data.get('create'),
+                'update': data.get('update'),
+            },
+        )
+        return self._model.parse_obj(resp['data']['result'])
+
+    async def update_many(
+        self,
+        data: types.characters_kindsUpdateManyMutationInput,
+        where: types.characters_kindsWhereInput,
+    ) -> int:
+        """Update multiple characters_kinds records
+
+        Parameters
+        ----------
+        data
+            characters_kinds data to update the selected characters_kinds records to
+        where
+            Filter to select the characters_kinds records to update
+
+        Returns
+        -------
+        int
+            The total number of characters_kinds records that were updated
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # update all characters_kinds records
+        total = await characters_kinds.prisma().update_many(
+            data={
+                'uid': 429995104
+            },
+            where={}
+        )
+        ```
+        """
+        resp = await self._client._execute(
+            operation='mutation',
+            method='updateMany',
+            model='characters_kinds',
+            arguments={'data': data, 'where': where,},
+            root_selection=['count'],
+        )
+        return int(resp['data']['result']['count'])
+
+    @overload
+    async def count(
+        self,
+        select: None = None,
+        take: Optional[int] = None,
+        skip: Optional[int] = None,
+        where: Optional[types.characters_kindsWhereInput] = None,
+        cursor: Optional[types.characters_kindsWhereUniqueInput] = None,
+    ) -> int:
+        """Count the number of characters_kinds records present in the database
+
+        Parameters
+        ----------
+        select
+            Select the characters_kinds fields to be counted
+        take
+            Limit the maximum result
+        skip
+            Ignore the first N records
+        where
+            characters_kinds filter to find records
+        cursor
+            Specifies the position in the list to start counting results from, (typically an ID field)
+        order
+            This parameter is deprecated and will be removed in a future release
+
+        Returns
+        -------
+        int
+            The total number of records found, returned if `select` is not given
+
+        prisma.types.characters_kindsCountAggregateOutput
+            Data returned when `select` is used, the fields present in this dictionary will
+            match the fields passed in the `select` argument
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # total: int
+        total = await characters_kinds.prisma().count()
+
+        # results: prisma.types.characters_kindsCountAggregateOutput
+        results = await characters_kinds.prisma().count(
+            select={
+                '_all': True,
+                'CharacterID': True,
+            },
+        )
+        ```
+        """
+
+
+    @overload
+    async def count(
+        self,
+        select: types.characters_kindsCountAggregateInput,
+        take: Optional[int] = None,
+        skip: Optional[int] = None,
+        where: Optional[types.characters_kindsWhereInput] = None,
+        cursor: Optional[types.characters_kindsWhereUniqueInput] = None,
+    ) -> types.characters_kindsCountAggregateOutput:
+        ...
+
+    async def count(
+        self,
+        select: Optional[types.characters_kindsCountAggregateInput] = None,
+        take: Optional[int] = None,
+        skip: Optional[int] = None,
+        where: Optional[types.characters_kindsWhereInput] = None,
+        cursor: Optional[types.characters_kindsWhereUniqueInput] = None,
+    ) -> Union[int, types.characters_kindsCountAggregateOutput]:
+        """Count the number of characters_kinds records present in the database
+
+        Parameters
+        ----------
+        select
+            Select the characters_kinds fields to be counted
+        take
+            Limit the maximum result
+        skip
+            Ignore the first N records
+        where
+            characters_kinds filter to find records
+        cursor
+            Specifies the position in the list to start counting results from, (typically an ID field)
+        order
+            This parameter is deprecated and will be removed in a future release
+
+        Returns
+        -------
+        int
+            The total number of records found, returned if `select` is not given
+
+        prisma.types.characters_kindsCountAggregateOutput
+            Data returned when `select` is used, the fields present in this dictionary will
+            match the fields passed in the `select` argument
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # total: int
+        total = await characters_kinds.prisma().count()
+
+        # results: prisma.types.characters_kindsCountAggregateOutput
+        results = await characters_kinds.prisma().count(
+            select={
+                '_all': True,
+                'KindID': True,
+            },
+        )
+        ```
+        """
+
+        # TODO: this selection building should be moved to the QueryBuilder
+        #
+        # note the distinction between checking for `not select` here and `select is None`
+        # later is to handle the case that the given select dictionary is empty, this
+        # is a limitation of our types.
+        if not select:
+            root_selection = ['_count { _all }']
+        else:
+
+            root_selection = [
+                '_count {{ {0} }}'.format(' '.join(k for k, v in select.items() if v is True))
+            ]
+
+        resp = await self._client._execute(
+            operation='query',
+            method='aggregate',
+            model='characters_kinds',
+            arguments={
+                'take': take,
+                'skip': skip,
+                'where': where,
+                'cursor': cursor,
+            },
+            root_selection=root_selection,
+        )
+
+        if select is None:
+            return cast(int, resp['data']['result']['_count']['_all'])
+        else:
+            return cast(types.characters_kindsCountAggregateOutput, resp['data']['result']['_count'])
+
+    async def delete_many(
+        self,
+        where: Optional[types.characters_kindsWhereInput] = None
+    ) -> int:
+        """Delete multiple characters_kinds records.
+
+        Parameters
+        ----------
+        where
+            Optional characters_kinds filter to find the records to be deleted
+
+        Returns
+        -------
+        int
+            The total number of characters_kinds records that were deleted
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # delete all characters_kinds records
+        total = await characters_kinds.prisma().delete_many()
+        ```
+        """
+        resp = await self._client._execute(
+            operation='mutation',
+            method='deleteMany',
+            model='characters_kinds',
+            arguments={'where': where},
+            root_selection=['count'],
+        )
+        return int(resp['data']['result']['count'])
+
+    # TODO: make this easier to work with safely, currently output fields are typed as
+    #       not required, we should refactor the return type
+    # TODO: consider returning a Dict where the keys are a Tuple of the `by` selection
+    # TODO: statically type that the order argument is required when take or skip are present
+    async def group_by(
+        self,
+        by: List['types.characters_kindsScalarFieldKeys'],
+        *,
+        where: Optional['types.characters_kindsWhereInput'] = None,
+        take: Optional[int] = None,
+        skip: Optional[int] = None,
+        avg: Optional['types.characters_kindsAvgAggregateInput'] = None,
+        sum: Optional['types.characters_kindsSumAggregateInput'] = None,
+        min: Optional['types.characters_kindsMinAggregateInput'] = None,
+        max: Optional['types.characters_kindsMaxAggregateInput'] = None,
+        having: Optional['types.characters_kindsScalarWhereWithAggregatesInput'] = None,
+        count: Optional[Union[bool, 'types.characters_kindsCountAggregateInput']] = None,
+        order: Optional[Union[Mapping['types.characters_kindsScalarFieldKeys', 'types.SortOrder'], List[Mapping['types.characters_kindsScalarFieldKeys', 'types.SortOrder']]]] = None,
+    ) -> List['types.characters_kindsGroupByOutput']:
+        """Group characters_kinds records by one or more field values and perform aggregations
+        each group such as finding the average.
+
+        Parameters
+        ----------
+        by
+            List of scalar characters_kinds fields to group records by
+        where
+            characters_kinds filter to select records
+        take
+            Limit the maximum number of characters_kinds records returned
+        skip
+            Ignore the first N records
+        avg
+            Adds the average of all values of the specified fields to the `_avg` field
+            in the returned data.
+        sum
+            Adds the sum of all values of the specified fields to the `_sum` field
+            in the returned data.
+        min
+            Adds the smallest available value for the specified fields to the `_min` field
+            in the returned data.
+        max
+            Adds the largest available value for the specified fields to the `_max` field
+            in the returned data.
+        count
+            Adds a count of non-fields to the `_count` field in the returned data.
+        having
+            Allows you to filter groups by an aggregate value - for example only return
+            groups having an average age less than 50.
+        order
+            Lets you order the returned list by any property that is also present in `by`.
+            Only **one** field is allowed at a time.
+
+        Returns
+        -------
+        List[prisma.types.characters_kindsGroupByOutput]
+            A list of dictionaries representing the characters_kinds record,
+            this will also have additional fields present if aggregation arguments
+            are used (see the above parameters)
+
+        Raises
+        ------
+        prisma.errors.PrismaError
+            Catch all for every exception raised by Prisma Client Python
+
+        Example
+        -------
+        ```py
+        # group characters_kinds records by Comment values
+        # and count how many records are in each group
+        results = await characters_kinds.prisma().group_by(
+            ['Comment'],
+            count=True,
+        )
+        ```
+        """
+        if order is None:
+            if take is not None:
+                raise TypeError('Missing argument: \'order\' which is required when \'take\' is present')
+
+            if skip is not None:
+                raise TypeError('Missing argument: \'order\' which is required when \'skip\' is present')
+
+        root_selection: List[str] = [*by]
+        if avg is not None:
+            root_selection.append(_select_fields('_avg', avg))
+
+        if min is not None:
+            root_selection.append(_select_fields('_min', min))
+
+        if sum is not None:
+            root_selection.append(_select_fields('_sum', sum))
+
+        if max is not None:
+            root_selection.append(_select_fields('_max', max))
+
+        if count is not None:
+            if count is True:
+                root_selection.append('_count { _all }')
+            elif isinstance(count, dict):
+                root_selection.append(_select_fields('_count', count))
+
+        resp = await self._client._execute(
+            operation='query',
+            method='groupBy',
+            model='characters_kinds',
+            arguments={
+                'by': by,
+                'take': take,
+                'skip': skip,
+                'where': where,
+                'having': having,
+                'orderBy': order,
+            },
+            root_selection=root_selection,
+        )
+        return resp['data']['result']  # type: ignore[no-any-return]
+
+
 class comics_issuesActions:
     def __init__(self, client: 'Client', model: Type['models.comics_issues']) -> None:
         self._client = client
@@ -989,7 +2817,7 @@ class comics_issuesActions:
         ```py
         users = await comics_issues.prisma().query_raw(
             'SELECT * FROM comics_issues WHERE ComicsIssueID = ?',
-            790425851,
+            1775811865,
         )
         ```
         """
@@ -1029,7 +2857,7 @@ class comics_issuesActions:
         ```py
         user = await comics_issues.prisma().query_first(
             'SELECT * FROM comics_issues WHERE IssueNo = ?',
-            2111915288,
+            893145566,
         )
         ```
         """
@@ -1068,7 +2896,7 @@ class comics_issuesActions:
         comics_issues = await comics_issues.prisma().create(
             data={
                 # data to create a comics_issues record
-                'ComicsStoryID': 1149758321,
+                'ComicsStoryID': 995405759,
                 'PublishDate': datetime.datetime.utcnow(),
             },
         )
@@ -1125,12 +2953,12 @@ class comics_issuesActions:
             data=[
                 {
                     # data to create a comics_issues record
-                    'ComicsStoryID': 1644289366,
+                    'ComicsStoryID': 2102736524,
                     'PublishDate': datetime.datetime.utcnow(),
                 },
                 {
                     # data to create a comics_issues record
-                    'ComicsStoryID': 1388290519,
+                    'ComicsStoryID': 271520213,
                     'PublishDate': datetime.datetime.utcnow(),
                 },
             ],
@@ -1186,7 +3014,7 @@ class comics_issuesActions:
         ```py
         comics_issues = await comics_issues.prisma().delete(
             where={
-                'ComicsIssueID': 1647418052,
+                'ComicsIssueID': 456633834,
             },
         )
         ```
@@ -1239,7 +3067,7 @@ class comics_issuesActions:
         ```py
         comics_issues = await comics_issues.prisma().find_unique(
             where={
-                'ComicsIssueID': 1675546029,
+                'ComicsIssueID': 2058258651,
             },
         )
         ```
@@ -1424,7 +3252,7 @@ class comics_issuesActions:
         ```py
         comics_issues = await comics_issues.prisma().update(
             where={
-                'ComicsIssueID': 1767274722,
+                'ComicsIssueID': 1583689592,
             },
             data={
                 # data to update the comics_issues record to
@@ -1482,16 +3310,16 @@ class comics_issuesActions:
         ```py
         comics_issues = await comics_issues.prisma().upsert(
             where={
-                'ComicsIssueID': 326272115,
+                'ComicsIssueID': 878442065,
             },
             data={
                 'create': {
-                    'ComicsIssueID': 326272115,
-                    'ComicsStoryID': 1388290519,
+                    'ComicsIssueID': 878442065,
+                    'ComicsStoryID': 271520213,
                     'PublishDate': datetime.datetime.utcnow(),
                 },
                 'update': {
-                    'ComicsStoryID': 1388290519,
+                    'ComicsStoryID': 271520213,
                     'PublishDate': datetime.datetime.utcnow(),
                 },
             },
@@ -1541,7 +3369,7 @@ class comics_issuesActions:
         # update all comics_issues records
         total = await comics_issues.prisma().update_many(
             data={
-                'Annotation': 'bdedcabahc'
+                'Annotation': 'bghfciaafe'
             },
             where={}
         )
@@ -1903,7 +3731,7 @@ class comics_seriesActions:
         ```py
         users = await comics_series.prisma().query_raw(
             'SELECT * FROM comics_series WHERE ComicsSeriesID = ?',
-            675780521,
+            1627576247,
         )
         ```
         """
@@ -1943,7 +3771,7 @@ class comics_seriesActions:
         ```py
         user = await comics_series.prisma().query_first(
             'SELECT * FROM comics_series WHERE Name = ?',
-            'heejgedji',
+            'cafeiaccbc',
         )
         ```
         """
@@ -1982,8 +3810,8 @@ class comics_seriesActions:
         comics_series = await comics_series.prisma().create(
             data={
                 # data to create a comics_series record
-                'Name': 'bjgjgibgbf',
-                'Url': 'bbbgbhfjge',
+                'Name': 'gaddfhfh',
+                'Url': 'gieegcbeg',
             },
         )
         ```
@@ -2039,13 +3867,13 @@ class comics_seriesActions:
             data=[
                 {
                     # data to create a comics_series record
-                    'Name': 'igbehcbab',
-                    'Url': 'bdadaadhag',
+                    'Name': 'bgcffadich',
+                    'Url': 'fcbichhci',
                 },
                 {
                     # data to create a comics_series record
-                    'Name': 'bgiggdidbf',
-                    'Url': 'caaaedabfc',
+                    'Name': 'bcggadccgf',
+                    'Url': 'jdcfdcgc',
                 },
             ],
             skip_duplicates=True,
@@ -2100,7 +3928,7 @@ class comics_seriesActions:
         ```py
         comics_series = await comics_series.prisma().delete(
             where={
-                'ComicsSeriesID': 1868141281,
+                'ComicsSeriesID': 2053047983,
             },
         )
         ```
@@ -2153,7 +3981,7 @@ class comics_seriesActions:
         ```py
         comics_series = await comics_series.prisma().find_unique(
             where={
-                'ComicsSeriesID': 1860847622,
+                'ComicsSeriesID': 685333180,
             },
         )
         ```
@@ -2338,7 +4166,7 @@ class comics_seriesActions:
         ```py
         comics_series = await comics_series.prisma().update(
             where={
-                'ComicsSeriesID': 1448521415,
+                'ComicsSeriesID': 127474245,
             },
             data={
                 # data to update the comics_series record to
@@ -2396,17 +4224,17 @@ class comics_seriesActions:
         ```py
         comics_series = await comics_series.prisma().upsert(
             where={
-                'ComicsSeriesID': 1628650740,
+                'ComicsSeriesID': 948921754,
             },
             data={
                 'create': {
-                    'ComicsSeriesID': 1628650740,
-                    'Name': 'bgiggdidbf',
-                    'Url': 'caaaedabfc',
+                    'ComicsSeriesID': 948921754,
+                    'Name': 'bcggadccgf',
+                    'Url': 'jdcfdcgc',
                 },
                 'update': {
-                    'Name': 'bgiggdidbf',
-                    'Url': 'caaaedabfc',
+                    'Name': 'bcggadccgf',
+                    'Url': 'jdcfdcgc',
                 },
             },
         )
@@ -2455,7 +4283,7 @@ class comics_seriesActions:
         # update all comics_series records
         total = await comics_series.prisma().update_many(
             data={
-                'Name': 'bcejgaggif'
+                'Name': 'bjgejjabff'
             },
             where={}
         )
@@ -2817,7 +4645,7 @@ class comics_storiesActions:
         ```py
         users = await comics_stories.prisma().query_raw(
             'SELECT * FROM comics_stories WHERE ComicsStoryID = ?',
-            835903122,
+            1228891816,
         )
         ```
         """
@@ -2857,7 +4685,7 @@ class comics_storiesActions:
         ```py
         user = await comics_stories.prisma().query_first(
             'SELECT * FROM comics_stories WHERE Name = ?',
-            'hgdhbjhhj',
+            'cffcachfd',
         )
         ```
         """
@@ -2896,8 +4724,8 @@ class comics_storiesActions:
         comics_stories = await comics_stories.prisma().create(
             data={
                 # data to create a comics_stories record
-                'Name': 'ecjjjfbae',
-                'ComicsSeriesID': 1775811865,
+                'Name': 'bccdfhdigc',
+                'ComicsSeriesID': 541269159,
             },
         )
         ```
@@ -2953,13 +4781,13 @@ class comics_storiesActions:
             data=[
                 {
                     # data to create a comics_stories record
-                    'Name': 'ijdbeffgg',
-                    'ComicsSeriesID': 995405759,
+                    'Name': 'bageiegghg',
+                    'ComicsSeriesID': 508382461,
                 },
                 {
                     # data to create a comics_stories record
-                    'Name': 'cbachdgfce',
-                    'ComicsSeriesID': 271520213,
+                    'Name': 'bacecgfhbe',
+                    'ComicsSeriesID': 872078403,
                 },
             ],
             skip_duplicates=True,
@@ -3014,7 +4842,7 @@ class comics_storiesActions:
         ```py
         comics_stories = await comics_stories.prisma().delete(
             where={
-                'ComicsStoryID': 456633834,
+                'ComicsStoryID': 1874748096,
             },
         )
         ```
@@ -3067,7 +4895,7 @@ class comics_storiesActions:
         ```py
         comics_stories = await comics_stories.prisma().find_unique(
             where={
-                'ComicsStoryID': 2058258651,
+                'ComicsStoryID': 916896761,
             },
         )
         ```
@@ -3252,7 +5080,7 @@ class comics_storiesActions:
         ```py
         comics_stories = await comics_stories.prisma().update(
             where={
-                'ComicsStoryID': 1583689592,
+                'ComicsStoryID': 769267518,
             },
             data={
                 # data to update the comics_stories record to
@@ -3310,17 +5138,17 @@ class comics_storiesActions:
         ```py
         comics_stories = await comics_stories.prisma().upsert(
             where={
-                'ComicsStoryID': 878442065,
+                'ComicsStoryID': 820312479,
             },
             data={
                 'create': {
-                    'ComicsStoryID': 878442065,
-                    'Name': 'cbachdgfce',
-                    'ComicsSeriesID': 271520213,
+                    'ComicsStoryID': 820312479,
+                    'Name': 'bacecgfhbe',
+                    'ComicsSeriesID': 872078403,
                 },
                 'update': {
-                    'Name': 'cbachdgfce',
-                    'ComicsSeriesID': 271520213,
+                    'Name': 'bacecgfhbe',
+                    'ComicsSeriesID': 872078403,
                 },
             },
         )
@@ -3369,7 +5197,7 @@ class comics_storiesActions:
         # update all comics_stories records
         total = await comics_stories.prisma().update_many(
             data={
-                'Url': 'bghfciaafe'
+                'Url': 'jchciaee'
             },
             where={}
         )
@@ -3731,7 +5559,7 @@ class episodesActions:
         ```py
         users = await episodes.prisma().query_raw(
             'SELECT * FROM episodes WHERE EpisodeID = ?',
-            1627576247,
+            344858293,
         )
         ```
         """
@@ -3771,7 +5599,7 @@ class episodesActions:
         ```py
         user = await episodes.prisma().query_first(
             'SELECT * FROM episodes WHERE Name = ?',
-            'cafeiaccbc',
+            'bbcbhebbda',
         )
         ```
         """
@@ -3810,10 +5638,10 @@ class episodesActions:
         episodes = await episodes.prisma().create(
             data={
                 # data to create a episodes record
-                'Name': 'gaddfhfh',
-                'ImageID': 684462146,
+                'Name': 'bejfijgcfb',
+                'ImageID': 208521688,
                 'Airdate': datetime.datetime.utcnow(),
-                'Url': 'bgcffadich',
+                'Url': 'igaibbfgj',
             },
         )
         ```
@@ -3869,17 +5697,17 @@ class episodesActions:
             data=[
                 {
                     # data to create a episodes record
-                    'Name': 'fcbichhci',
-                    'ImageID': 1266032265,
+                    'Name': 'bggajdcbbi',
+                    'ImageID': 525761943,
                     'Airdate': datetime.datetime.utcnow(),
-                    'Url': 'jdcfdcgc',
+                    'Url': 'hdgcajhjg',
                 },
                 {
                     # data to create a episodes record
-                    'Name': 'cafdaehjid',
-                    'ImageID': 685333180,
+                    'Name': 'ejdjahicb',
+                    'ImageID': 639686562,
                     'Airdate': datetime.datetime.utcnow(),
-                    'Url': 'bchehecef',
+                    'Url': 'gfeaahdeh',
                 },
             ],
             skip_duplicates=True,
@@ -3934,7 +5762,7 @@ class episodesActions:
         ```py
         episodes = await episodes.prisma().delete(
             where={
-                'EpisodeID': 948921754,
+                'EpisodeID': 1905261552,
             },
         )
         ```
@@ -3987,7 +5815,7 @@ class episodesActions:
         ```py
         episodes = await episodes.prisma().find_unique(
             where={
-                'EpisodeID': 1964990155,
+                'EpisodeID': 78746985,
             },
         )
         ```
@@ -4172,7 +6000,7 @@ class episodesActions:
         ```py
         episodes = await episodes.prisma().update(
             where={
-                'EpisodeID': 1228891816,
+                'EpisodeID': 1398328302,
             },
             data={
                 # data to update the episodes record to
@@ -4230,21 +6058,21 @@ class episodesActions:
         ```py
         episodes = await episodes.prisma().upsert(
             where={
-                'EpisodeID': 255202753,
+                'EpisodeID': 856000655,
             },
             data={
                 'create': {
-                    'EpisodeID': 255202753,
-                    'Name': 'cafdaehjid',
-                    'ImageID': 685333180,
+                    'EpisodeID': 856000655,
+                    'Name': 'ejdjahicb',
+                    'ImageID': 639686562,
                     'Airdate': datetime.datetime.utcnow(),
-                    'Url': 'bchehecef',
+                    'Url': 'gfeaahdeh',
                 },
                 'update': {
-                    'Name': 'cafdaehjid',
-                    'ImageID': 685333180,
+                    'Name': 'ejdjahicb',
+                    'ImageID': 639686562,
                     'Airdate': datetime.datetime.utcnow(),
-                    'Url': 'bchehecef',
+                    'Url': 'gfeaahdeh',
                 },
             },
         )
@@ -4293,7 +6121,7 @@ class episodesActions:
         # update all episodes records
         total = await episodes.prisma().update_many(
             data={
-                'Episode': 1223573862
+                'Episode': 1452336924
             },
             where={}
         )
@@ -4655,7 +6483,7 @@ class imagesActions:
         ```py
         users = await images.prisma().query_raw(
             'SELECT * FROM images WHERE ImageID = ?',
-            541269159,
+            1573199653,
         )
         ```
         """
@@ -4695,7 +6523,7 @@ class imagesActions:
         ```py
         user = await images.prisma().query_first(
             'SELECT * FROM images WHERE Name = ?',
-            'bageiegghg',
+            'cabdjadaji',
         )
         ```
         """
@@ -4734,8 +6562,8 @@ class imagesActions:
         images = await images.prisma().create(
             data={
                 # data to create a images record
-                'Name': 'faidicegb',
-                'Url': 'bacecgfhbe',
+                'Name': 'faajgfadf',
+                'Url': 'biaagcedjc',
             },
         )
         ```
@@ -4791,13 +6619,13 @@ class imagesActions:
             data=[
                 {
                     # data to create a images record
-                    'Name': 'ihcahiead',
-                    'Url': 'biheheiajg',
+                    'Name': 'cahhaghecf',
+                    'Url': 'bghcbbcidi',
                 },
                 {
                     # data to create a images record
-                    'Name': 'jbgijghgb',
-                    'Url': 'hgjcghfbi',
+                    'Name': 'jcgghhgdj',
+                    'Url': 'beehgcebbg',
                 },
             ],
             skip_duplicates=True,
@@ -4852,7 +6680,7 @@ class imagesActions:
         ```py
         images = await images.prisma().delete(
             where={
-                'ImageID': 820312479,
+                'ImageID': 1738083805,
             },
         )
         ```
@@ -4905,7 +6733,7 @@ class imagesActions:
         ```py
         images = await images.prisma().find_unique(
             where={
-                'ImageID': 92728044,
+                'ImageID': 340946258,
             },
         )
         ```
@@ -5090,7 +6918,7 @@ class imagesActions:
         ```py
         images = await images.prisma().update(
             where={
-                'ImageID': 344858293,
+                'ImageID': 601077795,
             },
             data={
                 # data to update the images record to
@@ -5148,17 +6976,17 @@ class imagesActions:
         ```py
         images = await images.prisma().upsert(
             where={
-                'ImageID': 1121741130,
+                'ImageID': 290603296,
             },
             data={
                 'create': {
-                    'ImageID': 1121741130,
-                    'Name': 'jbgijghgb',
-                    'Url': 'hgjcghfbi',
+                    'ImageID': 290603296,
+                    'Name': 'jcgghhgdj',
+                    'Url': 'beehgcebbg',
                 },
                 'update': {
-                    'Name': 'jbgijghgb',
-                    'Url': 'hgjcghfbi',
+                    'Name': 'jcgghhgdj',
+                    'Url': 'beehgcebbg',
                 },
             },
         )
@@ -5207,7 +7035,7 @@ class imagesActions:
         # update all images records
         total = await images.prisma().update_many(
             data={
-                'ImageID': 1495896251
+                'ImageID': 1855826649
             },
             where={}
         )
@@ -5569,7 +7397,7 @@ class kindsActions:
         ```py
         users = await kinds.prisma().query_raw(
             'SELECT * FROM kinds WHERE KindID = ?',
-            208521688,
+            1611009182,
         )
         ```
         """
@@ -5609,7 +7437,7 @@ class kindsActions:
         ```py
         user = await kinds.prisma().query_first(
             'SELECT * FROM kinds WHERE Name = ?',
-            'igaibbfgj',
+            'eegghdhjb',
         )
         ```
         """
@@ -5648,7 +7476,7 @@ class kindsActions:
         kinds = await kinds.prisma().create(
             data={
                 # data to create a kinds record
-                'Name': 'bggajdcbbi',
+                'Name': 'daafgidjg',
             },
         )
         ```
@@ -5704,11 +7532,11 @@ class kindsActions:
             data=[
                 {
                     # data to create a kinds record
-                    'Name': 'fcfhgbjed',
+                    'Name': 'gdcgcgagj',
                 },
                 {
                     # data to create a kinds record
-                    'Name': 'hdgcajhjg',
+                    'Name': 'bhceabbgja',
                 },
             ],
             skip_duplicates=True,
@@ -5763,7 +7591,7 @@ class kindsActions:
         ```py
         kinds = await kinds.prisma().delete(
             where={
-                'KindID': 493907821,
+                'KindID': 470157467,
             },
         )
         ```
@@ -5816,7 +7644,7 @@ class kindsActions:
         ```py
         kinds = await kinds.prisma().find_unique(
             where={
-                'KindID': 639686562,
+                'KindID': 1209209912,
             },
         )
         ```
@@ -6001,7 +7829,7 @@ class kindsActions:
         ```py
         kinds = await kinds.prisma().update(
             where={
-                'KindID': 654007347,
+                'KindID': 1536744465,
             },
             data={
                 # data to update the kinds record to
@@ -6059,15 +7887,15 @@ class kindsActions:
         ```py
         kinds = await kinds.prisma().upsert(
             where={
-                'KindID': 1905261552,
+                'KindID': 424218998,
             },
             data={
                 'create': {
-                    'KindID': 1905261552,
-                    'Name': 'hdgcajhjg',
+                    'KindID': 424218998,
+                    'Name': 'bhceabbgja',
                 },
                 'update': {
-                    'Name': 'hdgcajhjg',
+                    'Name': 'bhceabbgja',
                 },
             },
         )
@@ -6116,7 +7944,7 @@ class kindsActions:
         # update all kinds records
         total = await kinds.prisma().update_many(
             data={
-                'Name': 'hihegjif'
+                'Name': 'cbcfgdcdhf'
             },
             where={}
         )
@@ -6478,7 +8306,7 @@ class songsActions:
         ```py
         users = await songs.prisma().query_raw(
             'SELECT * FROM songs WHERE SongID = ?',
-            1398328302,
+            536951780,
         )
         ```
         """
@@ -6518,7 +8346,7 @@ class songsActions:
         ```py
         user = await songs.prisma().query_first(
             'SELECT * FROM songs WHERE Name = ?',
-            'ifgaaagff',
+            'jcehcdchh',
         )
         ```
         """
@@ -6557,11 +8385,11 @@ class songsActions:
         songs = await songs.prisma().create(
             data={
                 # data to create a songs record
-                'Name': 'befcddgjce',
-                'EpisodeID': 1573199653,
-                'VideoUrl': 'cabdjadaji',
-                'Length': 'faajgfadf',
-                'Url': 'biaagcedjc',
+                'Name': 'bgcbjdhjcc',
+                'EpisodeID': 1848832019,
+                'VideoUrl': 'bjcbfcieaa',
+                'Length': 'cbaaechiej',
+                'Url': 'iejbeaaeg',
             },
         )
         ```
@@ -6617,19 +8445,19 @@ class songsActions:
             data=[
                 {
                     # data to create a songs record
-                    'Name': 'cahhaghecf',
-                    'EpisodeID': 1672112838,
-                    'VideoUrl': 'jcgghhgdj',
-                    'Length': 'beehgcebbg',
-                    'Url': 'bhdiaidiaf',
+                    'Name': 'jcibfcbhf',
+                    'EpisodeID': 273032060,
+                    'VideoUrl': 'jicieifbh',
+                    'Length': 'fbahdheji',
+                    'Url': 'cbbheiicgh',
                 },
                 {
                     # data to create a songs record
-                    'Name': 'deajegcfi',
-                    'EpisodeID': 601077795,
-                    'VideoUrl': 'cjagadcjg',
-                    'Length': 'bifficggej',
-                    'Url': 'bgbbaajbic',
+                    'Name': 'beabjeejdg',
+                    'EpisodeID': 1297607553,
+                    'VideoUrl': 'fbjeiiffa',
+                    'Length': 'jhgidcgbf',
+                    'Url': 'bgjgecfejc',
                 },
             ],
             skip_duplicates=True,
@@ -6684,7 +8512,7 @@ class songsActions:
         ```py
         songs = await songs.prisma().delete(
             where={
-                'SongID': 446673791,
+                'SongID': 169262781,
             },
         )
         ```
@@ -6737,7 +8565,7 @@ class songsActions:
         ```py
         songs = await songs.prisma().find_unique(
             where={
-                'SongID': 300568396,
+                'SongID': 1023081650,
             },
         )
         ```
@@ -6922,7 +8750,7 @@ class songsActions:
         ```py
         songs = await songs.prisma().update(
             where={
-                'SongID': 632626069,
+                'SongID': 327681027,
             },
             data={
                 # data to update the songs record to
@@ -6980,23 +8808,23 @@ class songsActions:
         ```py
         songs = await songs.prisma().upsert(
             where={
-                'SongID': 1724011690,
+                'SongID': 527748992,
             },
             data={
                 'create': {
-                    'SongID': 1724011690,
-                    'Name': 'deajegcfi',
-                    'EpisodeID': 601077795,
-                    'VideoUrl': 'cjagadcjg',
-                    'Length': 'bifficggej',
-                    'Url': 'bgbbaajbic',
+                    'SongID': 527748992,
+                    'Name': 'beabjeejdg',
+                    'EpisodeID': 1297607553,
+                    'VideoUrl': 'fbjeiiffa',
+                    'Length': 'jhgidcgbf',
+                    'Url': 'bgjgecfejc',
                 },
                 'update': {
-                    'Name': 'deajegcfi',
-                    'EpisodeID': 601077795,
-                    'VideoUrl': 'cjagadcjg',
-                    'Length': 'bifficggej',
-                    'Url': 'bgbbaajbic',
+                    'Name': 'beabjeejdg',
+                    'EpisodeID': 1297607553,
+                    'VideoUrl': 'fbjeiiffa',
+                    'Length': 'jhgidcgbf',
+                    'Url': 'bgjgecfejc',
                 },
             },
         )
@@ -7045,7 +8873,7 @@ class songsActions:
         # update all songs records
         total = await songs.prisma().update_many(
             data={
-                'Length': 'ehabfhegh'
+                'Length': 'cacjdfhejh'
             },
             where={}
         )

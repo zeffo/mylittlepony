@@ -1002,6 +1002,8 @@ class charactersOptionalCreateInput(TypedDict, total=False):
     Sex: Optional[str]
     Residences: Optional[str]
     Occupations: Optional[str]
+    characters_images: 'characters_imagesCreateManyNestedWithoutRelationsInput'
+    characters_kinds: 'characters_kindsCreateManyNestedWithoutRelationsInput'
 
 
 class charactersCreateInput(charactersOptionalCreateInput):
@@ -1069,6 +1071,8 @@ class charactersUpdateInput(TypedDict, total=False):
     Residences: Optional[str]
     Occupations: Optional[str]
     Url: str
+    characters_images: 'characters_imagesUpdateManyWithoutRelationsInput'
+    characters_kinds: 'characters_kindsUpdateManyWithoutRelationsInput'
 
 
 class charactersUpdateManyMutationInput(TypedDict, total=False):
@@ -1208,24 +1212,34 @@ class charactersListRelationFilter(TypedDict, total=False):
 
 class charactersInclude(TypedDict, total=False):
     """characters relational arguments"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcharacters']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcharacters']
 
 
     
 
 class charactersIncludeFromcharacters(TypedDict, total=False):
     """Relational arguments for characters"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcharactersRecursive1']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcharactersRecursive1']
 
 
 class charactersIncludeFromcharactersRecursive1(TypedDict, total=False):
     """Relational arguments for characters"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcharactersRecursive2']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcharactersRecursive2']
 
 
 class charactersIncludeFromcharactersRecursive2(TypedDict, total=False):
     """Relational arguments for characters"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcharactersRecursive3']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcharactersRecursive3']
 
 
 class charactersIncludeFromcharactersRecursive3(TypedDict, total=False):
     """Relational arguments for characters"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcharactersRecursive4']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcharactersRecursive4']
 
 
 class charactersIncludeFromcharactersRecursive4(TypedDict, total=False):
@@ -1305,6 +1319,214 @@ class FindManycharactersArgsFromcharactersRecursive4(TypedDict, total=False):
     order_by: Union['charactersOrderByInput', List['charactersOrderByInput']]
     where: 'charactersWhereInput'
     cursor: 'charactersWhereUniqueInput'
+    
+    
+
+class characters_imagesIncludeFromcharacters(TypedDict, total=False):
+    """Relational arguments for characters"""
+    characters: Union[bool, 'charactersArgsFromcharactersRecursive1']
+    images: Union[bool, 'imagesArgsFromcharactersRecursive1']
+
+
+class characters_imagesIncludeFromcharactersRecursive1(TypedDict, total=False):
+    """Relational arguments for characters"""
+    characters: Union[bool, 'charactersArgsFromcharactersRecursive2']
+    images: Union[bool, 'imagesArgsFromcharactersRecursive2']
+
+
+class characters_imagesIncludeFromcharactersRecursive2(TypedDict, total=False):
+    """Relational arguments for characters"""
+    characters: Union[bool, 'charactersArgsFromcharactersRecursive3']
+    images: Union[bool, 'imagesArgsFromcharactersRecursive3']
+
+
+class characters_imagesIncludeFromcharactersRecursive3(TypedDict, total=False):
+    """Relational arguments for characters"""
+    characters: Union[bool, 'charactersArgsFromcharactersRecursive4']
+    images: Union[bool, 'imagesArgsFromcharactersRecursive4']
+
+
+class characters_imagesIncludeFromcharactersRecursive4(TypedDict, total=False):
+    """Relational arguments for characters"""
+
+    
+
+class characters_imagesArgsFromcharacters(TypedDict, total=False):
+    """Arguments for characters"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive1'
+
+
+class characters_imagesArgsFromcharactersRecursive1(TypedDict, total=False):
+    """Arguments for characters"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive2'
+
+
+class characters_imagesArgsFromcharactersRecursive2(TypedDict, total=False):
+    """Arguments for characters"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive3'
+
+
+class characters_imagesArgsFromcharactersRecursive3(TypedDict, total=False):
+    """Arguments for characters"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive4'
+
+
+class characters_imagesArgsFromcharactersRecursive4(TypedDict, total=False):
+    """Arguments for characters"""
+    
+    
+
+class FindManycharacters_imagesArgsFromcharacters(TypedDict, total=False):
+    """Arguments for characters"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive1'
+
+
+class FindManycharacters_imagesArgsFromcharactersRecursive1(TypedDict, total=False):
+    """Arguments for characters"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive2'
+
+
+class FindManycharacters_imagesArgsFromcharactersRecursive2(TypedDict, total=False):
+    """Arguments for characters"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive3'
+
+
+class FindManycharacters_imagesArgsFromcharactersRecursive3(TypedDict, total=False):
+    """Arguments for characters"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive4'
+
+
+class FindManycharacters_imagesArgsFromcharactersRecursive4(TypedDict, total=False):
+    """Arguments for characters"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    
+    
+
+class characters_kindsIncludeFromcharacters(TypedDict, total=False):
+    """Relational arguments for characters"""
+    characters: Union[bool, 'charactersArgsFromcharactersRecursive1']
+    kinds: Union[bool, 'kindsArgsFromcharactersRecursive1']
+
+
+class characters_kindsIncludeFromcharactersRecursive1(TypedDict, total=False):
+    """Relational arguments for characters"""
+    characters: Union[bool, 'charactersArgsFromcharactersRecursive2']
+    kinds: Union[bool, 'kindsArgsFromcharactersRecursive2']
+
+
+class characters_kindsIncludeFromcharactersRecursive2(TypedDict, total=False):
+    """Relational arguments for characters"""
+    characters: Union[bool, 'charactersArgsFromcharactersRecursive3']
+    kinds: Union[bool, 'kindsArgsFromcharactersRecursive3']
+
+
+class characters_kindsIncludeFromcharactersRecursive3(TypedDict, total=False):
+    """Relational arguments for characters"""
+    characters: Union[bool, 'charactersArgsFromcharactersRecursive4']
+    kinds: Union[bool, 'kindsArgsFromcharactersRecursive4']
+
+
+class characters_kindsIncludeFromcharactersRecursive4(TypedDict, total=False):
+    """Relational arguments for characters"""
+
+    
+
+class characters_kindsArgsFromcharacters(TypedDict, total=False):
+    """Arguments for characters"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive1'
+
+
+class characters_kindsArgsFromcharactersRecursive1(TypedDict, total=False):
+    """Arguments for characters"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive2'
+
+
+class characters_kindsArgsFromcharactersRecursive2(TypedDict, total=False):
+    """Arguments for characters"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive3'
+
+
+class characters_kindsArgsFromcharactersRecursive3(TypedDict, total=False):
+    """Arguments for characters"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive4'
+
+
+class characters_kindsArgsFromcharactersRecursive4(TypedDict, total=False):
+    """Arguments for characters"""
+    
+    
+
+class FindManycharacters_kindsArgsFromcharacters(TypedDict, total=False):
+    """Arguments for characters"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive1'
+
+
+class FindManycharacters_kindsArgsFromcharactersRecursive1(TypedDict, total=False):
+    """Arguments for characters"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive2'
+
+
+class FindManycharacters_kindsArgsFromcharactersRecursive2(TypedDict, total=False):
+    """Arguments for characters"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive3'
+
+
+class FindManycharacters_kindsArgsFromcharactersRecursive3(TypedDict, total=False):
+    """Arguments for characters"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive4'
+
+
+class FindManycharacters_kindsArgsFromcharactersRecursive4(TypedDict, total=False):
+    """Arguments for characters"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
     
     
 
@@ -1722,24 +1944,28 @@ class FindManyepisodesArgsFromcharactersRecursive4(TypedDict, total=False):
 
 class imagesIncludeFromcharacters(TypedDict, total=False):
     """Relational arguments for characters"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcharactersRecursive1']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcharactersRecursive1']
     episodes: Union[bool, 'FindManyepisodesArgsFromcharactersRecursive1']
 
 
 class imagesIncludeFromcharactersRecursive1(TypedDict, total=False):
     """Relational arguments for characters"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcharactersRecursive2']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcharactersRecursive2']
     episodes: Union[bool, 'FindManyepisodesArgsFromcharactersRecursive2']
 
 
 class imagesIncludeFromcharactersRecursive2(TypedDict, total=False):
     """Relational arguments for characters"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcharactersRecursive3']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcharactersRecursive3']
     episodes: Union[bool, 'FindManyepisodesArgsFromcharactersRecursive3']
 
 
 class imagesIncludeFromcharactersRecursive3(TypedDict, total=False):
     """Relational arguments for characters"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcharactersRecursive4']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcharactersRecursive4']
     episodes: Union[bool, 'FindManyepisodesArgsFromcharactersRecursive4']
 
@@ -1826,18 +2052,22 @@ class FindManyimagesArgsFromcharactersRecursive4(TypedDict, total=False):
 
 class kindsIncludeFromcharacters(TypedDict, total=False):
     """Relational arguments for characters"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcharactersRecursive1']
 
 
 class kindsIncludeFromcharactersRecursive1(TypedDict, total=False):
     """Relational arguments for characters"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcharactersRecursive2']
 
 
 class kindsIncludeFromcharactersRecursive2(TypedDict, total=False):
     """Relational arguments for characters"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcharactersRecursive3']
 
 
 class kindsIncludeFromcharactersRecursive3(TypedDict, total=False):
     """Relational arguments for characters"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcharactersRecursive4']
 
 
 class kindsIncludeFromcharactersRecursive4(TypedDict, total=False):
@@ -2035,6 +2265,8 @@ class charactersWhereInput(TypedDict, total=False):
     Residences: Union[str, 'types.StringFilter']
     Occupations: Union[str, 'types.StringFilter']
     Url: Union[str, 'types.StringFilter']
+    characters_images: 'characters_imagesListRelationFilter'
+    characters_kinds: 'characters_kindsListRelationFilter'
 
     # should be noted that AND and NOT should be Union['charactersWhereInputRecursive1', List['charactersWhereInputRecursive1']]
     # but this causes mypy to hang :/
@@ -2052,6 +2284,8 @@ class charactersWhereInputRecursive1(TypedDict, total=False):
     Residences: Union[str, 'types.StringFilter']
     Occupations: Union[str, 'types.StringFilter']
     Url: Union[str, 'types.StringFilter']
+    characters_images: 'characters_imagesListRelationFilter'
+    characters_kinds: 'characters_kindsListRelationFilter'
 
     # should be noted that AND and NOT should be Union['charactersWhereInputRecursive2', List['charactersWhereInputRecursive2']]
     # but this causes mypy to hang :/
@@ -2069,6 +2303,8 @@ class charactersWhereInputRecursive2(TypedDict, total=False):
     Residences: Union[str, 'types.StringFilter']
     Occupations: Union[str, 'types.StringFilter']
     Url: Union[str, 'types.StringFilter']
+    characters_images: 'characters_imagesListRelationFilter'
+    characters_kinds: 'characters_kindsListRelationFilter'
 
     # should be noted that AND and NOT should be Union['charactersWhereInputRecursive3', List['charactersWhereInputRecursive3']]
     # but this causes mypy to hang :/
@@ -2086,6 +2322,8 @@ class charactersWhereInputRecursive3(TypedDict, total=False):
     Residences: Union[str, 'types.StringFilter']
     Occupations: Union[str, 'types.StringFilter']
     Url: Union[str, 'types.StringFilter']
+    characters_images: 'characters_imagesListRelationFilter'
+    characters_kinds: 'characters_kindsListRelationFilter'
 
     # should be noted that AND and NOT should be Union['charactersWhereInputRecursive4', List['charactersWhereInputRecursive4']]
     # but this causes mypy to hang :/
@@ -2103,6 +2341,8 @@ class charactersWhereInputRecursive4(TypedDict, total=False):
     Residences: Union[str, 'types.StringFilter']
     Occupations: Union[str, 'types.StringFilter']
     Url: Union[str, 'types.StringFilter']
+    characters_images: 'characters_imagesListRelationFilter'
+    characters_kinds: 'characters_kindsListRelationFilter'
 
 
 
@@ -2293,6 +2533,8 @@ charactersKeys = Literal[
     'Residences',
     'Occupations',
     'Url',
+    'characters_images',
+    'characters_kinds',
 ]
 charactersScalarFieldKeys = Literal[
     'CharacterID',
@@ -2305,7 +2547,2885 @@ charactersScalarFieldKeys = Literal[
 ]
 charactersScalarFieldKeysT = TypeVar('charactersScalarFieldKeysT', bound=charactersScalarFieldKeys)
 
-charactersRelationalFieldKeys = _NoneType
+charactersRelationalFieldKeys = Literal[
+        'characters_images',
+        'characters_kinds',
+    ]
+
+# characters_images types
+
+class characters_imagesOptionalCreateInput(TypedDict, total=False):
+    """Optional arguments to the characters_images create method"""
+    uid: int
+    characters: 'charactersCreateNestedWithoutRelationsInput'
+    images: 'imagesCreateNestedWithoutRelationsInput'
+
+
+class characters_imagesCreateInput(characters_imagesOptionalCreateInput):
+    """Required arguments to the characters_images create method"""
+
+
+# TODO: remove this in favour of without explicit relations
+# e.g. PostCreateWithoutAuthorInput
+
+class characters_imagesOptionalCreateWithoutRelationsInput(TypedDict, total=False):
+    """Optional arguments to the characters_images create method, without relations"""
+    uid: int
+
+
+class characters_imagesCreateWithoutRelationsInput(characters_imagesOptionalCreateWithoutRelationsInput):
+    """Required arguments to the characters_images create method, without relations"""
+
+
+class characters_imagesCreateNestedWithoutRelationsInput(TypedDict, total=False):
+    create: 'characters_imagesCreateWithoutRelationsInput'
+    connect: 'characters_imagesWhereUniqueInput'
+
+
+class characters_imagesCreateManyNestedWithoutRelationsInput(TypedDict, total=False):
+    create: Union['characters_imagesCreateWithoutRelationsInput', List['characters_imagesCreateWithoutRelationsInput']]
+    connect: Union['characters_imagesWhereUniqueInput', List['characters_imagesWhereUniqueInput']]
+
+
+_characters_imagesWhereUnique_uid_Input = TypedDict(
+    '_characters_imagesWhereUnique_uid_Input',
+    {
+        'uid': 'int',
+    },
+    total=True
+)
+
+characters_imagesWhereUniqueInput = _characters_imagesWhereUnique_uid_Input
+
+
+class characters_imagesUpdateInput(TypedDict, total=False):
+    """Optional arguments for updating a record"""
+    uid: Union[AtomicIntInput, int]
+    characters: 'charactersUpdateOneWithoutRelationsInput'
+    images: 'imagesUpdateOneWithoutRelationsInput'
+
+
+class characters_imagesUpdateManyMutationInput(TypedDict, total=False):
+    """Arguments for updating many records"""
+    uid: Union[AtomicIntInput, int]
+
+
+class characters_imagesUpdateManyWithoutRelationsInput(TypedDict, total=False):
+    create: List['characters_imagesCreateWithoutRelationsInput']
+    connect: List['characters_imagesWhereUniqueInput']
+    set: List['characters_imagesWhereUniqueInput']
+    disconnect: List['characters_imagesWhereUniqueInput']
+    delete: List['characters_imagesWhereUniqueInput']
+
+    # TODO
+    # update: List['characters_imagesUpdateWithWhereUniqueWithoutRelationsInput']
+    # updateMany: List['characters_imagesUpdateManyWithWhereUniqueWithoutRelationsInput']
+    # deleteMany: List['characters_imagesScalarWhereInput']
+    # upsert: List['characters_imagesUpserteWithWhereUniqueWithoutRelationsInput']
+    # connectOrCreate: List['characters_imagesCreateOrConnectWithoutRelationsInput']
+
+
+class characters_imagesUpdateOneWithoutRelationsInput(TypedDict, total=False):
+    create: 'characters_imagesCreateWithoutRelationsInput'
+    connect: 'characters_imagesWhereUniqueInput'
+    disconnect: bool
+    delete: bool
+
+    # TODO
+    # update: 'characters_imagesUpdateInput'
+    # upsert: 'characters_imagesUpsertWithoutRelationsInput'
+    # connectOrCreate: 'characters_imagesCreateOrConnectWithoutRelationsInput'
+
+
+class characters_imagesUpsertInput(TypedDict):
+    create: 'characters_imagesCreateInput'
+    update: 'characters_imagesUpdateInput'  # pyright: reportIncompatibleMethodOverride=false
+
+
+_characters_images_uid_OrderByInput = TypedDict(
+    '_characters_images_uid_OrderByInput',
+    {
+        'uid': 'SortOrder',
+    },
+    total=True
+)
+
+_characters_images_CharacterID_OrderByInput = TypedDict(
+    '_characters_images_CharacterID_OrderByInput',
+    {
+        'CharacterID': 'SortOrder',
+    },
+    total=True
+)
+
+_characters_images_ImageID_OrderByInput = TypedDict(
+    '_characters_images_ImageID_OrderByInput',
+    {
+        'ImageID': 'SortOrder',
+    },
+    total=True
+)
+
+characters_imagesOrderByInput = Union[
+    '_characters_images_uid_OrderByInput',
+    '_characters_images_CharacterID_OrderByInput',
+    '_characters_images_ImageID_OrderByInput',
+]
+
+
+
+# recursive characters_images types
+# TODO: cleanup these types
+
+
+# Dict[str, Any] is a mypy limitation
+# see https://github.com/RobertCraigie/prisma-client-py/issues/45
+# switch to pyright for improved types, see https://prisma-client-py.readthedocs.io/en/stable/reference/limitations/
+
+characters_imagesRelationFilter = TypedDict(
+    'characters_imagesRelationFilter',
+    {
+        'is': 'Dict[str, Any]',
+        'is_not': 'Dict[str, Any]',
+    },
+    total=False,
+)
+
+
+class characters_imagesListRelationFilter(TypedDict, total=False):
+    some: 'Dict[str, Any]'
+    none: 'Dict[str, Any]'
+    every: 'Dict[str, Any]'
+
+
+class characters_imagesInclude(TypedDict, total=False):
+    """characters_images relational arguments"""
+    characters: Union[bool, 'charactersArgsFromcharacters_images']
+    images: Union[bool, 'imagesArgsFromcharacters_images']
+
+
+    
+
+class charactersIncludeFromcharacters_images(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcharacters_imagesRecursive1']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcharacters_imagesRecursive1']
+
+
+class charactersIncludeFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcharacters_imagesRecursive2']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcharacters_imagesRecursive2']
+
+
+class charactersIncludeFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcharacters_imagesRecursive3']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcharacters_imagesRecursive3']
+
+
+class charactersIncludeFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcharacters_imagesRecursive4']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcharacters_imagesRecursive4']
+
+
+class charactersIncludeFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+
+    
+
+class charactersArgsFromcharacters_images(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'charactersIncludeFromcharactersRecursive1'
+
+
+class charactersArgsFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'charactersIncludeFromcharactersRecursive2'
+
+
+class charactersArgsFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'charactersIncludeFromcharactersRecursive3'
+
+
+class charactersArgsFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'charactersIncludeFromcharactersRecursive4'
+
+
+class charactersArgsFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Arguments for characters_images"""
+    
+    
+
+class FindManycharactersArgsFromcharacters_images(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['charactersOrderByInput', List['charactersOrderByInput']]
+    where: 'charactersWhereInput'
+    cursor: 'charactersWhereUniqueInput'
+    include: 'charactersIncludeFromcharactersRecursive1'
+
+
+class FindManycharactersArgsFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['charactersOrderByInput', List['charactersOrderByInput']]
+    where: 'charactersWhereInput'
+    cursor: 'charactersWhereUniqueInput'
+    include: 'charactersIncludeFromcharactersRecursive2'
+
+
+class FindManycharactersArgsFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['charactersOrderByInput', List['charactersOrderByInput']]
+    where: 'charactersWhereInput'
+    cursor: 'charactersWhereUniqueInput'
+    include: 'charactersIncludeFromcharactersRecursive3'
+
+
+class FindManycharactersArgsFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['charactersOrderByInput', List['charactersOrderByInput']]
+    where: 'charactersWhereInput'
+    cursor: 'charactersWhereUniqueInput'
+    include: 'charactersIncludeFromcharactersRecursive4'
+
+
+class FindManycharactersArgsFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['charactersOrderByInput', List['charactersOrderByInput']]
+    where: 'charactersWhereInput'
+    cursor: 'charactersWhereUniqueInput'
+    
+    
+
+class characters_imagesIncludeFromcharacters_images(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    characters: Union[bool, 'charactersArgsFromcharacters_imagesRecursive1']
+    images: Union[bool, 'imagesArgsFromcharacters_imagesRecursive1']
+
+
+class characters_imagesIncludeFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    characters: Union[bool, 'charactersArgsFromcharacters_imagesRecursive2']
+    images: Union[bool, 'imagesArgsFromcharacters_imagesRecursive2']
+
+
+class characters_imagesIncludeFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    characters: Union[bool, 'charactersArgsFromcharacters_imagesRecursive3']
+    images: Union[bool, 'imagesArgsFromcharacters_imagesRecursive3']
+
+
+class characters_imagesIncludeFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    characters: Union[bool, 'charactersArgsFromcharacters_imagesRecursive4']
+    images: Union[bool, 'imagesArgsFromcharacters_imagesRecursive4']
+
+
+class characters_imagesIncludeFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+
+    
+
+class characters_imagesArgsFromcharacters_images(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive1'
+
+
+class characters_imagesArgsFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive2'
+
+
+class characters_imagesArgsFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive3'
+
+
+class characters_imagesArgsFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive4'
+
+
+class characters_imagesArgsFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Arguments for characters_images"""
+    
+    
+
+class FindManycharacters_imagesArgsFromcharacters_images(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive1'
+
+
+class FindManycharacters_imagesArgsFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive2'
+
+
+class FindManycharacters_imagesArgsFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive3'
+
+
+class FindManycharacters_imagesArgsFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive4'
+
+
+class FindManycharacters_imagesArgsFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    
+    
+
+class characters_kindsIncludeFromcharacters_images(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    characters: Union[bool, 'charactersArgsFromcharacters_imagesRecursive1']
+    kinds: Union[bool, 'kindsArgsFromcharacters_imagesRecursive1']
+
+
+class characters_kindsIncludeFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    characters: Union[bool, 'charactersArgsFromcharacters_imagesRecursive2']
+    kinds: Union[bool, 'kindsArgsFromcharacters_imagesRecursive2']
+
+
+class characters_kindsIncludeFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    characters: Union[bool, 'charactersArgsFromcharacters_imagesRecursive3']
+    kinds: Union[bool, 'kindsArgsFromcharacters_imagesRecursive3']
+
+
+class characters_kindsIncludeFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    characters: Union[bool, 'charactersArgsFromcharacters_imagesRecursive4']
+    kinds: Union[bool, 'kindsArgsFromcharacters_imagesRecursive4']
+
+
+class characters_kindsIncludeFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+
+    
+
+class characters_kindsArgsFromcharacters_images(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive1'
+
+
+class characters_kindsArgsFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive2'
+
+
+class characters_kindsArgsFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive3'
+
+
+class characters_kindsArgsFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive4'
+
+
+class characters_kindsArgsFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Arguments for characters_images"""
+    
+    
+
+class FindManycharacters_kindsArgsFromcharacters_images(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive1'
+
+
+class FindManycharacters_kindsArgsFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive2'
+
+
+class FindManycharacters_kindsArgsFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive3'
+
+
+class FindManycharacters_kindsArgsFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive4'
+
+
+class FindManycharacters_kindsArgsFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    
+    
+
+class comics_issuesIncludeFromcharacters_images(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    comics_stories: Union[bool, 'comics_storiesArgsFromcharacters_imagesRecursive1']
+
+
+class comics_issuesIncludeFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    comics_stories: Union[bool, 'comics_storiesArgsFromcharacters_imagesRecursive2']
+
+
+class comics_issuesIncludeFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    comics_stories: Union[bool, 'comics_storiesArgsFromcharacters_imagesRecursive3']
+
+
+class comics_issuesIncludeFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    comics_stories: Union[bool, 'comics_storiesArgsFromcharacters_imagesRecursive4']
+
+
+class comics_issuesIncludeFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+
+    
+
+class comics_issuesArgsFromcharacters_images(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'comics_issuesIncludeFromcomics_issuesRecursive1'
+
+
+class comics_issuesArgsFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'comics_issuesIncludeFromcomics_issuesRecursive2'
+
+
+class comics_issuesArgsFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'comics_issuesIncludeFromcomics_issuesRecursive3'
+
+
+class comics_issuesArgsFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'comics_issuesIncludeFromcomics_issuesRecursive4'
+
+
+class comics_issuesArgsFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Arguments for characters_images"""
+    
+    
+
+class FindManycomics_issuesArgsFromcharacters_images(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['comics_issuesOrderByInput', List['comics_issuesOrderByInput']]
+    where: 'comics_issuesWhereInput'
+    cursor: 'comics_issuesWhereUniqueInput'
+    include: 'comics_issuesIncludeFromcomics_issuesRecursive1'
+
+
+class FindManycomics_issuesArgsFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['comics_issuesOrderByInput', List['comics_issuesOrderByInput']]
+    where: 'comics_issuesWhereInput'
+    cursor: 'comics_issuesWhereUniqueInput'
+    include: 'comics_issuesIncludeFromcomics_issuesRecursive2'
+
+
+class FindManycomics_issuesArgsFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['comics_issuesOrderByInput', List['comics_issuesOrderByInput']]
+    where: 'comics_issuesWhereInput'
+    cursor: 'comics_issuesWhereUniqueInput'
+    include: 'comics_issuesIncludeFromcomics_issuesRecursive3'
+
+
+class FindManycomics_issuesArgsFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['comics_issuesOrderByInput', List['comics_issuesOrderByInput']]
+    where: 'comics_issuesWhereInput'
+    cursor: 'comics_issuesWhereUniqueInput'
+    include: 'comics_issuesIncludeFromcomics_issuesRecursive4'
+
+
+class FindManycomics_issuesArgsFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['comics_issuesOrderByInput', List['comics_issuesOrderByInput']]
+    where: 'comics_issuesWhereInput'
+    cursor: 'comics_issuesWhereUniqueInput'
+    
+    
+
+class comics_seriesIncludeFromcharacters_images(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcharacters_imagesRecursive1']
+
+
+class comics_seriesIncludeFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcharacters_imagesRecursive2']
+
+
+class comics_seriesIncludeFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcharacters_imagesRecursive3']
+
+
+class comics_seriesIncludeFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcharacters_imagesRecursive4']
+
+
+class comics_seriesIncludeFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+
+    
+
+class comics_seriesArgsFromcharacters_images(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'comics_seriesIncludeFromcomics_seriesRecursive1'
+
+
+class comics_seriesArgsFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'comics_seriesIncludeFromcomics_seriesRecursive2'
+
+
+class comics_seriesArgsFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'comics_seriesIncludeFromcomics_seriesRecursive3'
+
+
+class comics_seriesArgsFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'comics_seriesIncludeFromcomics_seriesRecursive4'
+
+
+class comics_seriesArgsFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Arguments for characters_images"""
+    
+    
+
+class FindManycomics_seriesArgsFromcharacters_images(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['comics_seriesOrderByInput', List['comics_seriesOrderByInput']]
+    where: 'comics_seriesWhereInput'
+    cursor: 'comics_seriesWhereUniqueInput'
+    include: 'comics_seriesIncludeFromcomics_seriesRecursive1'
+
+
+class FindManycomics_seriesArgsFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['comics_seriesOrderByInput', List['comics_seriesOrderByInput']]
+    where: 'comics_seriesWhereInput'
+    cursor: 'comics_seriesWhereUniqueInput'
+    include: 'comics_seriesIncludeFromcomics_seriesRecursive2'
+
+
+class FindManycomics_seriesArgsFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['comics_seriesOrderByInput', List['comics_seriesOrderByInput']]
+    where: 'comics_seriesWhereInput'
+    cursor: 'comics_seriesWhereUniqueInput'
+    include: 'comics_seriesIncludeFromcomics_seriesRecursive3'
+
+
+class FindManycomics_seriesArgsFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['comics_seriesOrderByInput', List['comics_seriesOrderByInput']]
+    where: 'comics_seriesWhereInput'
+    cursor: 'comics_seriesWhereUniqueInput'
+    include: 'comics_seriesIncludeFromcomics_seriesRecursive4'
+
+
+class FindManycomics_seriesArgsFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['comics_seriesOrderByInput', List['comics_seriesOrderByInput']]
+    where: 'comics_seriesWhereInput'
+    cursor: 'comics_seriesWhereUniqueInput'
+    
+    
+
+class comics_storiesIncludeFromcharacters_images(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    comics_series: Union[bool, 'comics_seriesArgsFromcharacters_imagesRecursive1']
+    images: Union[bool, 'imagesArgsFromcharacters_imagesRecursive1']
+    comics_issues: Union[bool, 'FindManycomics_issuesArgsFromcharacters_imagesRecursive1']
+
+
+class comics_storiesIncludeFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    comics_series: Union[bool, 'comics_seriesArgsFromcharacters_imagesRecursive2']
+    images: Union[bool, 'imagesArgsFromcharacters_imagesRecursive2']
+    comics_issues: Union[bool, 'FindManycomics_issuesArgsFromcharacters_imagesRecursive2']
+
+
+class comics_storiesIncludeFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    comics_series: Union[bool, 'comics_seriesArgsFromcharacters_imagesRecursive3']
+    images: Union[bool, 'imagesArgsFromcharacters_imagesRecursive3']
+    comics_issues: Union[bool, 'FindManycomics_issuesArgsFromcharacters_imagesRecursive3']
+
+
+class comics_storiesIncludeFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    comics_series: Union[bool, 'comics_seriesArgsFromcharacters_imagesRecursive4']
+    images: Union[bool, 'imagesArgsFromcharacters_imagesRecursive4']
+    comics_issues: Union[bool, 'FindManycomics_issuesArgsFromcharacters_imagesRecursive4']
+
+
+class comics_storiesIncludeFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+
+    
+
+class comics_storiesArgsFromcharacters_images(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'comics_storiesIncludeFromcomics_storiesRecursive1'
+
+
+class comics_storiesArgsFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'comics_storiesIncludeFromcomics_storiesRecursive2'
+
+
+class comics_storiesArgsFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'comics_storiesIncludeFromcomics_storiesRecursive3'
+
+
+class comics_storiesArgsFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'comics_storiesIncludeFromcomics_storiesRecursive4'
+
+
+class comics_storiesArgsFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Arguments for characters_images"""
+    
+    
+
+class FindManycomics_storiesArgsFromcharacters_images(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['comics_storiesOrderByInput', List['comics_storiesOrderByInput']]
+    where: 'comics_storiesWhereInput'
+    cursor: 'comics_storiesWhereUniqueInput'
+    include: 'comics_storiesIncludeFromcomics_storiesRecursive1'
+
+
+class FindManycomics_storiesArgsFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['comics_storiesOrderByInput', List['comics_storiesOrderByInput']]
+    where: 'comics_storiesWhereInput'
+    cursor: 'comics_storiesWhereUniqueInput'
+    include: 'comics_storiesIncludeFromcomics_storiesRecursive2'
+
+
+class FindManycomics_storiesArgsFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['comics_storiesOrderByInput', List['comics_storiesOrderByInput']]
+    where: 'comics_storiesWhereInput'
+    cursor: 'comics_storiesWhereUniqueInput'
+    include: 'comics_storiesIncludeFromcomics_storiesRecursive3'
+
+
+class FindManycomics_storiesArgsFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['comics_storiesOrderByInput', List['comics_storiesOrderByInput']]
+    where: 'comics_storiesWhereInput'
+    cursor: 'comics_storiesWhereUniqueInput'
+    include: 'comics_storiesIncludeFromcomics_storiesRecursive4'
+
+
+class FindManycomics_storiesArgsFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['comics_storiesOrderByInput', List['comics_storiesOrderByInput']]
+    where: 'comics_storiesWhereInput'
+    cursor: 'comics_storiesWhereUniqueInput'
+    
+    
+
+class episodesIncludeFromcharacters_images(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    images: Union[bool, 'imagesArgsFromcharacters_imagesRecursive1']
+    songs: Union[bool, 'FindManysongsArgsFromcharacters_imagesRecursive1']
+
+
+class episodesIncludeFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    images: Union[bool, 'imagesArgsFromcharacters_imagesRecursive2']
+    songs: Union[bool, 'FindManysongsArgsFromcharacters_imagesRecursive2']
+
+
+class episodesIncludeFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    images: Union[bool, 'imagesArgsFromcharacters_imagesRecursive3']
+    songs: Union[bool, 'FindManysongsArgsFromcharacters_imagesRecursive3']
+
+
+class episodesIncludeFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    images: Union[bool, 'imagesArgsFromcharacters_imagesRecursive4']
+    songs: Union[bool, 'FindManysongsArgsFromcharacters_imagesRecursive4']
+
+
+class episodesIncludeFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+
+    
+
+class episodesArgsFromcharacters_images(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'episodesIncludeFromepisodesRecursive1'
+
+
+class episodesArgsFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'episodesIncludeFromepisodesRecursive2'
+
+
+class episodesArgsFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'episodesIncludeFromepisodesRecursive3'
+
+
+class episodesArgsFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'episodesIncludeFromepisodesRecursive4'
+
+
+class episodesArgsFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Arguments for characters_images"""
+    
+    
+
+class FindManyepisodesArgsFromcharacters_images(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['episodesOrderByInput', List['episodesOrderByInput']]
+    where: 'episodesWhereInput'
+    cursor: 'episodesWhereUniqueInput'
+    include: 'episodesIncludeFromepisodesRecursive1'
+
+
+class FindManyepisodesArgsFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['episodesOrderByInput', List['episodesOrderByInput']]
+    where: 'episodesWhereInput'
+    cursor: 'episodesWhereUniqueInput'
+    include: 'episodesIncludeFromepisodesRecursive2'
+
+
+class FindManyepisodesArgsFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['episodesOrderByInput', List['episodesOrderByInput']]
+    where: 'episodesWhereInput'
+    cursor: 'episodesWhereUniqueInput'
+    include: 'episodesIncludeFromepisodesRecursive3'
+
+
+class FindManyepisodesArgsFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['episodesOrderByInput', List['episodesOrderByInput']]
+    where: 'episodesWhereInput'
+    cursor: 'episodesWhereUniqueInput'
+    include: 'episodesIncludeFromepisodesRecursive4'
+
+
+class FindManyepisodesArgsFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['episodesOrderByInput', List['episodesOrderByInput']]
+    where: 'episodesWhereInput'
+    cursor: 'episodesWhereUniqueInput'
+    
+    
+
+class imagesIncludeFromcharacters_images(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcharacters_imagesRecursive1']
+    comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcharacters_imagesRecursive1']
+    episodes: Union[bool, 'FindManyepisodesArgsFromcharacters_imagesRecursive1']
+
+
+class imagesIncludeFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcharacters_imagesRecursive2']
+    comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcharacters_imagesRecursive2']
+    episodes: Union[bool, 'FindManyepisodesArgsFromcharacters_imagesRecursive2']
+
+
+class imagesIncludeFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcharacters_imagesRecursive3']
+    comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcharacters_imagesRecursive3']
+    episodes: Union[bool, 'FindManyepisodesArgsFromcharacters_imagesRecursive3']
+
+
+class imagesIncludeFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcharacters_imagesRecursive4']
+    comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcharacters_imagesRecursive4']
+    episodes: Union[bool, 'FindManyepisodesArgsFromcharacters_imagesRecursive4']
+
+
+class imagesIncludeFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+
+    
+
+class imagesArgsFromcharacters_images(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'imagesIncludeFromimagesRecursive1'
+
+
+class imagesArgsFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'imagesIncludeFromimagesRecursive2'
+
+
+class imagesArgsFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'imagesIncludeFromimagesRecursive3'
+
+
+class imagesArgsFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'imagesIncludeFromimagesRecursive4'
+
+
+class imagesArgsFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Arguments for characters_images"""
+    
+    
+
+class FindManyimagesArgsFromcharacters_images(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['imagesOrderByInput', List['imagesOrderByInput']]
+    where: 'imagesWhereInput'
+    cursor: 'imagesWhereUniqueInput'
+    include: 'imagesIncludeFromimagesRecursive1'
+
+
+class FindManyimagesArgsFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['imagesOrderByInput', List['imagesOrderByInput']]
+    where: 'imagesWhereInput'
+    cursor: 'imagesWhereUniqueInput'
+    include: 'imagesIncludeFromimagesRecursive2'
+
+
+class FindManyimagesArgsFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['imagesOrderByInput', List['imagesOrderByInput']]
+    where: 'imagesWhereInput'
+    cursor: 'imagesWhereUniqueInput'
+    include: 'imagesIncludeFromimagesRecursive3'
+
+
+class FindManyimagesArgsFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['imagesOrderByInput', List['imagesOrderByInput']]
+    where: 'imagesWhereInput'
+    cursor: 'imagesWhereUniqueInput'
+    include: 'imagesIncludeFromimagesRecursive4'
+
+
+class FindManyimagesArgsFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['imagesOrderByInput', List['imagesOrderByInput']]
+    where: 'imagesWhereInput'
+    cursor: 'imagesWhereUniqueInput'
+    
+    
+
+class kindsIncludeFromcharacters_images(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcharacters_imagesRecursive1']
+
+
+class kindsIncludeFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcharacters_imagesRecursive2']
+
+
+class kindsIncludeFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcharacters_imagesRecursive3']
+
+
+class kindsIncludeFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcharacters_imagesRecursive4']
+
+
+class kindsIncludeFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+
+    
+
+class kindsArgsFromcharacters_images(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'kindsIncludeFromkindsRecursive1'
+
+
+class kindsArgsFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'kindsIncludeFromkindsRecursive2'
+
+
+class kindsArgsFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'kindsIncludeFromkindsRecursive3'
+
+
+class kindsArgsFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'kindsIncludeFromkindsRecursive4'
+
+
+class kindsArgsFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Arguments for characters_images"""
+    
+    
+
+class FindManykindsArgsFromcharacters_images(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['kindsOrderByInput', List['kindsOrderByInput']]
+    where: 'kindsWhereInput'
+    cursor: 'kindsWhereUniqueInput'
+    include: 'kindsIncludeFromkindsRecursive1'
+
+
+class FindManykindsArgsFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['kindsOrderByInput', List['kindsOrderByInput']]
+    where: 'kindsWhereInput'
+    cursor: 'kindsWhereUniqueInput'
+    include: 'kindsIncludeFromkindsRecursive2'
+
+
+class FindManykindsArgsFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['kindsOrderByInput', List['kindsOrderByInput']]
+    where: 'kindsWhereInput'
+    cursor: 'kindsWhereUniqueInput'
+    include: 'kindsIncludeFromkindsRecursive3'
+
+
+class FindManykindsArgsFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['kindsOrderByInput', List['kindsOrderByInput']]
+    where: 'kindsWhereInput'
+    cursor: 'kindsWhereUniqueInput'
+    include: 'kindsIncludeFromkindsRecursive4'
+
+
+class FindManykindsArgsFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['kindsOrderByInput', List['kindsOrderByInput']]
+    where: 'kindsWhereInput'
+    cursor: 'kindsWhereUniqueInput'
+    
+    
+
+class songsIncludeFromcharacters_images(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    episodes: Union[bool, 'episodesArgsFromcharacters_imagesRecursive1']
+
+
+class songsIncludeFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    episodes: Union[bool, 'episodesArgsFromcharacters_imagesRecursive2']
+
+
+class songsIncludeFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    episodes: Union[bool, 'episodesArgsFromcharacters_imagesRecursive3']
+
+
+class songsIncludeFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+    episodes: Union[bool, 'episodesArgsFromcharacters_imagesRecursive4']
+
+
+class songsIncludeFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Relational arguments for characters_images"""
+
+    
+
+class songsArgsFromcharacters_images(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'songsIncludeFromsongsRecursive1'
+
+
+class songsArgsFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'songsIncludeFromsongsRecursive2'
+
+
+class songsArgsFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'songsIncludeFromsongsRecursive3'
+
+
+class songsArgsFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Arguments for characters_images"""
+    include: 'songsIncludeFromsongsRecursive4'
+
+
+class songsArgsFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Arguments for characters_images"""
+    
+    
+
+class FindManysongsArgsFromcharacters_images(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['songsOrderByInput', List['songsOrderByInput']]
+    where: 'songsWhereInput'
+    cursor: 'songsWhereUniqueInput'
+    include: 'songsIncludeFromsongsRecursive1'
+
+
+class FindManysongsArgsFromcharacters_imagesRecursive1(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['songsOrderByInput', List['songsOrderByInput']]
+    where: 'songsWhereInput'
+    cursor: 'songsWhereUniqueInput'
+    include: 'songsIncludeFromsongsRecursive2'
+
+
+class FindManysongsArgsFromcharacters_imagesRecursive2(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['songsOrderByInput', List['songsOrderByInput']]
+    where: 'songsWhereInput'
+    cursor: 'songsWhereUniqueInput'
+    include: 'songsIncludeFromsongsRecursive3'
+
+
+class FindManysongsArgsFromcharacters_imagesRecursive3(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['songsOrderByInput', List['songsOrderByInput']]
+    where: 'songsWhereInput'
+    cursor: 'songsWhereUniqueInput'
+    include: 'songsIncludeFromsongsRecursive4'
+
+
+class FindManysongsArgsFromcharacters_imagesRecursive4(TypedDict, total=False):
+    """Arguments for characters_images"""
+    take: int
+    skip: int
+    order_by: Union['songsOrderByInput', List['songsOrderByInput']]
+    where: 'songsWhereInput'
+    cursor: 'songsWhereUniqueInput'
+    
+
+
+FindManycharacters_imagesArgs = FindManycharacters_imagesArgsFromcharacters_images
+FindFirstcharacters_imagesArgs = FindManycharacters_imagesArgsFromcharacters_images
+
+
+    
+
+class characters_imagesWhereInput(TypedDict, total=False):
+    """characters_images arguments for searching"""
+    uid: Union[int, 'types.IntFilter']
+    CharacterID: Union[int, 'types.IntFilter']
+    ImageID: Union[int, 'types.IntFilter']
+    characters: 'charactersRelationFilter'
+    images: 'imagesRelationFilter'
+
+    # should be noted that AND and NOT should be Union['characters_imagesWhereInputRecursive1', List['characters_imagesWhereInputRecursive1']]
+    # but this causes mypy to hang :/
+    AND: List['characters_imagesWhereInputRecursive1']
+    OR: List['characters_imagesWhereInputRecursive1']
+    NOT: List['characters_imagesWhereInputRecursive1']
+
+
+class characters_imagesWhereInputRecursive1(TypedDict, total=False):
+    """characters_images arguments for searching"""
+    uid: Union[int, 'types.IntFilter']
+    CharacterID: Union[int, 'types.IntFilter']
+    ImageID: Union[int, 'types.IntFilter']
+    characters: 'charactersRelationFilter'
+    images: 'imagesRelationFilter'
+
+    # should be noted that AND and NOT should be Union['characters_imagesWhereInputRecursive2', List['characters_imagesWhereInputRecursive2']]
+    # but this causes mypy to hang :/
+    AND: List['characters_imagesWhereInputRecursive2']
+    OR: List['characters_imagesWhereInputRecursive2']
+    NOT: List['characters_imagesWhereInputRecursive2']
+
+
+class characters_imagesWhereInputRecursive2(TypedDict, total=False):
+    """characters_images arguments for searching"""
+    uid: Union[int, 'types.IntFilter']
+    CharacterID: Union[int, 'types.IntFilter']
+    ImageID: Union[int, 'types.IntFilter']
+    characters: 'charactersRelationFilter'
+    images: 'imagesRelationFilter'
+
+    # should be noted that AND and NOT should be Union['characters_imagesWhereInputRecursive3', List['characters_imagesWhereInputRecursive3']]
+    # but this causes mypy to hang :/
+    AND: List['characters_imagesWhereInputRecursive3']
+    OR: List['characters_imagesWhereInputRecursive3']
+    NOT: List['characters_imagesWhereInputRecursive3']
+
+
+class characters_imagesWhereInputRecursive3(TypedDict, total=False):
+    """characters_images arguments for searching"""
+    uid: Union[int, 'types.IntFilter']
+    CharacterID: Union[int, 'types.IntFilter']
+    ImageID: Union[int, 'types.IntFilter']
+    characters: 'charactersRelationFilter'
+    images: 'imagesRelationFilter'
+
+    # should be noted that AND and NOT should be Union['characters_imagesWhereInputRecursive4', List['characters_imagesWhereInputRecursive4']]
+    # but this causes mypy to hang :/
+    AND: List['characters_imagesWhereInputRecursive4']
+    OR: List['characters_imagesWhereInputRecursive4']
+    NOT: List['characters_imagesWhereInputRecursive4']
+
+
+class characters_imagesWhereInputRecursive4(TypedDict, total=False):
+    """characters_images arguments for searching"""
+    uid: Union[int, 'types.IntFilter']
+    CharacterID: Union[int, 'types.IntFilter']
+    ImageID: Union[int, 'types.IntFilter']
+    characters: 'charactersRelationFilter'
+    images: 'imagesRelationFilter'
+
+
+
+# aggregate characters_images types
+
+
+    
+
+class characters_imagesScalarWhereWithAggregatesInput(TypedDict, total=False):
+    """characters_images arguments for searching"""
+    uid: Union[int, 'types.IntWithAggregatesFilter']
+    CharacterID: Union[int, 'types.IntWithAggregatesFilter']
+    ImageID: Union[int, 'types.IntWithAggregatesFilter']
+
+    AND: List['characters_imagesScalarWhereWithAggregatesInputRecursive1']
+    OR: List['characters_imagesScalarWhereWithAggregatesInputRecursive1']
+    NOT: List['characters_imagesScalarWhereWithAggregatesInputRecursive1']
+
+
+class characters_imagesScalarWhereWithAggregatesInputRecursive1(TypedDict, total=False):
+    """characters_images arguments for searching"""
+    uid: Union[int, 'types.IntWithAggregatesFilter']
+    CharacterID: Union[int, 'types.IntWithAggregatesFilter']
+    ImageID: Union[int, 'types.IntWithAggregatesFilter']
+
+    AND: List['characters_imagesScalarWhereWithAggregatesInputRecursive2']
+    OR: List['characters_imagesScalarWhereWithAggregatesInputRecursive2']
+    NOT: List['characters_imagesScalarWhereWithAggregatesInputRecursive2']
+
+
+class characters_imagesScalarWhereWithAggregatesInputRecursive2(TypedDict, total=False):
+    """characters_images arguments for searching"""
+    uid: Union[int, 'types.IntWithAggregatesFilter']
+    CharacterID: Union[int, 'types.IntWithAggregatesFilter']
+    ImageID: Union[int, 'types.IntWithAggregatesFilter']
+
+    AND: List['characters_imagesScalarWhereWithAggregatesInputRecursive3']
+    OR: List['characters_imagesScalarWhereWithAggregatesInputRecursive3']
+    NOT: List['characters_imagesScalarWhereWithAggregatesInputRecursive3']
+
+
+class characters_imagesScalarWhereWithAggregatesInputRecursive3(TypedDict, total=False):
+    """characters_images arguments for searching"""
+    uid: Union[int, 'types.IntWithAggregatesFilter']
+    CharacterID: Union[int, 'types.IntWithAggregatesFilter']
+    ImageID: Union[int, 'types.IntWithAggregatesFilter']
+
+    AND: List['characters_imagesScalarWhereWithAggregatesInputRecursive4']
+    OR: List['characters_imagesScalarWhereWithAggregatesInputRecursive4']
+    NOT: List['characters_imagesScalarWhereWithAggregatesInputRecursive4']
+
+
+class characters_imagesScalarWhereWithAggregatesInputRecursive4(TypedDict, total=False):
+    """characters_images arguments for searching"""
+    uid: Union[int, 'types.IntWithAggregatesFilter']
+    CharacterID: Union[int, 'types.IntWithAggregatesFilter']
+    ImageID: Union[int, 'types.IntWithAggregatesFilter']
+
+
+
+class characters_imagesGroupByOutput(TypedDict, total=False):
+    uid: int
+    CharacterID: int
+    ImageID: int
+    _sum: 'characters_imagesSumAggregateOutput'
+    _avg: 'characters_imagesAvgAggregateOutput'
+    _min: 'characters_imagesMinAggregateOutput'
+    _max: 'characters_imagesMaxAggregateOutput'
+    _count: 'characters_imagesCountAggregateOutput'
+
+
+class characters_imagesAvgAggregateOutput(TypedDict, total=False):
+    """characters_images output for aggregating averages"""
+    uid: float
+    CharacterID: float
+    ImageID: float
+
+
+class characters_imagesSumAggregateOutput(TypedDict, total=False):
+    """characters_images output for aggregating sums"""
+    uid: int
+    CharacterID: int
+    ImageID: int
+
+
+class characters_imagesScalarAggregateOutput(TypedDict, total=False):
+    """characters_images output including scalar fields"""
+    uid: int
+    CharacterID: int
+    ImageID: int
+
+
+characters_imagesMinAggregateOutput = characters_imagesScalarAggregateOutput
+characters_imagesMaxAggregateOutput = characters_imagesScalarAggregateOutput
+
+
+class characters_imagesMaxAggregateInput(TypedDict, total=False):
+    """characters_images input for aggregating by max"""
+    uid: bool
+    CharacterID: bool
+    ImageID: bool
+
+
+class characters_imagesMinAggregateInput(TypedDict, total=False):
+    """characters_images input for aggregating by min"""
+    uid: bool
+    CharacterID: bool
+    ImageID: bool
+
+
+class characters_imagesNumberAggregateInput(TypedDict, total=False):
+    """characters_images input for aggregating numbers"""
+    uid: bool
+    CharacterID: bool
+    ImageID: bool
+
+
+characters_imagesAvgAggregateInput = characters_imagesNumberAggregateInput
+characters_imagesSumAggregateInput = characters_imagesNumberAggregateInput
+
+
+characters_imagesCountAggregateInput = TypedDict(
+    'characters_imagesCountAggregateInput',
+    {
+        'uid': bool,
+        'CharacterID': bool,
+        'ImageID': bool,
+        '_all': bool,
+    },
+    total=False,
+)
+
+characters_imagesCountAggregateOutput = TypedDict(
+    'characters_imagesCountAggregateOutput',
+    {
+        'uid': int,
+        'CharacterID': int,
+        'ImageID': int,
+        '_all': int,
+    },
+    total=False,
+)
+
+
+characters_imagesKeys = Literal[
+    'uid',
+    'CharacterID',
+    'ImageID',
+    'characters',
+    'images',
+]
+characters_imagesScalarFieldKeys = Literal[
+    'uid',
+    'CharacterID',
+    'ImageID',
+]
+characters_imagesScalarFieldKeysT = TypeVar('characters_imagesScalarFieldKeysT', bound=characters_imagesScalarFieldKeys)
+
+characters_imagesRelationalFieldKeys = Literal[
+        'characters',
+        'images',
+    ]
+
+# characters_kinds types
+
+class characters_kindsOptionalCreateInput(TypedDict, total=False):
+    """Optional arguments to the characters_kinds create method"""
+    uid: int
+    Comment: Optional[str]
+    characters: 'charactersCreateNestedWithoutRelationsInput'
+    kinds: 'kindsCreateNestedWithoutRelationsInput'
+
+
+class characters_kindsCreateInput(characters_kindsOptionalCreateInput):
+    """Required arguments to the characters_kinds create method"""
+
+
+# TODO: remove this in favour of without explicit relations
+# e.g. PostCreateWithoutAuthorInput
+
+class characters_kindsOptionalCreateWithoutRelationsInput(TypedDict, total=False):
+    """Optional arguments to the characters_kinds create method, without relations"""
+    uid: int
+    Comment: Optional[str]
+
+
+class characters_kindsCreateWithoutRelationsInput(characters_kindsOptionalCreateWithoutRelationsInput):
+    """Required arguments to the characters_kinds create method, without relations"""
+
+
+class characters_kindsCreateNestedWithoutRelationsInput(TypedDict, total=False):
+    create: 'characters_kindsCreateWithoutRelationsInput'
+    connect: 'characters_kindsWhereUniqueInput'
+
+
+class characters_kindsCreateManyNestedWithoutRelationsInput(TypedDict, total=False):
+    create: Union['characters_kindsCreateWithoutRelationsInput', List['characters_kindsCreateWithoutRelationsInput']]
+    connect: Union['characters_kindsWhereUniqueInput', List['characters_kindsWhereUniqueInput']]
+
+
+_characters_kindsWhereUnique_uid_Input = TypedDict(
+    '_characters_kindsWhereUnique_uid_Input',
+    {
+        'uid': 'int',
+    },
+    total=True
+)
+
+characters_kindsWhereUniqueInput = _characters_kindsWhereUnique_uid_Input
+
+
+class characters_kindsUpdateInput(TypedDict, total=False):
+    """Optional arguments for updating a record"""
+    uid: Union[AtomicIntInput, int]
+    Comment: Optional[str]
+    characters: 'charactersUpdateOneWithoutRelationsInput'
+    kinds: 'kindsUpdateOneWithoutRelationsInput'
+
+
+class characters_kindsUpdateManyMutationInput(TypedDict, total=False):
+    """Arguments for updating many records"""
+    uid: Union[AtomicIntInput, int]
+    Comment: Optional[str]
+
+
+class characters_kindsUpdateManyWithoutRelationsInput(TypedDict, total=False):
+    create: List['characters_kindsCreateWithoutRelationsInput']
+    connect: List['characters_kindsWhereUniqueInput']
+    set: List['characters_kindsWhereUniqueInput']
+    disconnect: List['characters_kindsWhereUniqueInput']
+    delete: List['characters_kindsWhereUniqueInput']
+
+    # TODO
+    # update: List['characters_kindsUpdateWithWhereUniqueWithoutRelationsInput']
+    # updateMany: List['characters_kindsUpdateManyWithWhereUniqueWithoutRelationsInput']
+    # deleteMany: List['characters_kindsScalarWhereInput']
+    # upsert: List['characters_kindsUpserteWithWhereUniqueWithoutRelationsInput']
+    # connectOrCreate: List['characters_kindsCreateOrConnectWithoutRelationsInput']
+
+
+class characters_kindsUpdateOneWithoutRelationsInput(TypedDict, total=False):
+    create: 'characters_kindsCreateWithoutRelationsInput'
+    connect: 'characters_kindsWhereUniqueInput'
+    disconnect: bool
+    delete: bool
+
+    # TODO
+    # update: 'characters_kindsUpdateInput'
+    # upsert: 'characters_kindsUpsertWithoutRelationsInput'
+    # connectOrCreate: 'characters_kindsCreateOrConnectWithoutRelationsInput'
+
+
+class characters_kindsUpsertInput(TypedDict):
+    create: 'characters_kindsCreateInput'
+    update: 'characters_kindsUpdateInput'  # pyright: reportIncompatibleMethodOverride=false
+
+
+_characters_kinds_uid_OrderByInput = TypedDict(
+    '_characters_kinds_uid_OrderByInput',
+    {
+        'uid': 'SortOrder',
+    },
+    total=True
+)
+
+_characters_kinds_CharacterID_OrderByInput = TypedDict(
+    '_characters_kinds_CharacterID_OrderByInput',
+    {
+        'CharacterID': 'SortOrder',
+    },
+    total=True
+)
+
+_characters_kinds_KindID_OrderByInput = TypedDict(
+    '_characters_kinds_KindID_OrderByInput',
+    {
+        'KindID': 'SortOrder',
+    },
+    total=True
+)
+
+_characters_kinds_Comment_OrderByInput = TypedDict(
+    '_characters_kinds_Comment_OrderByInput',
+    {
+        'Comment': 'SortOrder',
+    },
+    total=True
+)
+
+characters_kindsOrderByInput = Union[
+    '_characters_kinds_uid_OrderByInput',
+    '_characters_kinds_CharacterID_OrderByInput',
+    '_characters_kinds_KindID_OrderByInput',
+    '_characters_kinds_Comment_OrderByInput',
+]
+
+
+
+# recursive characters_kinds types
+# TODO: cleanup these types
+
+
+# Dict[str, Any] is a mypy limitation
+# see https://github.com/RobertCraigie/prisma-client-py/issues/45
+# switch to pyright for improved types, see https://prisma-client-py.readthedocs.io/en/stable/reference/limitations/
+
+characters_kindsRelationFilter = TypedDict(
+    'characters_kindsRelationFilter',
+    {
+        'is': 'Dict[str, Any]',
+        'is_not': 'Dict[str, Any]',
+    },
+    total=False,
+)
+
+
+class characters_kindsListRelationFilter(TypedDict, total=False):
+    some: 'Dict[str, Any]'
+    none: 'Dict[str, Any]'
+    every: 'Dict[str, Any]'
+
+
+class characters_kindsInclude(TypedDict, total=False):
+    """characters_kinds relational arguments"""
+    characters: Union[bool, 'charactersArgsFromcharacters_kinds']
+    kinds: Union[bool, 'kindsArgsFromcharacters_kinds']
+
+
+    
+
+class charactersIncludeFromcharacters_kinds(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcharacters_kindsRecursive1']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcharacters_kindsRecursive1']
+
+
+class charactersIncludeFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcharacters_kindsRecursive2']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcharacters_kindsRecursive2']
+
+
+class charactersIncludeFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcharacters_kindsRecursive3']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcharacters_kindsRecursive3']
+
+
+class charactersIncludeFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcharacters_kindsRecursive4']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcharacters_kindsRecursive4']
+
+
+class charactersIncludeFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+
+    
+
+class charactersArgsFromcharacters_kinds(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'charactersIncludeFromcharactersRecursive1'
+
+
+class charactersArgsFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'charactersIncludeFromcharactersRecursive2'
+
+
+class charactersArgsFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'charactersIncludeFromcharactersRecursive3'
+
+
+class charactersArgsFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'charactersIncludeFromcharactersRecursive4'
+
+
+class charactersArgsFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    
+    
+
+class FindManycharactersArgsFromcharacters_kinds(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['charactersOrderByInput', List['charactersOrderByInput']]
+    where: 'charactersWhereInput'
+    cursor: 'charactersWhereUniqueInput'
+    include: 'charactersIncludeFromcharactersRecursive1'
+
+
+class FindManycharactersArgsFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['charactersOrderByInput', List['charactersOrderByInput']]
+    where: 'charactersWhereInput'
+    cursor: 'charactersWhereUniqueInput'
+    include: 'charactersIncludeFromcharactersRecursive2'
+
+
+class FindManycharactersArgsFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['charactersOrderByInput', List['charactersOrderByInput']]
+    where: 'charactersWhereInput'
+    cursor: 'charactersWhereUniqueInput'
+    include: 'charactersIncludeFromcharactersRecursive3'
+
+
+class FindManycharactersArgsFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['charactersOrderByInput', List['charactersOrderByInput']]
+    where: 'charactersWhereInput'
+    cursor: 'charactersWhereUniqueInput'
+    include: 'charactersIncludeFromcharactersRecursive4'
+
+
+class FindManycharactersArgsFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['charactersOrderByInput', List['charactersOrderByInput']]
+    where: 'charactersWhereInput'
+    cursor: 'charactersWhereUniqueInput'
+    
+    
+
+class characters_imagesIncludeFromcharacters_kinds(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    characters: Union[bool, 'charactersArgsFromcharacters_kindsRecursive1']
+    images: Union[bool, 'imagesArgsFromcharacters_kindsRecursive1']
+
+
+class characters_imagesIncludeFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    characters: Union[bool, 'charactersArgsFromcharacters_kindsRecursive2']
+    images: Union[bool, 'imagesArgsFromcharacters_kindsRecursive2']
+
+
+class characters_imagesIncludeFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    characters: Union[bool, 'charactersArgsFromcharacters_kindsRecursive3']
+    images: Union[bool, 'imagesArgsFromcharacters_kindsRecursive3']
+
+
+class characters_imagesIncludeFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    characters: Union[bool, 'charactersArgsFromcharacters_kindsRecursive4']
+    images: Union[bool, 'imagesArgsFromcharacters_kindsRecursive4']
+
+
+class characters_imagesIncludeFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+
+    
+
+class characters_imagesArgsFromcharacters_kinds(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive1'
+
+
+class characters_imagesArgsFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive2'
+
+
+class characters_imagesArgsFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive3'
+
+
+class characters_imagesArgsFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive4'
+
+
+class characters_imagesArgsFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    
+    
+
+class FindManycharacters_imagesArgsFromcharacters_kinds(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive1'
+
+
+class FindManycharacters_imagesArgsFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive2'
+
+
+class FindManycharacters_imagesArgsFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive3'
+
+
+class FindManycharacters_imagesArgsFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive4'
+
+
+class FindManycharacters_imagesArgsFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    
+    
+
+class characters_kindsIncludeFromcharacters_kinds(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    characters: Union[bool, 'charactersArgsFromcharacters_kindsRecursive1']
+    kinds: Union[bool, 'kindsArgsFromcharacters_kindsRecursive1']
+
+
+class characters_kindsIncludeFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    characters: Union[bool, 'charactersArgsFromcharacters_kindsRecursive2']
+    kinds: Union[bool, 'kindsArgsFromcharacters_kindsRecursive2']
+
+
+class characters_kindsIncludeFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    characters: Union[bool, 'charactersArgsFromcharacters_kindsRecursive3']
+    kinds: Union[bool, 'kindsArgsFromcharacters_kindsRecursive3']
+
+
+class characters_kindsIncludeFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    characters: Union[bool, 'charactersArgsFromcharacters_kindsRecursive4']
+    kinds: Union[bool, 'kindsArgsFromcharacters_kindsRecursive4']
+
+
+class characters_kindsIncludeFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+
+    
+
+class characters_kindsArgsFromcharacters_kinds(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive1'
+
+
+class characters_kindsArgsFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive2'
+
+
+class characters_kindsArgsFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive3'
+
+
+class characters_kindsArgsFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive4'
+
+
+class characters_kindsArgsFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    
+    
+
+class FindManycharacters_kindsArgsFromcharacters_kinds(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive1'
+
+
+class FindManycharacters_kindsArgsFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive2'
+
+
+class FindManycharacters_kindsArgsFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive3'
+
+
+class FindManycharacters_kindsArgsFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive4'
+
+
+class FindManycharacters_kindsArgsFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    
+    
+
+class comics_issuesIncludeFromcharacters_kinds(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    comics_stories: Union[bool, 'comics_storiesArgsFromcharacters_kindsRecursive1']
+
+
+class comics_issuesIncludeFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    comics_stories: Union[bool, 'comics_storiesArgsFromcharacters_kindsRecursive2']
+
+
+class comics_issuesIncludeFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    comics_stories: Union[bool, 'comics_storiesArgsFromcharacters_kindsRecursive3']
+
+
+class comics_issuesIncludeFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    comics_stories: Union[bool, 'comics_storiesArgsFromcharacters_kindsRecursive4']
+
+
+class comics_issuesIncludeFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+
+    
+
+class comics_issuesArgsFromcharacters_kinds(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'comics_issuesIncludeFromcomics_issuesRecursive1'
+
+
+class comics_issuesArgsFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'comics_issuesIncludeFromcomics_issuesRecursive2'
+
+
+class comics_issuesArgsFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'comics_issuesIncludeFromcomics_issuesRecursive3'
+
+
+class comics_issuesArgsFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'comics_issuesIncludeFromcomics_issuesRecursive4'
+
+
+class comics_issuesArgsFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    
+    
+
+class FindManycomics_issuesArgsFromcharacters_kinds(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['comics_issuesOrderByInput', List['comics_issuesOrderByInput']]
+    where: 'comics_issuesWhereInput'
+    cursor: 'comics_issuesWhereUniqueInput'
+    include: 'comics_issuesIncludeFromcomics_issuesRecursive1'
+
+
+class FindManycomics_issuesArgsFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['comics_issuesOrderByInput', List['comics_issuesOrderByInput']]
+    where: 'comics_issuesWhereInput'
+    cursor: 'comics_issuesWhereUniqueInput'
+    include: 'comics_issuesIncludeFromcomics_issuesRecursive2'
+
+
+class FindManycomics_issuesArgsFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['comics_issuesOrderByInput', List['comics_issuesOrderByInput']]
+    where: 'comics_issuesWhereInput'
+    cursor: 'comics_issuesWhereUniqueInput'
+    include: 'comics_issuesIncludeFromcomics_issuesRecursive3'
+
+
+class FindManycomics_issuesArgsFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['comics_issuesOrderByInput', List['comics_issuesOrderByInput']]
+    where: 'comics_issuesWhereInput'
+    cursor: 'comics_issuesWhereUniqueInput'
+    include: 'comics_issuesIncludeFromcomics_issuesRecursive4'
+
+
+class FindManycomics_issuesArgsFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['comics_issuesOrderByInput', List['comics_issuesOrderByInput']]
+    where: 'comics_issuesWhereInput'
+    cursor: 'comics_issuesWhereUniqueInput'
+    
+    
+
+class comics_seriesIncludeFromcharacters_kinds(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcharacters_kindsRecursive1']
+
+
+class comics_seriesIncludeFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcharacters_kindsRecursive2']
+
+
+class comics_seriesIncludeFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcharacters_kindsRecursive3']
+
+
+class comics_seriesIncludeFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcharacters_kindsRecursive4']
+
+
+class comics_seriesIncludeFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+
+    
+
+class comics_seriesArgsFromcharacters_kinds(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'comics_seriesIncludeFromcomics_seriesRecursive1'
+
+
+class comics_seriesArgsFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'comics_seriesIncludeFromcomics_seriesRecursive2'
+
+
+class comics_seriesArgsFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'comics_seriesIncludeFromcomics_seriesRecursive3'
+
+
+class comics_seriesArgsFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'comics_seriesIncludeFromcomics_seriesRecursive4'
+
+
+class comics_seriesArgsFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    
+    
+
+class FindManycomics_seriesArgsFromcharacters_kinds(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['comics_seriesOrderByInput', List['comics_seriesOrderByInput']]
+    where: 'comics_seriesWhereInput'
+    cursor: 'comics_seriesWhereUniqueInput'
+    include: 'comics_seriesIncludeFromcomics_seriesRecursive1'
+
+
+class FindManycomics_seriesArgsFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['comics_seriesOrderByInput', List['comics_seriesOrderByInput']]
+    where: 'comics_seriesWhereInput'
+    cursor: 'comics_seriesWhereUniqueInput'
+    include: 'comics_seriesIncludeFromcomics_seriesRecursive2'
+
+
+class FindManycomics_seriesArgsFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['comics_seriesOrderByInput', List['comics_seriesOrderByInput']]
+    where: 'comics_seriesWhereInput'
+    cursor: 'comics_seriesWhereUniqueInput'
+    include: 'comics_seriesIncludeFromcomics_seriesRecursive3'
+
+
+class FindManycomics_seriesArgsFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['comics_seriesOrderByInput', List['comics_seriesOrderByInput']]
+    where: 'comics_seriesWhereInput'
+    cursor: 'comics_seriesWhereUniqueInput'
+    include: 'comics_seriesIncludeFromcomics_seriesRecursive4'
+
+
+class FindManycomics_seriesArgsFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['comics_seriesOrderByInput', List['comics_seriesOrderByInput']]
+    where: 'comics_seriesWhereInput'
+    cursor: 'comics_seriesWhereUniqueInput'
+    
+    
+
+class comics_storiesIncludeFromcharacters_kinds(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    comics_series: Union[bool, 'comics_seriesArgsFromcharacters_kindsRecursive1']
+    images: Union[bool, 'imagesArgsFromcharacters_kindsRecursive1']
+    comics_issues: Union[bool, 'FindManycomics_issuesArgsFromcharacters_kindsRecursive1']
+
+
+class comics_storiesIncludeFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    comics_series: Union[bool, 'comics_seriesArgsFromcharacters_kindsRecursive2']
+    images: Union[bool, 'imagesArgsFromcharacters_kindsRecursive2']
+    comics_issues: Union[bool, 'FindManycomics_issuesArgsFromcharacters_kindsRecursive2']
+
+
+class comics_storiesIncludeFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    comics_series: Union[bool, 'comics_seriesArgsFromcharacters_kindsRecursive3']
+    images: Union[bool, 'imagesArgsFromcharacters_kindsRecursive3']
+    comics_issues: Union[bool, 'FindManycomics_issuesArgsFromcharacters_kindsRecursive3']
+
+
+class comics_storiesIncludeFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    comics_series: Union[bool, 'comics_seriesArgsFromcharacters_kindsRecursive4']
+    images: Union[bool, 'imagesArgsFromcharacters_kindsRecursive4']
+    comics_issues: Union[bool, 'FindManycomics_issuesArgsFromcharacters_kindsRecursive4']
+
+
+class comics_storiesIncludeFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+
+    
+
+class comics_storiesArgsFromcharacters_kinds(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'comics_storiesIncludeFromcomics_storiesRecursive1'
+
+
+class comics_storiesArgsFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'comics_storiesIncludeFromcomics_storiesRecursive2'
+
+
+class comics_storiesArgsFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'comics_storiesIncludeFromcomics_storiesRecursive3'
+
+
+class comics_storiesArgsFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'comics_storiesIncludeFromcomics_storiesRecursive4'
+
+
+class comics_storiesArgsFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    
+    
+
+class FindManycomics_storiesArgsFromcharacters_kinds(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['comics_storiesOrderByInput', List['comics_storiesOrderByInput']]
+    where: 'comics_storiesWhereInput'
+    cursor: 'comics_storiesWhereUniqueInput'
+    include: 'comics_storiesIncludeFromcomics_storiesRecursive1'
+
+
+class FindManycomics_storiesArgsFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['comics_storiesOrderByInput', List['comics_storiesOrderByInput']]
+    where: 'comics_storiesWhereInput'
+    cursor: 'comics_storiesWhereUniqueInput'
+    include: 'comics_storiesIncludeFromcomics_storiesRecursive2'
+
+
+class FindManycomics_storiesArgsFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['comics_storiesOrderByInput', List['comics_storiesOrderByInput']]
+    where: 'comics_storiesWhereInput'
+    cursor: 'comics_storiesWhereUniqueInput'
+    include: 'comics_storiesIncludeFromcomics_storiesRecursive3'
+
+
+class FindManycomics_storiesArgsFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['comics_storiesOrderByInput', List['comics_storiesOrderByInput']]
+    where: 'comics_storiesWhereInput'
+    cursor: 'comics_storiesWhereUniqueInput'
+    include: 'comics_storiesIncludeFromcomics_storiesRecursive4'
+
+
+class FindManycomics_storiesArgsFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['comics_storiesOrderByInput', List['comics_storiesOrderByInput']]
+    where: 'comics_storiesWhereInput'
+    cursor: 'comics_storiesWhereUniqueInput'
+    
+    
+
+class episodesIncludeFromcharacters_kinds(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    images: Union[bool, 'imagesArgsFromcharacters_kindsRecursive1']
+    songs: Union[bool, 'FindManysongsArgsFromcharacters_kindsRecursive1']
+
+
+class episodesIncludeFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    images: Union[bool, 'imagesArgsFromcharacters_kindsRecursive2']
+    songs: Union[bool, 'FindManysongsArgsFromcharacters_kindsRecursive2']
+
+
+class episodesIncludeFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    images: Union[bool, 'imagesArgsFromcharacters_kindsRecursive3']
+    songs: Union[bool, 'FindManysongsArgsFromcharacters_kindsRecursive3']
+
+
+class episodesIncludeFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    images: Union[bool, 'imagesArgsFromcharacters_kindsRecursive4']
+    songs: Union[bool, 'FindManysongsArgsFromcharacters_kindsRecursive4']
+
+
+class episodesIncludeFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+
+    
+
+class episodesArgsFromcharacters_kinds(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'episodesIncludeFromepisodesRecursive1'
+
+
+class episodesArgsFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'episodesIncludeFromepisodesRecursive2'
+
+
+class episodesArgsFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'episodesIncludeFromepisodesRecursive3'
+
+
+class episodesArgsFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'episodesIncludeFromepisodesRecursive4'
+
+
+class episodesArgsFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    
+    
+
+class FindManyepisodesArgsFromcharacters_kinds(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['episodesOrderByInput', List['episodesOrderByInput']]
+    where: 'episodesWhereInput'
+    cursor: 'episodesWhereUniqueInput'
+    include: 'episodesIncludeFromepisodesRecursive1'
+
+
+class FindManyepisodesArgsFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['episodesOrderByInput', List['episodesOrderByInput']]
+    where: 'episodesWhereInput'
+    cursor: 'episodesWhereUniqueInput'
+    include: 'episodesIncludeFromepisodesRecursive2'
+
+
+class FindManyepisodesArgsFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['episodesOrderByInput', List['episodesOrderByInput']]
+    where: 'episodesWhereInput'
+    cursor: 'episodesWhereUniqueInput'
+    include: 'episodesIncludeFromepisodesRecursive3'
+
+
+class FindManyepisodesArgsFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['episodesOrderByInput', List['episodesOrderByInput']]
+    where: 'episodesWhereInput'
+    cursor: 'episodesWhereUniqueInput'
+    include: 'episodesIncludeFromepisodesRecursive4'
+
+
+class FindManyepisodesArgsFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['episodesOrderByInput', List['episodesOrderByInput']]
+    where: 'episodesWhereInput'
+    cursor: 'episodesWhereUniqueInput'
+    
+    
+
+class imagesIncludeFromcharacters_kinds(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcharacters_kindsRecursive1']
+    comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcharacters_kindsRecursive1']
+    episodes: Union[bool, 'FindManyepisodesArgsFromcharacters_kindsRecursive1']
+
+
+class imagesIncludeFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcharacters_kindsRecursive2']
+    comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcharacters_kindsRecursive2']
+    episodes: Union[bool, 'FindManyepisodesArgsFromcharacters_kindsRecursive2']
+
+
+class imagesIncludeFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcharacters_kindsRecursive3']
+    comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcharacters_kindsRecursive3']
+    episodes: Union[bool, 'FindManyepisodesArgsFromcharacters_kindsRecursive3']
+
+
+class imagesIncludeFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcharacters_kindsRecursive4']
+    comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcharacters_kindsRecursive4']
+    episodes: Union[bool, 'FindManyepisodesArgsFromcharacters_kindsRecursive4']
+
+
+class imagesIncludeFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+
+    
+
+class imagesArgsFromcharacters_kinds(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'imagesIncludeFromimagesRecursive1'
+
+
+class imagesArgsFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'imagesIncludeFromimagesRecursive2'
+
+
+class imagesArgsFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'imagesIncludeFromimagesRecursive3'
+
+
+class imagesArgsFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'imagesIncludeFromimagesRecursive4'
+
+
+class imagesArgsFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    
+    
+
+class FindManyimagesArgsFromcharacters_kinds(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['imagesOrderByInput', List['imagesOrderByInput']]
+    where: 'imagesWhereInput'
+    cursor: 'imagesWhereUniqueInput'
+    include: 'imagesIncludeFromimagesRecursive1'
+
+
+class FindManyimagesArgsFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['imagesOrderByInput', List['imagesOrderByInput']]
+    where: 'imagesWhereInput'
+    cursor: 'imagesWhereUniqueInput'
+    include: 'imagesIncludeFromimagesRecursive2'
+
+
+class FindManyimagesArgsFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['imagesOrderByInput', List['imagesOrderByInput']]
+    where: 'imagesWhereInput'
+    cursor: 'imagesWhereUniqueInput'
+    include: 'imagesIncludeFromimagesRecursive3'
+
+
+class FindManyimagesArgsFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['imagesOrderByInput', List['imagesOrderByInput']]
+    where: 'imagesWhereInput'
+    cursor: 'imagesWhereUniqueInput'
+    include: 'imagesIncludeFromimagesRecursive4'
+
+
+class FindManyimagesArgsFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['imagesOrderByInput', List['imagesOrderByInput']]
+    where: 'imagesWhereInput'
+    cursor: 'imagesWhereUniqueInput'
+    
+    
+
+class kindsIncludeFromcharacters_kinds(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcharacters_kindsRecursive1']
+
+
+class kindsIncludeFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcharacters_kindsRecursive2']
+
+
+class kindsIncludeFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcharacters_kindsRecursive3']
+
+
+class kindsIncludeFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcharacters_kindsRecursive4']
+
+
+class kindsIncludeFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+
+    
+
+class kindsArgsFromcharacters_kinds(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'kindsIncludeFromkindsRecursive1'
+
+
+class kindsArgsFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'kindsIncludeFromkindsRecursive2'
+
+
+class kindsArgsFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'kindsIncludeFromkindsRecursive3'
+
+
+class kindsArgsFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'kindsIncludeFromkindsRecursive4'
+
+
+class kindsArgsFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    
+    
+
+class FindManykindsArgsFromcharacters_kinds(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['kindsOrderByInput', List['kindsOrderByInput']]
+    where: 'kindsWhereInput'
+    cursor: 'kindsWhereUniqueInput'
+    include: 'kindsIncludeFromkindsRecursive1'
+
+
+class FindManykindsArgsFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['kindsOrderByInput', List['kindsOrderByInput']]
+    where: 'kindsWhereInput'
+    cursor: 'kindsWhereUniqueInput'
+    include: 'kindsIncludeFromkindsRecursive2'
+
+
+class FindManykindsArgsFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['kindsOrderByInput', List['kindsOrderByInput']]
+    where: 'kindsWhereInput'
+    cursor: 'kindsWhereUniqueInput'
+    include: 'kindsIncludeFromkindsRecursive3'
+
+
+class FindManykindsArgsFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['kindsOrderByInput', List['kindsOrderByInput']]
+    where: 'kindsWhereInput'
+    cursor: 'kindsWhereUniqueInput'
+    include: 'kindsIncludeFromkindsRecursive4'
+
+
+class FindManykindsArgsFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['kindsOrderByInput', List['kindsOrderByInput']]
+    where: 'kindsWhereInput'
+    cursor: 'kindsWhereUniqueInput'
+    
+    
+
+class songsIncludeFromcharacters_kinds(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    episodes: Union[bool, 'episodesArgsFromcharacters_kindsRecursive1']
+
+
+class songsIncludeFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    episodes: Union[bool, 'episodesArgsFromcharacters_kindsRecursive2']
+
+
+class songsIncludeFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    episodes: Union[bool, 'episodesArgsFromcharacters_kindsRecursive3']
+
+
+class songsIncludeFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+    episodes: Union[bool, 'episodesArgsFromcharacters_kindsRecursive4']
+
+
+class songsIncludeFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Relational arguments for characters_kinds"""
+
+    
+
+class songsArgsFromcharacters_kinds(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'songsIncludeFromsongsRecursive1'
+
+
+class songsArgsFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'songsIncludeFromsongsRecursive2'
+
+
+class songsArgsFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'songsIncludeFromsongsRecursive3'
+
+
+class songsArgsFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    include: 'songsIncludeFromsongsRecursive4'
+
+
+class songsArgsFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    
+    
+
+class FindManysongsArgsFromcharacters_kinds(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['songsOrderByInput', List['songsOrderByInput']]
+    where: 'songsWhereInput'
+    cursor: 'songsWhereUniqueInput'
+    include: 'songsIncludeFromsongsRecursive1'
+
+
+class FindManysongsArgsFromcharacters_kindsRecursive1(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['songsOrderByInput', List['songsOrderByInput']]
+    where: 'songsWhereInput'
+    cursor: 'songsWhereUniqueInput'
+    include: 'songsIncludeFromsongsRecursive2'
+
+
+class FindManysongsArgsFromcharacters_kindsRecursive2(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['songsOrderByInput', List['songsOrderByInput']]
+    where: 'songsWhereInput'
+    cursor: 'songsWhereUniqueInput'
+    include: 'songsIncludeFromsongsRecursive3'
+
+
+class FindManysongsArgsFromcharacters_kindsRecursive3(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['songsOrderByInput', List['songsOrderByInput']]
+    where: 'songsWhereInput'
+    cursor: 'songsWhereUniqueInput'
+    include: 'songsIncludeFromsongsRecursive4'
+
+
+class FindManysongsArgsFromcharacters_kindsRecursive4(TypedDict, total=False):
+    """Arguments for characters_kinds"""
+    take: int
+    skip: int
+    order_by: Union['songsOrderByInput', List['songsOrderByInput']]
+    where: 'songsWhereInput'
+    cursor: 'songsWhereUniqueInput'
+    
+
+
+FindManycharacters_kindsArgs = FindManycharacters_kindsArgsFromcharacters_kinds
+FindFirstcharacters_kindsArgs = FindManycharacters_kindsArgsFromcharacters_kinds
+
+
+    
+
+class characters_kindsWhereInput(TypedDict, total=False):
+    """characters_kinds arguments for searching"""
+    uid: Union[int, 'types.IntFilter']
+    CharacterID: Union[int, 'types.IntFilter']
+    KindID: Union[int, 'types.IntFilter']
+    Comment: Union[str, 'types.StringFilter']
+    characters: 'charactersRelationFilter'
+    kinds: 'kindsRelationFilter'
+
+    # should be noted that AND and NOT should be Union['characters_kindsWhereInputRecursive1', List['characters_kindsWhereInputRecursive1']]
+    # but this causes mypy to hang :/
+    AND: List['characters_kindsWhereInputRecursive1']
+    OR: List['characters_kindsWhereInputRecursive1']
+    NOT: List['characters_kindsWhereInputRecursive1']
+
+
+class characters_kindsWhereInputRecursive1(TypedDict, total=False):
+    """characters_kinds arguments for searching"""
+    uid: Union[int, 'types.IntFilter']
+    CharacterID: Union[int, 'types.IntFilter']
+    KindID: Union[int, 'types.IntFilter']
+    Comment: Union[str, 'types.StringFilter']
+    characters: 'charactersRelationFilter'
+    kinds: 'kindsRelationFilter'
+
+    # should be noted that AND and NOT should be Union['characters_kindsWhereInputRecursive2', List['characters_kindsWhereInputRecursive2']]
+    # but this causes mypy to hang :/
+    AND: List['characters_kindsWhereInputRecursive2']
+    OR: List['characters_kindsWhereInputRecursive2']
+    NOT: List['characters_kindsWhereInputRecursive2']
+
+
+class characters_kindsWhereInputRecursive2(TypedDict, total=False):
+    """characters_kinds arguments for searching"""
+    uid: Union[int, 'types.IntFilter']
+    CharacterID: Union[int, 'types.IntFilter']
+    KindID: Union[int, 'types.IntFilter']
+    Comment: Union[str, 'types.StringFilter']
+    characters: 'charactersRelationFilter'
+    kinds: 'kindsRelationFilter'
+
+    # should be noted that AND and NOT should be Union['characters_kindsWhereInputRecursive3', List['characters_kindsWhereInputRecursive3']]
+    # but this causes mypy to hang :/
+    AND: List['characters_kindsWhereInputRecursive3']
+    OR: List['characters_kindsWhereInputRecursive3']
+    NOT: List['characters_kindsWhereInputRecursive3']
+
+
+class characters_kindsWhereInputRecursive3(TypedDict, total=False):
+    """characters_kinds arguments for searching"""
+    uid: Union[int, 'types.IntFilter']
+    CharacterID: Union[int, 'types.IntFilter']
+    KindID: Union[int, 'types.IntFilter']
+    Comment: Union[str, 'types.StringFilter']
+    characters: 'charactersRelationFilter'
+    kinds: 'kindsRelationFilter'
+
+    # should be noted that AND and NOT should be Union['characters_kindsWhereInputRecursive4', List['characters_kindsWhereInputRecursive4']]
+    # but this causes mypy to hang :/
+    AND: List['characters_kindsWhereInputRecursive4']
+    OR: List['characters_kindsWhereInputRecursive4']
+    NOT: List['characters_kindsWhereInputRecursive4']
+
+
+class characters_kindsWhereInputRecursive4(TypedDict, total=False):
+    """characters_kinds arguments for searching"""
+    uid: Union[int, 'types.IntFilter']
+    CharacterID: Union[int, 'types.IntFilter']
+    KindID: Union[int, 'types.IntFilter']
+    Comment: Union[str, 'types.StringFilter']
+    characters: 'charactersRelationFilter'
+    kinds: 'kindsRelationFilter'
+
+
+
+# aggregate characters_kinds types
+
+
+    
+
+class characters_kindsScalarWhereWithAggregatesInput(TypedDict, total=False):
+    """characters_kinds arguments for searching"""
+    uid: Union[int, 'types.IntWithAggregatesFilter']
+    CharacterID: Union[int, 'types.IntWithAggregatesFilter']
+    KindID: Union[int, 'types.IntWithAggregatesFilter']
+    Comment: Union[str, 'types.StringWithAggregatesFilter']
+
+    AND: List['characters_kindsScalarWhereWithAggregatesInputRecursive1']
+    OR: List['characters_kindsScalarWhereWithAggregatesInputRecursive1']
+    NOT: List['characters_kindsScalarWhereWithAggregatesInputRecursive1']
+
+
+class characters_kindsScalarWhereWithAggregatesInputRecursive1(TypedDict, total=False):
+    """characters_kinds arguments for searching"""
+    uid: Union[int, 'types.IntWithAggregatesFilter']
+    CharacterID: Union[int, 'types.IntWithAggregatesFilter']
+    KindID: Union[int, 'types.IntWithAggregatesFilter']
+    Comment: Union[str, 'types.StringWithAggregatesFilter']
+
+    AND: List['characters_kindsScalarWhereWithAggregatesInputRecursive2']
+    OR: List['characters_kindsScalarWhereWithAggregatesInputRecursive2']
+    NOT: List['characters_kindsScalarWhereWithAggregatesInputRecursive2']
+
+
+class characters_kindsScalarWhereWithAggregatesInputRecursive2(TypedDict, total=False):
+    """characters_kinds arguments for searching"""
+    uid: Union[int, 'types.IntWithAggregatesFilter']
+    CharacterID: Union[int, 'types.IntWithAggregatesFilter']
+    KindID: Union[int, 'types.IntWithAggregatesFilter']
+    Comment: Union[str, 'types.StringWithAggregatesFilter']
+
+    AND: List['characters_kindsScalarWhereWithAggregatesInputRecursive3']
+    OR: List['characters_kindsScalarWhereWithAggregatesInputRecursive3']
+    NOT: List['characters_kindsScalarWhereWithAggregatesInputRecursive3']
+
+
+class characters_kindsScalarWhereWithAggregatesInputRecursive3(TypedDict, total=False):
+    """characters_kinds arguments for searching"""
+    uid: Union[int, 'types.IntWithAggregatesFilter']
+    CharacterID: Union[int, 'types.IntWithAggregatesFilter']
+    KindID: Union[int, 'types.IntWithAggregatesFilter']
+    Comment: Union[str, 'types.StringWithAggregatesFilter']
+
+    AND: List['characters_kindsScalarWhereWithAggregatesInputRecursive4']
+    OR: List['characters_kindsScalarWhereWithAggregatesInputRecursive4']
+    NOT: List['characters_kindsScalarWhereWithAggregatesInputRecursive4']
+
+
+class characters_kindsScalarWhereWithAggregatesInputRecursive4(TypedDict, total=False):
+    """characters_kinds arguments for searching"""
+    uid: Union[int, 'types.IntWithAggregatesFilter']
+    CharacterID: Union[int, 'types.IntWithAggregatesFilter']
+    KindID: Union[int, 'types.IntWithAggregatesFilter']
+    Comment: Union[str, 'types.StringWithAggregatesFilter']
+
+
+
+class characters_kindsGroupByOutput(TypedDict, total=False):
+    uid: int
+    CharacterID: int
+    KindID: int
+    Comment: str
+    _sum: 'characters_kindsSumAggregateOutput'
+    _avg: 'characters_kindsAvgAggregateOutput'
+    _min: 'characters_kindsMinAggregateOutput'
+    _max: 'characters_kindsMaxAggregateOutput'
+    _count: 'characters_kindsCountAggregateOutput'
+
+
+class characters_kindsAvgAggregateOutput(TypedDict, total=False):
+    """characters_kinds output for aggregating averages"""
+    uid: float
+    CharacterID: float
+    KindID: float
+
+
+class characters_kindsSumAggregateOutput(TypedDict, total=False):
+    """characters_kinds output for aggregating sums"""
+    uid: int
+    CharacterID: int
+    KindID: int
+
+
+class characters_kindsScalarAggregateOutput(TypedDict, total=False):
+    """characters_kinds output including scalar fields"""
+    uid: int
+    CharacterID: int
+    KindID: int
+    Comment: str
+
+
+characters_kindsMinAggregateOutput = characters_kindsScalarAggregateOutput
+characters_kindsMaxAggregateOutput = characters_kindsScalarAggregateOutput
+
+
+class characters_kindsMaxAggregateInput(TypedDict, total=False):
+    """characters_kinds input for aggregating by max"""
+    uid: bool
+    CharacterID: bool
+    KindID: bool
+    Comment: bool
+
+
+class characters_kindsMinAggregateInput(TypedDict, total=False):
+    """characters_kinds input for aggregating by min"""
+    uid: bool
+    CharacterID: bool
+    KindID: bool
+    Comment: bool
+
+
+class characters_kindsNumberAggregateInput(TypedDict, total=False):
+    """characters_kinds input for aggregating numbers"""
+    uid: bool
+    CharacterID: bool
+    KindID: bool
+
+
+characters_kindsAvgAggregateInput = characters_kindsNumberAggregateInput
+characters_kindsSumAggregateInput = characters_kindsNumberAggregateInput
+
+
+characters_kindsCountAggregateInput = TypedDict(
+    'characters_kindsCountAggregateInput',
+    {
+        'uid': bool,
+        'CharacterID': bool,
+        'KindID': bool,
+        'Comment': bool,
+        '_all': bool,
+    },
+    total=False,
+)
+
+characters_kindsCountAggregateOutput = TypedDict(
+    'characters_kindsCountAggregateOutput',
+    {
+        'uid': int,
+        'CharacterID': int,
+        'KindID': int,
+        'Comment': int,
+        '_all': int,
+    },
+    total=False,
+)
+
+
+characters_kindsKeys = Literal[
+    'uid',
+    'CharacterID',
+    'KindID',
+    'Comment',
+    'characters',
+    'kinds',
+]
+characters_kindsScalarFieldKeys = Literal[
+    'uid',
+    'CharacterID',
+    'KindID',
+    'Comment',
+]
+characters_kindsScalarFieldKeysT = TypeVar('characters_kindsScalarFieldKeysT', bound=characters_kindsScalarFieldKeys)
+
+characters_kindsRelationalFieldKeys = Literal[
+        'characters',
+        'kinds',
+    ]
 
 # comics_issues types
 
@@ -2490,18 +5610,26 @@ class comics_issuesInclude(TypedDict, total=False):
 
 class charactersIncludeFromcomics_issues(TypedDict, total=False):
     """Relational arguments for comics_issues"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcomics_issuesRecursive1']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcomics_issuesRecursive1']
 
 
 class charactersIncludeFromcomics_issuesRecursive1(TypedDict, total=False):
     """Relational arguments for comics_issues"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcomics_issuesRecursive2']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcomics_issuesRecursive2']
 
 
 class charactersIncludeFromcomics_issuesRecursive2(TypedDict, total=False):
     """Relational arguments for comics_issues"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcomics_issuesRecursive3']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcomics_issuesRecursive3']
 
 
 class charactersIncludeFromcomics_issuesRecursive3(TypedDict, total=False):
     """Relational arguments for comics_issues"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcomics_issuesRecursive4']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcomics_issuesRecursive4']
 
 
 class charactersIncludeFromcomics_issuesRecursive4(TypedDict, total=False):
@@ -2581,6 +5709,214 @@ class FindManycharactersArgsFromcomics_issuesRecursive4(TypedDict, total=False):
     order_by: Union['charactersOrderByInput', List['charactersOrderByInput']]
     where: 'charactersWhereInput'
     cursor: 'charactersWhereUniqueInput'
+    
+    
+
+class characters_imagesIncludeFromcomics_issues(TypedDict, total=False):
+    """Relational arguments for comics_issues"""
+    characters: Union[bool, 'charactersArgsFromcomics_issuesRecursive1']
+    images: Union[bool, 'imagesArgsFromcomics_issuesRecursive1']
+
+
+class characters_imagesIncludeFromcomics_issuesRecursive1(TypedDict, total=False):
+    """Relational arguments for comics_issues"""
+    characters: Union[bool, 'charactersArgsFromcomics_issuesRecursive2']
+    images: Union[bool, 'imagesArgsFromcomics_issuesRecursive2']
+
+
+class characters_imagesIncludeFromcomics_issuesRecursive2(TypedDict, total=False):
+    """Relational arguments for comics_issues"""
+    characters: Union[bool, 'charactersArgsFromcomics_issuesRecursive3']
+    images: Union[bool, 'imagesArgsFromcomics_issuesRecursive3']
+
+
+class characters_imagesIncludeFromcomics_issuesRecursive3(TypedDict, total=False):
+    """Relational arguments for comics_issues"""
+    characters: Union[bool, 'charactersArgsFromcomics_issuesRecursive4']
+    images: Union[bool, 'imagesArgsFromcomics_issuesRecursive4']
+
+
+class characters_imagesIncludeFromcomics_issuesRecursive4(TypedDict, total=False):
+    """Relational arguments for comics_issues"""
+
+    
+
+class characters_imagesArgsFromcomics_issues(TypedDict, total=False):
+    """Arguments for comics_issues"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive1'
+
+
+class characters_imagesArgsFromcomics_issuesRecursive1(TypedDict, total=False):
+    """Arguments for comics_issues"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive2'
+
+
+class characters_imagesArgsFromcomics_issuesRecursive2(TypedDict, total=False):
+    """Arguments for comics_issues"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive3'
+
+
+class characters_imagesArgsFromcomics_issuesRecursive3(TypedDict, total=False):
+    """Arguments for comics_issues"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive4'
+
+
+class characters_imagesArgsFromcomics_issuesRecursive4(TypedDict, total=False):
+    """Arguments for comics_issues"""
+    
+    
+
+class FindManycharacters_imagesArgsFromcomics_issues(TypedDict, total=False):
+    """Arguments for comics_issues"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive1'
+
+
+class FindManycharacters_imagesArgsFromcomics_issuesRecursive1(TypedDict, total=False):
+    """Arguments for comics_issues"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive2'
+
+
+class FindManycharacters_imagesArgsFromcomics_issuesRecursive2(TypedDict, total=False):
+    """Arguments for comics_issues"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive3'
+
+
+class FindManycharacters_imagesArgsFromcomics_issuesRecursive3(TypedDict, total=False):
+    """Arguments for comics_issues"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive4'
+
+
+class FindManycharacters_imagesArgsFromcomics_issuesRecursive4(TypedDict, total=False):
+    """Arguments for comics_issues"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    
+    
+
+class characters_kindsIncludeFromcomics_issues(TypedDict, total=False):
+    """Relational arguments for comics_issues"""
+    characters: Union[bool, 'charactersArgsFromcomics_issuesRecursive1']
+    kinds: Union[bool, 'kindsArgsFromcomics_issuesRecursive1']
+
+
+class characters_kindsIncludeFromcomics_issuesRecursive1(TypedDict, total=False):
+    """Relational arguments for comics_issues"""
+    characters: Union[bool, 'charactersArgsFromcomics_issuesRecursive2']
+    kinds: Union[bool, 'kindsArgsFromcomics_issuesRecursive2']
+
+
+class characters_kindsIncludeFromcomics_issuesRecursive2(TypedDict, total=False):
+    """Relational arguments for comics_issues"""
+    characters: Union[bool, 'charactersArgsFromcomics_issuesRecursive3']
+    kinds: Union[bool, 'kindsArgsFromcomics_issuesRecursive3']
+
+
+class characters_kindsIncludeFromcomics_issuesRecursive3(TypedDict, total=False):
+    """Relational arguments for comics_issues"""
+    characters: Union[bool, 'charactersArgsFromcomics_issuesRecursive4']
+    kinds: Union[bool, 'kindsArgsFromcomics_issuesRecursive4']
+
+
+class characters_kindsIncludeFromcomics_issuesRecursive4(TypedDict, total=False):
+    """Relational arguments for comics_issues"""
+
+    
+
+class characters_kindsArgsFromcomics_issues(TypedDict, total=False):
+    """Arguments for comics_issues"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive1'
+
+
+class characters_kindsArgsFromcomics_issuesRecursive1(TypedDict, total=False):
+    """Arguments for comics_issues"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive2'
+
+
+class characters_kindsArgsFromcomics_issuesRecursive2(TypedDict, total=False):
+    """Arguments for comics_issues"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive3'
+
+
+class characters_kindsArgsFromcomics_issuesRecursive3(TypedDict, total=False):
+    """Arguments for comics_issues"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive4'
+
+
+class characters_kindsArgsFromcomics_issuesRecursive4(TypedDict, total=False):
+    """Arguments for comics_issues"""
+    
+    
+
+class FindManycharacters_kindsArgsFromcomics_issues(TypedDict, total=False):
+    """Arguments for comics_issues"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive1'
+
+
+class FindManycharacters_kindsArgsFromcomics_issuesRecursive1(TypedDict, total=False):
+    """Arguments for comics_issues"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive2'
+
+
+class FindManycharacters_kindsArgsFromcomics_issuesRecursive2(TypedDict, total=False):
+    """Arguments for comics_issues"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive3'
+
+
+class FindManycharacters_kindsArgsFromcomics_issuesRecursive3(TypedDict, total=False):
+    """Arguments for comics_issues"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive4'
+
+
+class FindManycharacters_kindsArgsFromcomics_issuesRecursive4(TypedDict, total=False):
+    """Arguments for comics_issues"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
     
     
 
@@ -2998,24 +6334,28 @@ class FindManyepisodesArgsFromcomics_issuesRecursive4(TypedDict, total=False):
 
 class imagesIncludeFromcomics_issues(TypedDict, total=False):
     """Relational arguments for comics_issues"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcomics_issuesRecursive1']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcomics_issuesRecursive1']
     episodes: Union[bool, 'FindManyepisodesArgsFromcomics_issuesRecursive1']
 
 
 class imagesIncludeFromcomics_issuesRecursive1(TypedDict, total=False):
     """Relational arguments for comics_issues"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcomics_issuesRecursive2']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcomics_issuesRecursive2']
     episodes: Union[bool, 'FindManyepisodesArgsFromcomics_issuesRecursive2']
 
 
 class imagesIncludeFromcomics_issuesRecursive2(TypedDict, total=False):
     """Relational arguments for comics_issues"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcomics_issuesRecursive3']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcomics_issuesRecursive3']
     episodes: Union[bool, 'FindManyepisodesArgsFromcomics_issuesRecursive3']
 
 
 class imagesIncludeFromcomics_issuesRecursive3(TypedDict, total=False):
     """Relational arguments for comics_issues"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcomics_issuesRecursive4']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcomics_issuesRecursive4']
     episodes: Union[bool, 'FindManyepisodesArgsFromcomics_issuesRecursive4']
 
@@ -3102,18 +6442,22 @@ class FindManyimagesArgsFromcomics_issuesRecursive4(TypedDict, total=False):
 
 class kindsIncludeFromcomics_issues(TypedDict, total=False):
     """Relational arguments for comics_issues"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcomics_issuesRecursive1']
 
 
 class kindsIncludeFromcomics_issuesRecursive1(TypedDict, total=False):
     """Relational arguments for comics_issues"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcomics_issuesRecursive2']
 
 
 class kindsIncludeFromcomics_issuesRecursive2(TypedDict, total=False):
     """Relational arguments for comics_issues"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcomics_issuesRecursive3']
 
 
 class kindsIncludeFromcomics_issuesRecursive3(TypedDict, total=False):
     """Relational arguments for comics_issues"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcomics_issuesRecursive4']
 
 
 class kindsIncludeFromcomics_issuesRecursive4(TypedDict, total=False):
@@ -3733,18 +7077,26 @@ class comics_seriesInclude(TypedDict, total=False):
 
 class charactersIncludeFromcomics_series(TypedDict, total=False):
     """Relational arguments for comics_series"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcomics_seriesRecursive1']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcomics_seriesRecursive1']
 
 
 class charactersIncludeFromcomics_seriesRecursive1(TypedDict, total=False):
     """Relational arguments for comics_series"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcomics_seriesRecursive2']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcomics_seriesRecursive2']
 
 
 class charactersIncludeFromcomics_seriesRecursive2(TypedDict, total=False):
     """Relational arguments for comics_series"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcomics_seriesRecursive3']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcomics_seriesRecursive3']
 
 
 class charactersIncludeFromcomics_seriesRecursive3(TypedDict, total=False):
     """Relational arguments for comics_series"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcomics_seriesRecursive4']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcomics_seriesRecursive4']
 
 
 class charactersIncludeFromcomics_seriesRecursive4(TypedDict, total=False):
@@ -3824,6 +7176,214 @@ class FindManycharactersArgsFromcomics_seriesRecursive4(TypedDict, total=False):
     order_by: Union['charactersOrderByInput', List['charactersOrderByInput']]
     where: 'charactersWhereInput'
     cursor: 'charactersWhereUniqueInput'
+    
+    
+
+class characters_imagesIncludeFromcomics_series(TypedDict, total=False):
+    """Relational arguments for comics_series"""
+    characters: Union[bool, 'charactersArgsFromcomics_seriesRecursive1']
+    images: Union[bool, 'imagesArgsFromcomics_seriesRecursive1']
+
+
+class characters_imagesIncludeFromcomics_seriesRecursive1(TypedDict, total=False):
+    """Relational arguments for comics_series"""
+    characters: Union[bool, 'charactersArgsFromcomics_seriesRecursive2']
+    images: Union[bool, 'imagesArgsFromcomics_seriesRecursive2']
+
+
+class characters_imagesIncludeFromcomics_seriesRecursive2(TypedDict, total=False):
+    """Relational arguments for comics_series"""
+    characters: Union[bool, 'charactersArgsFromcomics_seriesRecursive3']
+    images: Union[bool, 'imagesArgsFromcomics_seriesRecursive3']
+
+
+class characters_imagesIncludeFromcomics_seriesRecursive3(TypedDict, total=False):
+    """Relational arguments for comics_series"""
+    characters: Union[bool, 'charactersArgsFromcomics_seriesRecursive4']
+    images: Union[bool, 'imagesArgsFromcomics_seriesRecursive4']
+
+
+class characters_imagesIncludeFromcomics_seriesRecursive4(TypedDict, total=False):
+    """Relational arguments for comics_series"""
+
+    
+
+class characters_imagesArgsFromcomics_series(TypedDict, total=False):
+    """Arguments for comics_series"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive1'
+
+
+class characters_imagesArgsFromcomics_seriesRecursive1(TypedDict, total=False):
+    """Arguments for comics_series"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive2'
+
+
+class characters_imagesArgsFromcomics_seriesRecursive2(TypedDict, total=False):
+    """Arguments for comics_series"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive3'
+
+
+class characters_imagesArgsFromcomics_seriesRecursive3(TypedDict, total=False):
+    """Arguments for comics_series"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive4'
+
+
+class characters_imagesArgsFromcomics_seriesRecursive4(TypedDict, total=False):
+    """Arguments for comics_series"""
+    
+    
+
+class FindManycharacters_imagesArgsFromcomics_series(TypedDict, total=False):
+    """Arguments for comics_series"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive1'
+
+
+class FindManycharacters_imagesArgsFromcomics_seriesRecursive1(TypedDict, total=False):
+    """Arguments for comics_series"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive2'
+
+
+class FindManycharacters_imagesArgsFromcomics_seriesRecursive2(TypedDict, total=False):
+    """Arguments for comics_series"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive3'
+
+
+class FindManycharacters_imagesArgsFromcomics_seriesRecursive3(TypedDict, total=False):
+    """Arguments for comics_series"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive4'
+
+
+class FindManycharacters_imagesArgsFromcomics_seriesRecursive4(TypedDict, total=False):
+    """Arguments for comics_series"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    
+    
+
+class characters_kindsIncludeFromcomics_series(TypedDict, total=False):
+    """Relational arguments for comics_series"""
+    characters: Union[bool, 'charactersArgsFromcomics_seriesRecursive1']
+    kinds: Union[bool, 'kindsArgsFromcomics_seriesRecursive1']
+
+
+class characters_kindsIncludeFromcomics_seriesRecursive1(TypedDict, total=False):
+    """Relational arguments for comics_series"""
+    characters: Union[bool, 'charactersArgsFromcomics_seriesRecursive2']
+    kinds: Union[bool, 'kindsArgsFromcomics_seriesRecursive2']
+
+
+class characters_kindsIncludeFromcomics_seriesRecursive2(TypedDict, total=False):
+    """Relational arguments for comics_series"""
+    characters: Union[bool, 'charactersArgsFromcomics_seriesRecursive3']
+    kinds: Union[bool, 'kindsArgsFromcomics_seriesRecursive3']
+
+
+class characters_kindsIncludeFromcomics_seriesRecursive3(TypedDict, total=False):
+    """Relational arguments for comics_series"""
+    characters: Union[bool, 'charactersArgsFromcomics_seriesRecursive4']
+    kinds: Union[bool, 'kindsArgsFromcomics_seriesRecursive4']
+
+
+class characters_kindsIncludeFromcomics_seriesRecursive4(TypedDict, total=False):
+    """Relational arguments for comics_series"""
+
+    
+
+class characters_kindsArgsFromcomics_series(TypedDict, total=False):
+    """Arguments for comics_series"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive1'
+
+
+class characters_kindsArgsFromcomics_seriesRecursive1(TypedDict, total=False):
+    """Arguments for comics_series"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive2'
+
+
+class characters_kindsArgsFromcomics_seriesRecursive2(TypedDict, total=False):
+    """Arguments for comics_series"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive3'
+
+
+class characters_kindsArgsFromcomics_seriesRecursive3(TypedDict, total=False):
+    """Arguments for comics_series"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive4'
+
+
+class characters_kindsArgsFromcomics_seriesRecursive4(TypedDict, total=False):
+    """Arguments for comics_series"""
+    
+    
+
+class FindManycharacters_kindsArgsFromcomics_series(TypedDict, total=False):
+    """Arguments for comics_series"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive1'
+
+
+class FindManycharacters_kindsArgsFromcomics_seriesRecursive1(TypedDict, total=False):
+    """Arguments for comics_series"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive2'
+
+
+class FindManycharacters_kindsArgsFromcomics_seriesRecursive2(TypedDict, total=False):
+    """Arguments for comics_series"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive3'
+
+
+class FindManycharacters_kindsArgsFromcomics_seriesRecursive3(TypedDict, total=False):
+    """Arguments for comics_series"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive4'
+
+
+class FindManycharacters_kindsArgsFromcomics_seriesRecursive4(TypedDict, total=False):
+    """Arguments for comics_series"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
     
     
 
@@ -4241,24 +7801,28 @@ class FindManyepisodesArgsFromcomics_seriesRecursive4(TypedDict, total=False):
 
 class imagesIncludeFromcomics_series(TypedDict, total=False):
     """Relational arguments for comics_series"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcomics_seriesRecursive1']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcomics_seriesRecursive1']
     episodes: Union[bool, 'FindManyepisodesArgsFromcomics_seriesRecursive1']
 
 
 class imagesIncludeFromcomics_seriesRecursive1(TypedDict, total=False):
     """Relational arguments for comics_series"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcomics_seriesRecursive2']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcomics_seriesRecursive2']
     episodes: Union[bool, 'FindManyepisodesArgsFromcomics_seriesRecursive2']
 
 
 class imagesIncludeFromcomics_seriesRecursive2(TypedDict, total=False):
     """Relational arguments for comics_series"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcomics_seriesRecursive3']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcomics_seriesRecursive3']
     episodes: Union[bool, 'FindManyepisodesArgsFromcomics_seriesRecursive3']
 
 
 class imagesIncludeFromcomics_seriesRecursive3(TypedDict, total=False):
     """Relational arguments for comics_series"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcomics_seriesRecursive4']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcomics_seriesRecursive4']
     episodes: Union[bool, 'FindManyepisodesArgsFromcomics_seriesRecursive4']
 
@@ -4345,18 +7909,22 @@ class FindManyimagesArgsFromcomics_seriesRecursive4(TypedDict, total=False):
 
 class kindsIncludeFromcomics_series(TypedDict, total=False):
     """Relational arguments for comics_series"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcomics_seriesRecursive1']
 
 
 class kindsIncludeFromcomics_seriesRecursive1(TypedDict, total=False):
     """Relational arguments for comics_series"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcomics_seriesRecursive2']
 
 
 class kindsIncludeFromcomics_seriesRecursive2(TypedDict, total=False):
     """Relational arguments for comics_series"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcomics_seriesRecursive3']
 
 
 class kindsIncludeFromcomics_seriesRecursive3(TypedDict, total=False):
     """Relational arguments for comics_series"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcomics_seriesRecursive4']
 
 
 class kindsIncludeFromcomics_seriesRecursive4(TypedDict, total=False):
@@ -5032,18 +8600,26 @@ class comics_storiesInclude(TypedDict, total=False):
 
 class charactersIncludeFromcomics_stories(TypedDict, total=False):
     """Relational arguments for comics_stories"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcomics_storiesRecursive1']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcomics_storiesRecursive1']
 
 
 class charactersIncludeFromcomics_storiesRecursive1(TypedDict, total=False):
     """Relational arguments for comics_stories"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcomics_storiesRecursive2']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcomics_storiesRecursive2']
 
 
 class charactersIncludeFromcomics_storiesRecursive2(TypedDict, total=False):
     """Relational arguments for comics_stories"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcomics_storiesRecursive3']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcomics_storiesRecursive3']
 
 
 class charactersIncludeFromcomics_storiesRecursive3(TypedDict, total=False):
     """Relational arguments for comics_stories"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcomics_storiesRecursive4']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcomics_storiesRecursive4']
 
 
 class charactersIncludeFromcomics_storiesRecursive4(TypedDict, total=False):
@@ -5123,6 +8699,214 @@ class FindManycharactersArgsFromcomics_storiesRecursive4(TypedDict, total=False)
     order_by: Union['charactersOrderByInput', List['charactersOrderByInput']]
     where: 'charactersWhereInput'
     cursor: 'charactersWhereUniqueInput'
+    
+    
+
+class characters_imagesIncludeFromcomics_stories(TypedDict, total=False):
+    """Relational arguments for comics_stories"""
+    characters: Union[bool, 'charactersArgsFromcomics_storiesRecursive1']
+    images: Union[bool, 'imagesArgsFromcomics_storiesRecursive1']
+
+
+class characters_imagesIncludeFromcomics_storiesRecursive1(TypedDict, total=False):
+    """Relational arguments for comics_stories"""
+    characters: Union[bool, 'charactersArgsFromcomics_storiesRecursive2']
+    images: Union[bool, 'imagesArgsFromcomics_storiesRecursive2']
+
+
+class characters_imagesIncludeFromcomics_storiesRecursive2(TypedDict, total=False):
+    """Relational arguments for comics_stories"""
+    characters: Union[bool, 'charactersArgsFromcomics_storiesRecursive3']
+    images: Union[bool, 'imagesArgsFromcomics_storiesRecursive3']
+
+
+class characters_imagesIncludeFromcomics_storiesRecursive3(TypedDict, total=False):
+    """Relational arguments for comics_stories"""
+    characters: Union[bool, 'charactersArgsFromcomics_storiesRecursive4']
+    images: Union[bool, 'imagesArgsFromcomics_storiesRecursive4']
+
+
+class characters_imagesIncludeFromcomics_storiesRecursive4(TypedDict, total=False):
+    """Relational arguments for comics_stories"""
+
+    
+
+class characters_imagesArgsFromcomics_stories(TypedDict, total=False):
+    """Arguments for comics_stories"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive1'
+
+
+class characters_imagesArgsFromcomics_storiesRecursive1(TypedDict, total=False):
+    """Arguments for comics_stories"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive2'
+
+
+class characters_imagesArgsFromcomics_storiesRecursive2(TypedDict, total=False):
+    """Arguments for comics_stories"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive3'
+
+
+class characters_imagesArgsFromcomics_storiesRecursive3(TypedDict, total=False):
+    """Arguments for comics_stories"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive4'
+
+
+class characters_imagesArgsFromcomics_storiesRecursive4(TypedDict, total=False):
+    """Arguments for comics_stories"""
+    
+    
+
+class FindManycharacters_imagesArgsFromcomics_stories(TypedDict, total=False):
+    """Arguments for comics_stories"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive1'
+
+
+class FindManycharacters_imagesArgsFromcomics_storiesRecursive1(TypedDict, total=False):
+    """Arguments for comics_stories"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive2'
+
+
+class FindManycharacters_imagesArgsFromcomics_storiesRecursive2(TypedDict, total=False):
+    """Arguments for comics_stories"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive3'
+
+
+class FindManycharacters_imagesArgsFromcomics_storiesRecursive3(TypedDict, total=False):
+    """Arguments for comics_stories"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive4'
+
+
+class FindManycharacters_imagesArgsFromcomics_storiesRecursive4(TypedDict, total=False):
+    """Arguments for comics_stories"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    
+    
+
+class characters_kindsIncludeFromcomics_stories(TypedDict, total=False):
+    """Relational arguments for comics_stories"""
+    characters: Union[bool, 'charactersArgsFromcomics_storiesRecursive1']
+    kinds: Union[bool, 'kindsArgsFromcomics_storiesRecursive1']
+
+
+class characters_kindsIncludeFromcomics_storiesRecursive1(TypedDict, total=False):
+    """Relational arguments for comics_stories"""
+    characters: Union[bool, 'charactersArgsFromcomics_storiesRecursive2']
+    kinds: Union[bool, 'kindsArgsFromcomics_storiesRecursive2']
+
+
+class characters_kindsIncludeFromcomics_storiesRecursive2(TypedDict, total=False):
+    """Relational arguments for comics_stories"""
+    characters: Union[bool, 'charactersArgsFromcomics_storiesRecursive3']
+    kinds: Union[bool, 'kindsArgsFromcomics_storiesRecursive3']
+
+
+class characters_kindsIncludeFromcomics_storiesRecursive3(TypedDict, total=False):
+    """Relational arguments for comics_stories"""
+    characters: Union[bool, 'charactersArgsFromcomics_storiesRecursive4']
+    kinds: Union[bool, 'kindsArgsFromcomics_storiesRecursive4']
+
+
+class characters_kindsIncludeFromcomics_storiesRecursive4(TypedDict, total=False):
+    """Relational arguments for comics_stories"""
+
+    
+
+class characters_kindsArgsFromcomics_stories(TypedDict, total=False):
+    """Arguments for comics_stories"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive1'
+
+
+class characters_kindsArgsFromcomics_storiesRecursive1(TypedDict, total=False):
+    """Arguments for comics_stories"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive2'
+
+
+class characters_kindsArgsFromcomics_storiesRecursive2(TypedDict, total=False):
+    """Arguments for comics_stories"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive3'
+
+
+class characters_kindsArgsFromcomics_storiesRecursive3(TypedDict, total=False):
+    """Arguments for comics_stories"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive4'
+
+
+class characters_kindsArgsFromcomics_storiesRecursive4(TypedDict, total=False):
+    """Arguments for comics_stories"""
+    
+    
+
+class FindManycharacters_kindsArgsFromcomics_stories(TypedDict, total=False):
+    """Arguments for comics_stories"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive1'
+
+
+class FindManycharacters_kindsArgsFromcomics_storiesRecursive1(TypedDict, total=False):
+    """Arguments for comics_stories"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive2'
+
+
+class FindManycharacters_kindsArgsFromcomics_storiesRecursive2(TypedDict, total=False):
+    """Arguments for comics_stories"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive3'
+
+
+class FindManycharacters_kindsArgsFromcomics_storiesRecursive3(TypedDict, total=False):
+    """Arguments for comics_stories"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive4'
+
+
+class FindManycharacters_kindsArgsFromcomics_storiesRecursive4(TypedDict, total=False):
+    """Arguments for comics_stories"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
     
     
 
@@ -5540,24 +9324,28 @@ class FindManyepisodesArgsFromcomics_storiesRecursive4(TypedDict, total=False):
 
 class imagesIncludeFromcomics_stories(TypedDict, total=False):
     """Relational arguments for comics_stories"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcomics_storiesRecursive1']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcomics_storiesRecursive1']
     episodes: Union[bool, 'FindManyepisodesArgsFromcomics_storiesRecursive1']
 
 
 class imagesIncludeFromcomics_storiesRecursive1(TypedDict, total=False):
     """Relational arguments for comics_stories"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcomics_storiesRecursive2']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcomics_storiesRecursive2']
     episodes: Union[bool, 'FindManyepisodesArgsFromcomics_storiesRecursive2']
 
 
 class imagesIncludeFromcomics_storiesRecursive2(TypedDict, total=False):
     """Relational arguments for comics_stories"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcomics_storiesRecursive3']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcomics_storiesRecursive3']
     episodes: Union[bool, 'FindManyepisodesArgsFromcomics_storiesRecursive3']
 
 
 class imagesIncludeFromcomics_storiesRecursive3(TypedDict, total=False):
     """Relational arguments for comics_stories"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromcomics_storiesRecursive4']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromcomics_storiesRecursive4']
     episodes: Union[bool, 'FindManyepisodesArgsFromcomics_storiesRecursive4']
 
@@ -5644,18 +9432,22 @@ class FindManyimagesArgsFromcomics_storiesRecursive4(TypedDict, total=False):
 
 class kindsIncludeFromcomics_stories(TypedDict, total=False):
     """Relational arguments for comics_stories"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcomics_storiesRecursive1']
 
 
 class kindsIncludeFromcomics_storiesRecursive1(TypedDict, total=False):
     """Relational arguments for comics_stories"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcomics_storiesRecursive2']
 
 
 class kindsIncludeFromcomics_storiesRecursive2(TypedDict, total=False):
     """Relational arguments for comics_stories"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcomics_storiesRecursive3']
 
 
 class kindsIncludeFromcomics_storiesRecursive3(TypedDict, total=False):
     """Relational arguments for comics_stories"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromcomics_storiesRecursive4']
 
 
 class kindsIncludeFromcomics_storiesRecursive4(TypedDict, total=False):
@@ -6491,18 +10283,26 @@ class episodesInclude(TypedDict, total=False):
 
 class charactersIncludeFromepisodes(TypedDict, total=False):
     """Relational arguments for episodes"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromepisodesRecursive1']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromepisodesRecursive1']
 
 
 class charactersIncludeFromepisodesRecursive1(TypedDict, total=False):
     """Relational arguments for episodes"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromepisodesRecursive2']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromepisodesRecursive2']
 
 
 class charactersIncludeFromepisodesRecursive2(TypedDict, total=False):
     """Relational arguments for episodes"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromepisodesRecursive3']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromepisodesRecursive3']
 
 
 class charactersIncludeFromepisodesRecursive3(TypedDict, total=False):
     """Relational arguments for episodes"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromepisodesRecursive4']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromepisodesRecursive4']
 
 
 class charactersIncludeFromepisodesRecursive4(TypedDict, total=False):
@@ -6582,6 +10382,214 @@ class FindManycharactersArgsFromepisodesRecursive4(TypedDict, total=False):
     order_by: Union['charactersOrderByInput', List['charactersOrderByInput']]
     where: 'charactersWhereInput'
     cursor: 'charactersWhereUniqueInput'
+    
+    
+
+class characters_imagesIncludeFromepisodes(TypedDict, total=False):
+    """Relational arguments for episodes"""
+    characters: Union[bool, 'charactersArgsFromepisodesRecursive1']
+    images: Union[bool, 'imagesArgsFromepisodesRecursive1']
+
+
+class characters_imagesIncludeFromepisodesRecursive1(TypedDict, total=False):
+    """Relational arguments for episodes"""
+    characters: Union[bool, 'charactersArgsFromepisodesRecursive2']
+    images: Union[bool, 'imagesArgsFromepisodesRecursive2']
+
+
+class characters_imagesIncludeFromepisodesRecursive2(TypedDict, total=False):
+    """Relational arguments for episodes"""
+    characters: Union[bool, 'charactersArgsFromepisodesRecursive3']
+    images: Union[bool, 'imagesArgsFromepisodesRecursive3']
+
+
+class characters_imagesIncludeFromepisodesRecursive3(TypedDict, total=False):
+    """Relational arguments for episodes"""
+    characters: Union[bool, 'charactersArgsFromepisodesRecursive4']
+    images: Union[bool, 'imagesArgsFromepisodesRecursive4']
+
+
+class characters_imagesIncludeFromepisodesRecursive4(TypedDict, total=False):
+    """Relational arguments for episodes"""
+
+    
+
+class characters_imagesArgsFromepisodes(TypedDict, total=False):
+    """Arguments for episodes"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive1'
+
+
+class characters_imagesArgsFromepisodesRecursive1(TypedDict, total=False):
+    """Arguments for episodes"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive2'
+
+
+class characters_imagesArgsFromepisodesRecursive2(TypedDict, total=False):
+    """Arguments for episodes"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive3'
+
+
+class characters_imagesArgsFromepisodesRecursive3(TypedDict, total=False):
+    """Arguments for episodes"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive4'
+
+
+class characters_imagesArgsFromepisodesRecursive4(TypedDict, total=False):
+    """Arguments for episodes"""
+    
+    
+
+class FindManycharacters_imagesArgsFromepisodes(TypedDict, total=False):
+    """Arguments for episodes"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive1'
+
+
+class FindManycharacters_imagesArgsFromepisodesRecursive1(TypedDict, total=False):
+    """Arguments for episodes"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive2'
+
+
+class FindManycharacters_imagesArgsFromepisodesRecursive2(TypedDict, total=False):
+    """Arguments for episodes"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive3'
+
+
+class FindManycharacters_imagesArgsFromepisodesRecursive3(TypedDict, total=False):
+    """Arguments for episodes"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive4'
+
+
+class FindManycharacters_imagesArgsFromepisodesRecursive4(TypedDict, total=False):
+    """Arguments for episodes"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    
+    
+
+class characters_kindsIncludeFromepisodes(TypedDict, total=False):
+    """Relational arguments for episodes"""
+    characters: Union[bool, 'charactersArgsFromepisodesRecursive1']
+    kinds: Union[bool, 'kindsArgsFromepisodesRecursive1']
+
+
+class characters_kindsIncludeFromepisodesRecursive1(TypedDict, total=False):
+    """Relational arguments for episodes"""
+    characters: Union[bool, 'charactersArgsFromepisodesRecursive2']
+    kinds: Union[bool, 'kindsArgsFromepisodesRecursive2']
+
+
+class characters_kindsIncludeFromepisodesRecursive2(TypedDict, total=False):
+    """Relational arguments for episodes"""
+    characters: Union[bool, 'charactersArgsFromepisodesRecursive3']
+    kinds: Union[bool, 'kindsArgsFromepisodesRecursive3']
+
+
+class characters_kindsIncludeFromepisodesRecursive3(TypedDict, total=False):
+    """Relational arguments for episodes"""
+    characters: Union[bool, 'charactersArgsFromepisodesRecursive4']
+    kinds: Union[bool, 'kindsArgsFromepisodesRecursive4']
+
+
+class characters_kindsIncludeFromepisodesRecursive4(TypedDict, total=False):
+    """Relational arguments for episodes"""
+
+    
+
+class characters_kindsArgsFromepisodes(TypedDict, total=False):
+    """Arguments for episodes"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive1'
+
+
+class characters_kindsArgsFromepisodesRecursive1(TypedDict, total=False):
+    """Arguments for episodes"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive2'
+
+
+class characters_kindsArgsFromepisodesRecursive2(TypedDict, total=False):
+    """Arguments for episodes"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive3'
+
+
+class characters_kindsArgsFromepisodesRecursive3(TypedDict, total=False):
+    """Arguments for episodes"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive4'
+
+
+class characters_kindsArgsFromepisodesRecursive4(TypedDict, total=False):
+    """Arguments for episodes"""
+    
+    
+
+class FindManycharacters_kindsArgsFromepisodes(TypedDict, total=False):
+    """Arguments for episodes"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive1'
+
+
+class FindManycharacters_kindsArgsFromepisodesRecursive1(TypedDict, total=False):
+    """Arguments for episodes"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive2'
+
+
+class FindManycharacters_kindsArgsFromepisodesRecursive2(TypedDict, total=False):
+    """Arguments for episodes"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive3'
+
+
+class FindManycharacters_kindsArgsFromepisodesRecursive3(TypedDict, total=False):
+    """Arguments for episodes"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive4'
+
+
+class FindManycharacters_kindsArgsFromepisodesRecursive4(TypedDict, total=False):
+    """Arguments for episodes"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
     
     
 
@@ -6999,24 +11007,28 @@ class FindManyepisodesArgsFromepisodesRecursive4(TypedDict, total=False):
 
 class imagesIncludeFromepisodes(TypedDict, total=False):
     """Relational arguments for episodes"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromepisodesRecursive1']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromepisodesRecursive1']
     episodes: Union[bool, 'FindManyepisodesArgsFromepisodesRecursive1']
 
 
 class imagesIncludeFromepisodesRecursive1(TypedDict, total=False):
     """Relational arguments for episodes"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromepisodesRecursive2']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromepisodesRecursive2']
     episodes: Union[bool, 'FindManyepisodesArgsFromepisodesRecursive2']
 
 
 class imagesIncludeFromepisodesRecursive2(TypedDict, total=False):
     """Relational arguments for episodes"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromepisodesRecursive3']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromepisodesRecursive3']
     episodes: Union[bool, 'FindManyepisodesArgsFromepisodesRecursive3']
 
 
 class imagesIncludeFromepisodesRecursive3(TypedDict, total=False):
     """Relational arguments for episodes"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromepisodesRecursive4']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromepisodesRecursive4']
     episodes: Union[bool, 'FindManyepisodesArgsFromepisodesRecursive4']
 
@@ -7103,18 +11115,22 @@ class FindManyimagesArgsFromepisodesRecursive4(TypedDict, total=False):
 
 class kindsIncludeFromepisodes(TypedDict, total=False):
     """Relational arguments for episodes"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromepisodesRecursive1']
 
 
 class kindsIncludeFromepisodesRecursive1(TypedDict, total=False):
     """Relational arguments for episodes"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromepisodesRecursive2']
 
 
 class kindsIncludeFromepisodesRecursive2(TypedDict, total=False):
     """Relational arguments for episodes"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromepisodesRecursive3']
 
 
 class kindsIncludeFromepisodesRecursive3(TypedDict, total=False):
     """Relational arguments for episodes"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromepisodesRecursive4']
 
 
 class kindsIncludeFromepisodesRecursive4(TypedDict, total=False):
@@ -7689,6 +11705,7 @@ class imagesOptionalCreateInput(TypedDict, total=False):
     """Optional arguments to the images create method"""
     ImageID: int
     Comment: Optional[str]
+    characters_images: 'characters_imagesCreateManyNestedWithoutRelationsInput'
     comics_stories: 'comics_storiesCreateManyNestedWithoutRelationsInput'
     episodes: 'episodesCreateManyNestedWithoutRelationsInput'
 
@@ -7752,6 +11769,7 @@ class imagesUpdateInput(TypedDict, total=False):
     Name: str
     Url: str
     Comment: Optional[str]
+    characters_images: 'characters_imagesUpdateManyWithoutRelationsInput'
     comics_stories: 'comics_storiesUpdateManyWithoutRelationsInput'
     episodes: 'episodesUpdateManyWithoutRelationsInput'
 
@@ -7863,6 +11881,7 @@ class imagesListRelationFilter(TypedDict, total=False):
 
 class imagesInclude(TypedDict, total=False):
     """images relational arguments"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromimages']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromimages']
     episodes: Union[bool, 'FindManyepisodesArgsFromimages']
 
@@ -7871,18 +11890,26 @@ class imagesInclude(TypedDict, total=False):
 
 class charactersIncludeFromimages(TypedDict, total=False):
     """Relational arguments for images"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromimagesRecursive1']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromimagesRecursive1']
 
 
 class charactersIncludeFromimagesRecursive1(TypedDict, total=False):
     """Relational arguments for images"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromimagesRecursive2']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromimagesRecursive2']
 
 
 class charactersIncludeFromimagesRecursive2(TypedDict, total=False):
     """Relational arguments for images"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromimagesRecursive3']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromimagesRecursive3']
 
 
 class charactersIncludeFromimagesRecursive3(TypedDict, total=False):
     """Relational arguments for images"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromimagesRecursive4']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromimagesRecursive4']
 
 
 class charactersIncludeFromimagesRecursive4(TypedDict, total=False):
@@ -7962,6 +11989,214 @@ class FindManycharactersArgsFromimagesRecursive4(TypedDict, total=False):
     order_by: Union['charactersOrderByInput', List['charactersOrderByInput']]
     where: 'charactersWhereInput'
     cursor: 'charactersWhereUniqueInput'
+    
+    
+
+class characters_imagesIncludeFromimages(TypedDict, total=False):
+    """Relational arguments for images"""
+    characters: Union[bool, 'charactersArgsFromimagesRecursive1']
+    images: Union[bool, 'imagesArgsFromimagesRecursive1']
+
+
+class characters_imagesIncludeFromimagesRecursive1(TypedDict, total=False):
+    """Relational arguments for images"""
+    characters: Union[bool, 'charactersArgsFromimagesRecursive2']
+    images: Union[bool, 'imagesArgsFromimagesRecursive2']
+
+
+class characters_imagesIncludeFromimagesRecursive2(TypedDict, total=False):
+    """Relational arguments for images"""
+    characters: Union[bool, 'charactersArgsFromimagesRecursive3']
+    images: Union[bool, 'imagesArgsFromimagesRecursive3']
+
+
+class characters_imagesIncludeFromimagesRecursive3(TypedDict, total=False):
+    """Relational arguments for images"""
+    characters: Union[bool, 'charactersArgsFromimagesRecursive4']
+    images: Union[bool, 'imagesArgsFromimagesRecursive4']
+
+
+class characters_imagesIncludeFromimagesRecursive4(TypedDict, total=False):
+    """Relational arguments for images"""
+
+    
+
+class characters_imagesArgsFromimages(TypedDict, total=False):
+    """Arguments for images"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive1'
+
+
+class characters_imagesArgsFromimagesRecursive1(TypedDict, total=False):
+    """Arguments for images"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive2'
+
+
+class characters_imagesArgsFromimagesRecursive2(TypedDict, total=False):
+    """Arguments for images"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive3'
+
+
+class characters_imagesArgsFromimagesRecursive3(TypedDict, total=False):
+    """Arguments for images"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive4'
+
+
+class characters_imagesArgsFromimagesRecursive4(TypedDict, total=False):
+    """Arguments for images"""
+    
+    
+
+class FindManycharacters_imagesArgsFromimages(TypedDict, total=False):
+    """Arguments for images"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive1'
+
+
+class FindManycharacters_imagesArgsFromimagesRecursive1(TypedDict, total=False):
+    """Arguments for images"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive2'
+
+
+class FindManycharacters_imagesArgsFromimagesRecursive2(TypedDict, total=False):
+    """Arguments for images"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive3'
+
+
+class FindManycharacters_imagesArgsFromimagesRecursive3(TypedDict, total=False):
+    """Arguments for images"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive4'
+
+
+class FindManycharacters_imagesArgsFromimagesRecursive4(TypedDict, total=False):
+    """Arguments for images"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    
+    
+
+class characters_kindsIncludeFromimages(TypedDict, total=False):
+    """Relational arguments for images"""
+    characters: Union[bool, 'charactersArgsFromimagesRecursive1']
+    kinds: Union[bool, 'kindsArgsFromimagesRecursive1']
+
+
+class characters_kindsIncludeFromimagesRecursive1(TypedDict, total=False):
+    """Relational arguments for images"""
+    characters: Union[bool, 'charactersArgsFromimagesRecursive2']
+    kinds: Union[bool, 'kindsArgsFromimagesRecursive2']
+
+
+class characters_kindsIncludeFromimagesRecursive2(TypedDict, total=False):
+    """Relational arguments for images"""
+    characters: Union[bool, 'charactersArgsFromimagesRecursive3']
+    kinds: Union[bool, 'kindsArgsFromimagesRecursive3']
+
+
+class characters_kindsIncludeFromimagesRecursive3(TypedDict, total=False):
+    """Relational arguments for images"""
+    characters: Union[bool, 'charactersArgsFromimagesRecursive4']
+    kinds: Union[bool, 'kindsArgsFromimagesRecursive4']
+
+
+class characters_kindsIncludeFromimagesRecursive4(TypedDict, total=False):
+    """Relational arguments for images"""
+
+    
+
+class characters_kindsArgsFromimages(TypedDict, total=False):
+    """Arguments for images"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive1'
+
+
+class characters_kindsArgsFromimagesRecursive1(TypedDict, total=False):
+    """Arguments for images"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive2'
+
+
+class characters_kindsArgsFromimagesRecursive2(TypedDict, total=False):
+    """Arguments for images"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive3'
+
+
+class characters_kindsArgsFromimagesRecursive3(TypedDict, total=False):
+    """Arguments for images"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive4'
+
+
+class characters_kindsArgsFromimagesRecursive4(TypedDict, total=False):
+    """Arguments for images"""
+    
+    
+
+class FindManycharacters_kindsArgsFromimages(TypedDict, total=False):
+    """Arguments for images"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive1'
+
+
+class FindManycharacters_kindsArgsFromimagesRecursive1(TypedDict, total=False):
+    """Arguments for images"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive2'
+
+
+class FindManycharacters_kindsArgsFromimagesRecursive2(TypedDict, total=False):
+    """Arguments for images"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive3'
+
+
+class FindManycharacters_kindsArgsFromimagesRecursive3(TypedDict, total=False):
+    """Arguments for images"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive4'
+
+
+class FindManycharacters_kindsArgsFromimagesRecursive4(TypedDict, total=False):
+    """Arguments for images"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
     
     
 
@@ -8379,24 +12614,28 @@ class FindManyepisodesArgsFromimagesRecursive4(TypedDict, total=False):
 
 class imagesIncludeFromimages(TypedDict, total=False):
     """Relational arguments for images"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromimagesRecursive1']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromimagesRecursive1']
     episodes: Union[bool, 'FindManyepisodesArgsFromimagesRecursive1']
 
 
 class imagesIncludeFromimagesRecursive1(TypedDict, total=False):
     """Relational arguments for images"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromimagesRecursive2']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromimagesRecursive2']
     episodes: Union[bool, 'FindManyepisodesArgsFromimagesRecursive2']
 
 
 class imagesIncludeFromimagesRecursive2(TypedDict, total=False):
     """Relational arguments for images"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromimagesRecursive3']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromimagesRecursive3']
     episodes: Union[bool, 'FindManyepisodesArgsFromimagesRecursive3']
 
 
 class imagesIncludeFromimagesRecursive3(TypedDict, total=False):
     """Relational arguments for images"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromimagesRecursive4']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromimagesRecursive4']
     episodes: Union[bool, 'FindManyepisodesArgsFromimagesRecursive4']
 
@@ -8483,18 +12722,22 @@ class FindManyimagesArgsFromimagesRecursive4(TypedDict, total=False):
 
 class kindsIncludeFromimages(TypedDict, total=False):
     """Relational arguments for images"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromimagesRecursive1']
 
 
 class kindsIncludeFromimagesRecursive1(TypedDict, total=False):
     """Relational arguments for images"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromimagesRecursive2']
 
 
 class kindsIncludeFromimagesRecursive2(TypedDict, total=False):
     """Relational arguments for images"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromimagesRecursive3']
 
 
 class kindsIncludeFromimagesRecursive3(TypedDict, total=False):
     """Relational arguments for images"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromimagesRecursive4']
 
 
 class kindsIncludeFromimagesRecursive4(TypedDict, total=False):
@@ -8689,6 +12932,7 @@ class imagesWhereInput(TypedDict, total=False):
     Name: Union[str, 'types.StringFilter']
     Url: Union[str, 'types.StringFilter']
     Comment: Union[str, 'types.StringFilter']
+    characters_images: 'characters_imagesListRelationFilter'
     comics_stories: 'comics_storiesListRelationFilter'
     episodes: 'episodesListRelationFilter'
 
@@ -8705,6 +12949,7 @@ class imagesWhereInputRecursive1(TypedDict, total=False):
     Name: Union[str, 'types.StringFilter']
     Url: Union[str, 'types.StringFilter']
     Comment: Union[str, 'types.StringFilter']
+    characters_images: 'characters_imagesListRelationFilter'
     comics_stories: 'comics_storiesListRelationFilter'
     episodes: 'episodesListRelationFilter'
 
@@ -8721,6 +12966,7 @@ class imagesWhereInputRecursive2(TypedDict, total=False):
     Name: Union[str, 'types.StringFilter']
     Url: Union[str, 'types.StringFilter']
     Comment: Union[str, 'types.StringFilter']
+    characters_images: 'characters_imagesListRelationFilter'
     comics_stories: 'comics_storiesListRelationFilter'
     episodes: 'episodesListRelationFilter'
 
@@ -8737,6 +12983,7 @@ class imagesWhereInputRecursive3(TypedDict, total=False):
     Name: Union[str, 'types.StringFilter']
     Url: Union[str, 'types.StringFilter']
     Comment: Union[str, 'types.StringFilter']
+    characters_images: 'characters_imagesListRelationFilter'
     comics_stories: 'comics_storiesListRelationFilter'
     episodes: 'episodesListRelationFilter'
 
@@ -8753,6 +13000,7 @@ class imagesWhereInputRecursive4(TypedDict, total=False):
     Name: Union[str, 'types.StringFilter']
     Url: Union[str, 'types.StringFilter']
     Comment: Union[str, 'types.StringFilter']
+    characters_images: 'characters_imagesListRelationFilter'
     comics_stories: 'comics_storiesListRelationFilter'
     episodes: 'episodesListRelationFilter'
 
@@ -8909,6 +13157,7 @@ imagesKeys = Literal[
     'Name',
     'Url',
     'Comment',
+    'characters_images',
     'comics_stories',
     'episodes',
 ]
@@ -8921,6 +13170,7 @@ imagesScalarFieldKeys = Literal[
 imagesScalarFieldKeysT = TypeVar('imagesScalarFieldKeysT', bound=imagesScalarFieldKeys)
 
 imagesRelationalFieldKeys = Literal[
+        'characters_images',
         'comics_stories',
         'episodes',
     ]
@@ -8931,6 +13181,7 @@ class kindsOptionalCreateInput(TypedDict, total=False):
     """Optional arguments to the kinds create method"""
     KindID: int
     Url: Optional[str]
+    characters_kinds: 'characters_kindsCreateManyNestedWithoutRelationsInput'
 
 
 class kindsCreateInput(kindsOptionalCreateInput):
@@ -8989,6 +13240,7 @@ class kindsUpdateInput(TypedDict, total=False):
     KindID: Union[AtomicIntInput, int]
     Name: str
     Url: Optional[str]
+    characters_kinds: 'characters_kindsUpdateManyWithoutRelationsInput'
 
 
 class kindsUpdateManyMutationInput(TypedDict, total=False):
@@ -9088,24 +13340,33 @@ class kindsListRelationFilter(TypedDict, total=False):
 
 class kindsInclude(TypedDict, total=False):
     """kinds relational arguments"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromkinds']
 
 
     
 
 class charactersIncludeFromkinds(TypedDict, total=False):
     """Relational arguments for kinds"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromkindsRecursive1']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromkindsRecursive1']
 
 
 class charactersIncludeFromkindsRecursive1(TypedDict, total=False):
     """Relational arguments for kinds"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromkindsRecursive2']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromkindsRecursive2']
 
 
 class charactersIncludeFromkindsRecursive2(TypedDict, total=False):
     """Relational arguments for kinds"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromkindsRecursive3']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromkindsRecursive3']
 
 
 class charactersIncludeFromkindsRecursive3(TypedDict, total=False):
     """Relational arguments for kinds"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromkindsRecursive4']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromkindsRecursive4']
 
 
 class charactersIncludeFromkindsRecursive4(TypedDict, total=False):
@@ -9185,6 +13446,214 @@ class FindManycharactersArgsFromkindsRecursive4(TypedDict, total=False):
     order_by: Union['charactersOrderByInput', List['charactersOrderByInput']]
     where: 'charactersWhereInput'
     cursor: 'charactersWhereUniqueInput'
+    
+    
+
+class characters_imagesIncludeFromkinds(TypedDict, total=False):
+    """Relational arguments for kinds"""
+    characters: Union[bool, 'charactersArgsFromkindsRecursive1']
+    images: Union[bool, 'imagesArgsFromkindsRecursive1']
+
+
+class characters_imagesIncludeFromkindsRecursive1(TypedDict, total=False):
+    """Relational arguments for kinds"""
+    characters: Union[bool, 'charactersArgsFromkindsRecursive2']
+    images: Union[bool, 'imagesArgsFromkindsRecursive2']
+
+
+class characters_imagesIncludeFromkindsRecursive2(TypedDict, total=False):
+    """Relational arguments for kinds"""
+    characters: Union[bool, 'charactersArgsFromkindsRecursive3']
+    images: Union[bool, 'imagesArgsFromkindsRecursive3']
+
+
+class characters_imagesIncludeFromkindsRecursive3(TypedDict, total=False):
+    """Relational arguments for kinds"""
+    characters: Union[bool, 'charactersArgsFromkindsRecursive4']
+    images: Union[bool, 'imagesArgsFromkindsRecursive4']
+
+
+class characters_imagesIncludeFromkindsRecursive4(TypedDict, total=False):
+    """Relational arguments for kinds"""
+
+    
+
+class characters_imagesArgsFromkinds(TypedDict, total=False):
+    """Arguments for kinds"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive1'
+
+
+class characters_imagesArgsFromkindsRecursive1(TypedDict, total=False):
+    """Arguments for kinds"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive2'
+
+
+class characters_imagesArgsFromkindsRecursive2(TypedDict, total=False):
+    """Arguments for kinds"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive3'
+
+
+class characters_imagesArgsFromkindsRecursive3(TypedDict, total=False):
+    """Arguments for kinds"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive4'
+
+
+class characters_imagesArgsFromkindsRecursive4(TypedDict, total=False):
+    """Arguments for kinds"""
+    
+    
+
+class FindManycharacters_imagesArgsFromkinds(TypedDict, total=False):
+    """Arguments for kinds"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive1'
+
+
+class FindManycharacters_imagesArgsFromkindsRecursive1(TypedDict, total=False):
+    """Arguments for kinds"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive2'
+
+
+class FindManycharacters_imagesArgsFromkindsRecursive2(TypedDict, total=False):
+    """Arguments for kinds"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive3'
+
+
+class FindManycharacters_imagesArgsFromkindsRecursive3(TypedDict, total=False):
+    """Arguments for kinds"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive4'
+
+
+class FindManycharacters_imagesArgsFromkindsRecursive4(TypedDict, total=False):
+    """Arguments for kinds"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    
+    
+
+class characters_kindsIncludeFromkinds(TypedDict, total=False):
+    """Relational arguments for kinds"""
+    characters: Union[bool, 'charactersArgsFromkindsRecursive1']
+    kinds: Union[bool, 'kindsArgsFromkindsRecursive1']
+
+
+class characters_kindsIncludeFromkindsRecursive1(TypedDict, total=False):
+    """Relational arguments for kinds"""
+    characters: Union[bool, 'charactersArgsFromkindsRecursive2']
+    kinds: Union[bool, 'kindsArgsFromkindsRecursive2']
+
+
+class characters_kindsIncludeFromkindsRecursive2(TypedDict, total=False):
+    """Relational arguments for kinds"""
+    characters: Union[bool, 'charactersArgsFromkindsRecursive3']
+    kinds: Union[bool, 'kindsArgsFromkindsRecursive3']
+
+
+class characters_kindsIncludeFromkindsRecursive3(TypedDict, total=False):
+    """Relational arguments for kinds"""
+    characters: Union[bool, 'charactersArgsFromkindsRecursive4']
+    kinds: Union[bool, 'kindsArgsFromkindsRecursive4']
+
+
+class characters_kindsIncludeFromkindsRecursive4(TypedDict, total=False):
+    """Relational arguments for kinds"""
+
+    
+
+class characters_kindsArgsFromkinds(TypedDict, total=False):
+    """Arguments for kinds"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive1'
+
+
+class characters_kindsArgsFromkindsRecursive1(TypedDict, total=False):
+    """Arguments for kinds"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive2'
+
+
+class characters_kindsArgsFromkindsRecursive2(TypedDict, total=False):
+    """Arguments for kinds"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive3'
+
+
+class characters_kindsArgsFromkindsRecursive3(TypedDict, total=False):
+    """Arguments for kinds"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive4'
+
+
+class characters_kindsArgsFromkindsRecursive4(TypedDict, total=False):
+    """Arguments for kinds"""
+    
+    
+
+class FindManycharacters_kindsArgsFromkinds(TypedDict, total=False):
+    """Arguments for kinds"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive1'
+
+
+class FindManycharacters_kindsArgsFromkindsRecursive1(TypedDict, total=False):
+    """Arguments for kinds"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive2'
+
+
+class FindManycharacters_kindsArgsFromkindsRecursive2(TypedDict, total=False):
+    """Arguments for kinds"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive3'
+
+
+class FindManycharacters_kindsArgsFromkindsRecursive3(TypedDict, total=False):
+    """Arguments for kinds"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive4'
+
+
+class FindManycharacters_kindsArgsFromkindsRecursive4(TypedDict, total=False):
+    """Arguments for kinds"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
     
     
 
@@ -9602,24 +14071,28 @@ class FindManyepisodesArgsFromkindsRecursive4(TypedDict, total=False):
 
 class imagesIncludeFromkinds(TypedDict, total=False):
     """Relational arguments for kinds"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromkindsRecursive1']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromkindsRecursive1']
     episodes: Union[bool, 'FindManyepisodesArgsFromkindsRecursive1']
 
 
 class imagesIncludeFromkindsRecursive1(TypedDict, total=False):
     """Relational arguments for kinds"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromkindsRecursive2']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromkindsRecursive2']
     episodes: Union[bool, 'FindManyepisodesArgsFromkindsRecursive2']
 
 
 class imagesIncludeFromkindsRecursive2(TypedDict, total=False):
     """Relational arguments for kinds"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromkindsRecursive3']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromkindsRecursive3']
     episodes: Union[bool, 'FindManyepisodesArgsFromkindsRecursive3']
 
 
 class imagesIncludeFromkindsRecursive3(TypedDict, total=False):
     """Relational arguments for kinds"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromkindsRecursive4']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromkindsRecursive4']
     episodes: Union[bool, 'FindManyepisodesArgsFromkindsRecursive4']
 
@@ -9706,18 +14179,22 @@ class FindManyimagesArgsFromkindsRecursive4(TypedDict, total=False):
 
 class kindsIncludeFromkinds(TypedDict, total=False):
     """Relational arguments for kinds"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromkindsRecursive1']
 
 
 class kindsIncludeFromkindsRecursive1(TypedDict, total=False):
     """Relational arguments for kinds"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromkindsRecursive2']
 
 
 class kindsIncludeFromkindsRecursive2(TypedDict, total=False):
     """Relational arguments for kinds"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromkindsRecursive3']
 
 
 class kindsIncludeFromkindsRecursive3(TypedDict, total=False):
     """Relational arguments for kinds"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromkindsRecursive4']
 
 
 class kindsIncludeFromkindsRecursive4(TypedDict, total=False):
@@ -9911,6 +14388,7 @@ class kindsWhereInput(TypedDict, total=False):
     KindID: Union[int, 'types.IntFilter']
     Name: Union[str, 'types.StringFilter']
     Url: Union[str, 'types.StringFilter']
+    characters_kinds: 'characters_kindsListRelationFilter'
 
     # should be noted that AND and NOT should be Union['kindsWhereInputRecursive1', List['kindsWhereInputRecursive1']]
     # but this causes mypy to hang :/
@@ -9924,6 +14402,7 @@ class kindsWhereInputRecursive1(TypedDict, total=False):
     KindID: Union[int, 'types.IntFilter']
     Name: Union[str, 'types.StringFilter']
     Url: Union[str, 'types.StringFilter']
+    characters_kinds: 'characters_kindsListRelationFilter'
 
     # should be noted that AND and NOT should be Union['kindsWhereInputRecursive2', List['kindsWhereInputRecursive2']]
     # but this causes mypy to hang :/
@@ -9937,6 +14416,7 @@ class kindsWhereInputRecursive2(TypedDict, total=False):
     KindID: Union[int, 'types.IntFilter']
     Name: Union[str, 'types.StringFilter']
     Url: Union[str, 'types.StringFilter']
+    characters_kinds: 'characters_kindsListRelationFilter'
 
     # should be noted that AND and NOT should be Union['kindsWhereInputRecursive3', List['kindsWhereInputRecursive3']]
     # but this causes mypy to hang :/
@@ -9950,6 +14430,7 @@ class kindsWhereInputRecursive3(TypedDict, total=False):
     KindID: Union[int, 'types.IntFilter']
     Name: Union[str, 'types.StringFilter']
     Url: Union[str, 'types.StringFilter']
+    characters_kinds: 'characters_kindsListRelationFilter'
 
     # should be noted that AND and NOT should be Union['kindsWhereInputRecursive4', List['kindsWhereInputRecursive4']]
     # but this causes mypy to hang :/
@@ -9963,6 +14444,7 @@ class kindsWhereInputRecursive4(TypedDict, total=False):
     KindID: Union[int, 'types.IntFilter']
     Name: Union[str, 'types.StringFilter']
     Url: Union[str, 'types.StringFilter']
+    characters_kinds: 'characters_kindsListRelationFilter'
 
 
 
@@ -10105,6 +14587,7 @@ kindsKeys = Literal[
     'KindID',
     'Name',
     'Url',
+    'characters_kinds',
 ]
 kindsScalarFieldKeys = Literal[
     'KindID',
@@ -10113,7 +14596,9 @@ kindsScalarFieldKeys = Literal[
 ]
 kindsScalarFieldKeysT = TypeVar('kindsScalarFieldKeysT', bound=kindsScalarFieldKeys)
 
-kindsRelationalFieldKeys = _NoneType
+kindsRelationalFieldKeys = Literal[
+        'characters_kinds',
+    ]
 
 # songs types
 
@@ -10361,18 +14846,26 @@ class songsInclude(TypedDict, total=False):
 
 class charactersIncludeFromsongs(TypedDict, total=False):
     """Relational arguments for songs"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromsongsRecursive1']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromsongsRecursive1']
 
 
 class charactersIncludeFromsongsRecursive1(TypedDict, total=False):
     """Relational arguments for songs"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromsongsRecursive2']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromsongsRecursive2']
 
 
 class charactersIncludeFromsongsRecursive2(TypedDict, total=False):
     """Relational arguments for songs"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromsongsRecursive3']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromsongsRecursive3']
 
 
 class charactersIncludeFromsongsRecursive3(TypedDict, total=False):
     """Relational arguments for songs"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromsongsRecursive4']
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromsongsRecursive4']
 
 
 class charactersIncludeFromsongsRecursive4(TypedDict, total=False):
@@ -10452,6 +14945,214 @@ class FindManycharactersArgsFromsongsRecursive4(TypedDict, total=False):
     order_by: Union['charactersOrderByInput', List['charactersOrderByInput']]
     where: 'charactersWhereInput'
     cursor: 'charactersWhereUniqueInput'
+    
+    
+
+class characters_imagesIncludeFromsongs(TypedDict, total=False):
+    """Relational arguments for songs"""
+    characters: Union[bool, 'charactersArgsFromsongsRecursive1']
+    images: Union[bool, 'imagesArgsFromsongsRecursive1']
+
+
+class characters_imagesIncludeFromsongsRecursive1(TypedDict, total=False):
+    """Relational arguments for songs"""
+    characters: Union[bool, 'charactersArgsFromsongsRecursive2']
+    images: Union[bool, 'imagesArgsFromsongsRecursive2']
+
+
+class characters_imagesIncludeFromsongsRecursive2(TypedDict, total=False):
+    """Relational arguments for songs"""
+    characters: Union[bool, 'charactersArgsFromsongsRecursive3']
+    images: Union[bool, 'imagesArgsFromsongsRecursive3']
+
+
+class characters_imagesIncludeFromsongsRecursive3(TypedDict, total=False):
+    """Relational arguments for songs"""
+    characters: Union[bool, 'charactersArgsFromsongsRecursive4']
+    images: Union[bool, 'imagesArgsFromsongsRecursive4']
+
+
+class characters_imagesIncludeFromsongsRecursive4(TypedDict, total=False):
+    """Relational arguments for songs"""
+
+    
+
+class characters_imagesArgsFromsongs(TypedDict, total=False):
+    """Arguments for songs"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive1'
+
+
+class characters_imagesArgsFromsongsRecursive1(TypedDict, total=False):
+    """Arguments for songs"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive2'
+
+
+class characters_imagesArgsFromsongsRecursive2(TypedDict, total=False):
+    """Arguments for songs"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive3'
+
+
+class characters_imagesArgsFromsongsRecursive3(TypedDict, total=False):
+    """Arguments for songs"""
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive4'
+
+
+class characters_imagesArgsFromsongsRecursive4(TypedDict, total=False):
+    """Arguments for songs"""
+    
+    
+
+class FindManycharacters_imagesArgsFromsongs(TypedDict, total=False):
+    """Arguments for songs"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive1'
+
+
+class FindManycharacters_imagesArgsFromsongsRecursive1(TypedDict, total=False):
+    """Arguments for songs"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive2'
+
+
+class FindManycharacters_imagesArgsFromsongsRecursive2(TypedDict, total=False):
+    """Arguments for songs"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive3'
+
+
+class FindManycharacters_imagesArgsFromsongsRecursive3(TypedDict, total=False):
+    """Arguments for songs"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    include: 'characters_imagesIncludeFromcharacters_imagesRecursive4'
+
+
+class FindManycharacters_imagesArgsFromsongsRecursive4(TypedDict, total=False):
+    """Arguments for songs"""
+    take: int
+    skip: int
+    order_by: Union['characters_imagesOrderByInput', List['characters_imagesOrderByInput']]
+    where: 'characters_imagesWhereInput'
+    cursor: 'characters_imagesWhereUniqueInput'
+    
+    
+
+class characters_kindsIncludeFromsongs(TypedDict, total=False):
+    """Relational arguments for songs"""
+    characters: Union[bool, 'charactersArgsFromsongsRecursive1']
+    kinds: Union[bool, 'kindsArgsFromsongsRecursive1']
+
+
+class characters_kindsIncludeFromsongsRecursive1(TypedDict, total=False):
+    """Relational arguments for songs"""
+    characters: Union[bool, 'charactersArgsFromsongsRecursive2']
+    kinds: Union[bool, 'kindsArgsFromsongsRecursive2']
+
+
+class characters_kindsIncludeFromsongsRecursive2(TypedDict, total=False):
+    """Relational arguments for songs"""
+    characters: Union[bool, 'charactersArgsFromsongsRecursive3']
+    kinds: Union[bool, 'kindsArgsFromsongsRecursive3']
+
+
+class characters_kindsIncludeFromsongsRecursive3(TypedDict, total=False):
+    """Relational arguments for songs"""
+    characters: Union[bool, 'charactersArgsFromsongsRecursive4']
+    kinds: Union[bool, 'kindsArgsFromsongsRecursive4']
+
+
+class characters_kindsIncludeFromsongsRecursive4(TypedDict, total=False):
+    """Relational arguments for songs"""
+
+    
+
+class characters_kindsArgsFromsongs(TypedDict, total=False):
+    """Arguments for songs"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive1'
+
+
+class characters_kindsArgsFromsongsRecursive1(TypedDict, total=False):
+    """Arguments for songs"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive2'
+
+
+class characters_kindsArgsFromsongsRecursive2(TypedDict, total=False):
+    """Arguments for songs"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive3'
+
+
+class characters_kindsArgsFromsongsRecursive3(TypedDict, total=False):
+    """Arguments for songs"""
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive4'
+
+
+class characters_kindsArgsFromsongsRecursive4(TypedDict, total=False):
+    """Arguments for songs"""
+    
+    
+
+class FindManycharacters_kindsArgsFromsongs(TypedDict, total=False):
+    """Arguments for songs"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive1'
+
+
+class FindManycharacters_kindsArgsFromsongsRecursive1(TypedDict, total=False):
+    """Arguments for songs"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive2'
+
+
+class FindManycharacters_kindsArgsFromsongsRecursive2(TypedDict, total=False):
+    """Arguments for songs"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive3'
+
+
+class FindManycharacters_kindsArgsFromsongsRecursive3(TypedDict, total=False):
+    """Arguments for songs"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
+    include: 'characters_kindsIncludeFromcharacters_kindsRecursive4'
+
+
+class FindManycharacters_kindsArgsFromsongsRecursive4(TypedDict, total=False):
+    """Arguments for songs"""
+    take: int
+    skip: int
+    order_by: Union['characters_kindsOrderByInput', List['characters_kindsOrderByInput']]
+    where: 'characters_kindsWhereInput'
+    cursor: 'characters_kindsWhereUniqueInput'
     
     
 
@@ -10869,24 +15570,28 @@ class FindManyepisodesArgsFromsongsRecursive4(TypedDict, total=False):
 
 class imagesIncludeFromsongs(TypedDict, total=False):
     """Relational arguments for songs"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromsongsRecursive1']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromsongsRecursive1']
     episodes: Union[bool, 'FindManyepisodesArgsFromsongsRecursive1']
 
 
 class imagesIncludeFromsongsRecursive1(TypedDict, total=False):
     """Relational arguments for songs"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromsongsRecursive2']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromsongsRecursive2']
     episodes: Union[bool, 'FindManyepisodesArgsFromsongsRecursive2']
 
 
 class imagesIncludeFromsongsRecursive2(TypedDict, total=False):
     """Relational arguments for songs"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromsongsRecursive3']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromsongsRecursive3']
     episodes: Union[bool, 'FindManyepisodesArgsFromsongsRecursive3']
 
 
 class imagesIncludeFromsongsRecursive3(TypedDict, total=False):
     """Relational arguments for songs"""
+    characters_images: Union[bool, 'FindManycharacters_imagesArgsFromsongsRecursive4']
     comics_stories: Union[bool, 'FindManycomics_storiesArgsFromsongsRecursive4']
     episodes: Union[bool, 'FindManyepisodesArgsFromsongsRecursive4']
 
@@ -10973,18 +15678,22 @@ class FindManyimagesArgsFromsongsRecursive4(TypedDict, total=False):
 
 class kindsIncludeFromsongs(TypedDict, total=False):
     """Relational arguments for songs"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromsongsRecursive1']
 
 
 class kindsIncludeFromsongsRecursive1(TypedDict, total=False):
     """Relational arguments for songs"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromsongsRecursive2']
 
 
 class kindsIncludeFromsongsRecursive2(TypedDict, total=False):
     """Relational arguments for songs"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromsongsRecursive3']
 
 
 class kindsIncludeFromsongsRecursive3(TypedDict, total=False):
     """Relational arguments for songs"""
+    characters_kinds: Union[bool, 'FindManycharacters_kindsArgsFromsongsRecursive4']
 
 
 class kindsIncludeFromsongsRecursive4(TypedDict, total=False):

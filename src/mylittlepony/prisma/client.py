@@ -49,8 +49,8 @@ __all__ = (
 SCHEMA = '''
 generator db {
   provider  = "prisma-client-py"
+  output    = "prisma"
   interface = "asyncio"
-  output = "prisma"
 }
 
 datasource db {
@@ -59,45 +59,42 @@ datasource db {
 }
 
 model characters {
-  CharacterID       Int                      @id @default(autoincrement())
-  Name              String                   @unique(map: "sqlite_autoindex_characters_1")
+  CharacterID       Int                 @id @default(autoincrement())
+  Name              String              @unique(map: "sqlite_autoindex_characters_1")
   Alias             String?
   Sex               String?
   Residences        String?
   Occupations       String?
   Url               String
-  characters_images characters_images[]      @ignore
-  characters_kinds  characters_kinds[]       @ignore
+  characters_images characters_images[]
+  characters_kinds  characters_kinds[]
 
-  @@index([Occupations], map: "idx_characters_Occupations")
-  @@index([Residences], map: "idx_characters_Residences")
   @@index([Alias], map: "idx_characters_Alias")
+  @@index([Residences], map: "idx_characters_Residences")
+  @@index([Occupations], map: "idx_characters_Occupations")
 }
 
 model characters_images {
   uid         Int        @id @default(autoincrement())
-  CharacterID Int        
+  CharacterID Int
   ImageID     Int
   characters  characters @relation(fields: [CharacterID], references: [CharacterID], onDelete: NoAction)
   images      images     @relation(fields: [ImageID], references: [ImageID], onDelete: Cascade)
 
-  @@index([CharacterID], map: "idx_characters_images_CharacterID")
   @@index([ImageID], map: "idx_characters_images_ImageID")
-  @@ignore
+  @@index([CharacterID], map: "idx_characters_images_CharacterID")
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model characters_kinds {
   uid         Int        @id @default(autoincrement())
-  CharacterID Int        
+  CharacterID Int
   KindID      Int
   Comment     String?
   characters  characters @relation(fields: [CharacterID], references: [CharacterID], onDelete: NoAction)
   kinds       kinds      @relation(fields: [KindID], references: [KindID], onDelete: NoAction)
 
-  @@index([KindID], map: "idx_characters_kinds_KindID")
   @@index([CharacterID], map: "idx_characters_kinds_CharacterID")
-  @@ignore
+  @@index([KindID], map: "idx_characters_kinds_KindID")
 }
 
 model comics_issues {
@@ -171,7 +168,7 @@ model images {
   Name              String              @unique(map: "sqlite_autoindex_images_1")
   Url               String
   Comment           String?
-  characters_images characters_images[] @ignore
+  characters_images characters_images[]
   comics_stories    comics_stories[]
   episodes          episodes[]
 }
@@ -180,12 +177,12 @@ model kinds {
   KindID           Int                @id @default(autoincrement())
   Name             String
   Url              String?            @unique(map: "sqlite_autoindex_kinds_1")
-  characters_kinds characters_kinds[] @ignore
+  characters_kinds characters_kinds[]
 }
 
 model songs {
-  SongID        Int                      @id @default(autoincrement())
-  Name          String                   @unique(map: "sqlite_autoindex_songs_1")
+  SongID        Int      @id @default(autoincrement())
+  Name          String   @unique(map: "sqlite_autoindex_songs_1")
   EpisodeID     Int
   VideoUrl      String
   Length        String
@@ -193,12 +190,12 @@ model songs {
   LyricsBy      String?
   KeySignatures String?
   Url           String
-  episodes      episodes                 @relation(fields: [EpisodeID], references: [EpisodeID], onDelete: NoAction)
+  episodes      episodes @relation(fields: [EpisodeID], references: [EpisodeID], onDelete: NoAction)
 
-  @@index([KeySignatures], map: "idx_songs_KeySignatures")
-  @@index([LyricsBy], map: "idx_songs_LyricsBy")
-  @@index([MusicBy], map: "idx_songs_MusicBy")
   @@index([EpisodeID], map: "idx_songs_EpisodeID")
+  @@index([MusicBy], map: "idx_songs_MusicBy")
+  @@index([LyricsBy], map: "idx_songs_LyricsBy")
+  @@index([KeySignatures], map: "idx_songs_KeySignatures")
 }
 
 '''
@@ -288,6 +285,8 @@ def get_client() -> 'Client':
 
 class Client:
     characters: 'actions.charactersActions'
+    characters_images: 'actions.characters_imagesActions'
+    characters_kinds: 'actions.characters_kindsActions'
     comics_issues: 'actions.comics_issuesActions'
     comics_series: 'actions.comics_seriesActions'
     comics_stories: 'actions.comics_storiesActions'
@@ -307,6 +306,8 @@ class Client:
         http: Optional[HttpConfig] = None,
     ) -> None:
         self.characters = actions.charactersActions(self, models.characters)
+        self.characters_images = actions.characters_imagesActions(self, models.characters_images)
+        self.characters_kinds = actions.characters_kindsActions(self, models.characters_kinds)
         self.comics_issues = actions.comics_issuesActions(self, models.comics_issues)
         self.comics_series = actions.comics_seriesActions(self, models.comics_series)
         self.comics_stories = actions.comics_storiesActions(self, models.comics_stories)
@@ -484,6 +485,8 @@ class Client:
 # TODO: don't require copy-pasting arguments between actions and batch actions
 class Batch:
     characters: 'charactersBatchActions'
+    characters_images: 'characters_imagesBatchActions'
+    characters_kinds: 'characters_kindsBatchActions'
     comics_issues: 'comics_issuesBatchActions'
     comics_series: 'comics_seriesBatchActions'
     comics_stories: 'comics_storiesBatchActions'
@@ -497,6 +500,8 @@ class Batch:
         self.__queries: List[str] = []
         self._active_provider = client._active_provider
         self.characters = charactersBatchActions(self)
+        self.characters_images = characters_imagesBatchActions(self)
+        self.characters_kinds = characters_kindsBatchActions(self)
         self.comics_issues = comics_issuesBatchActions(self)
         self.comics_series = comics_seriesBatchActions(self)
         self.comics_stories = comics_storiesBatchActions(self)
@@ -654,6 +659,242 @@ class charactersBatchActions:
             operation='mutation',
             method='deleteMany',
             model='characters',
+            arguments={'where': where},
+            root_selection=['count'],
+        )
+
+
+
+# NOTE: some arguments are meaningless in this context but are included
+# for completeness sake
+class characters_imagesBatchActions:
+    def __init__(self, batcher: Batch) -> None:
+        self._batcher = batcher
+
+    def create(
+        self,
+        data: types.characters_imagesCreateInput,
+        include: Optional[types.characters_imagesInclude] = None
+    ) -> None:
+        self._batcher._add(
+            operation='mutation',
+            method='createOne',
+            model='characters_images',
+            arguments={
+                'data': data,
+                'include': include,
+            },
+        )
+
+    def create_many(
+        self,
+        data: List[types.characters_imagesCreateWithoutRelationsInput],
+        *,
+        skip_duplicates: Optional[bool] = None,
+    ) -> None:
+        if self._batcher._active_provider == 'sqlite':
+            raise errors.UnsupportedDatabaseError('sqlite', 'create_many()')
+
+        self._batcher._add(
+            operation='mutation',
+            method='createMany',
+            model='characters_images',
+            arguments={
+                'data': data,
+                'skipDuplicates': skip_duplicates,
+            },
+            root_selection=['count'],
+        )
+
+    def delete(
+        self,
+        where: types.characters_imagesWhereUniqueInput,
+        include: Optional[types.characters_imagesInclude] = None,
+    ) -> None:
+        self._batcher._add(
+            operation='mutation',
+            method='deleteOne',
+            model='characters_images',
+            arguments={
+                'where': where,
+                'include': include,
+            },
+        )
+
+    def update(
+        self,
+        data: types.characters_imagesUpdateInput,
+        where: types.characters_imagesWhereUniqueInput,
+        include: Optional[types.characters_imagesInclude] = None
+    ) -> None:
+        self._batcher._add(
+            operation='mutation',
+            method='updateOne',
+            model='characters_images',
+            arguments={
+                'data': data,
+                'where': where,
+                'include': include,
+            },
+        )
+
+    def upsert(
+        self,
+        where: types.characters_imagesWhereUniqueInput,
+        data: types.characters_imagesUpsertInput,
+        include: Optional[types.characters_imagesInclude] = None,
+    ) -> None:
+        self._batcher._add(
+            operation='mutation',
+            method='upsertOne',
+            model='characters_images',
+            arguments={
+                'where': where,
+                'include': include,
+                'create': data.get('create'),
+                'update': data.get('update'),
+            },
+        )
+
+    def update_many(
+        self,
+        data: types.characters_imagesUpdateManyMutationInput,
+        where: types.characters_imagesWhereInput,
+    ) -> None:
+        self._batcher._add(
+            operation='mutation',
+            method='updateMany',
+            model='characters_images',
+            arguments={'data': data, 'where': where,},
+            root_selection=['count'],
+        )
+
+    def delete_many(
+        self,
+        where: Optional[types.characters_imagesWhereInput] = None,
+    ) -> None:
+        self._batcher._add(
+            operation='mutation',
+            method='deleteMany',
+            model='characters_images',
+            arguments={'where': where},
+            root_selection=['count'],
+        )
+
+
+
+# NOTE: some arguments are meaningless in this context but are included
+# for completeness sake
+class characters_kindsBatchActions:
+    def __init__(self, batcher: Batch) -> None:
+        self._batcher = batcher
+
+    def create(
+        self,
+        data: types.characters_kindsCreateInput,
+        include: Optional[types.characters_kindsInclude] = None
+    ) -> None:
+        self._batcher._add(
+            operation='mutation',
+            method='createOne',
+            model='characters_kinds',
+            arguments={
+                'data': data,
+                'include': include,
+            },
+        )
+
+    def create_many(
+        self,
+        data: List[types.characters_kindsCreateWithoutRelationsInput],
+        *,
+        skip_duplicates: Optional[bool] = None,
+    ) -> None:
+        if self._batcher._active_provider == 'sqlite':
+            raise errors.UnsupportedDatabaseError('sqlite', 'create_many()')
+
+        self._batcher._add(
+            operation='mutation',
+            method='createMany',
+            model='characters_kinds',
+            arguments={
+                'data': data,
+                'skipDuplicates': skip_duplicates,
+            },
+            root_selection=['count'],
+        )
+
+    def delete(
+        self,
+        where: types.characters_kindsWhereUniqueInput,
+        include: Optional[types.characters_kindsInclude] = None,
+    ) -> None:
+        self._batcher._add(
+            operation='mutation',
+            method='deleteOne',
+            model='characters_kinds',
+            arguments={
+                'where': where,
+                'include': include,
+            },
+        )
+
+    def update(
+        self,
+        data: types.characters_kindsUpdateInput,
+        where: types.characters_kindsWhereUniqueInput,
+        include: Optional[types.characters_kindsInclude] = None
+    ) -> None:
+        self._batcher._add(
+            operation='mutation',
+            method='updateOne',
+            model='characters_kinds',
+            arguments={
+                'data': data,
+                'where': where,
+                'include': include,
+            },
+        )
+
+    def upsert(
+        self,
+        where: types.characters_kindsWhereUniqueInput,
+        data: types.characters_kindsUpsertInput,
+        include: Optional[types.characters_kindsInclude] = None,
+    ) -> None:
+        self._batcher._add(
+            operation='mutation',
+            method='upsertOne',
+            model='characters_kinds',
+            arguments={
+                'where': where,
+                'include': include,
+                'create': data.get('create'),
+                'update': data.get('update'),
+            },
+        )
+
+    def update_many(
+        self,
+        data: types.characters_kindsUpdateManyMutationInput,
+        where: types.characters_kindsWhereInput,
+    ) -> None:
+        self._batcher._add(
+            operation='mutation',
+            method='updateMany',
+            model='characters_kinds',
+            arguments={'data': data, 'where': where,},
+            root_selection=['count'],
+        )
+
+    def delete_many(
+        self,
+        where: Optional[types.characters_kindsWhereInput] = None,
+    ) -> None:
+        self._batcher._add(
+            operation='mutation',
+            method='deleteMany',
+            model='characters_kinds',
             arguments={'where': where},
             root_selection=['count'],
         )

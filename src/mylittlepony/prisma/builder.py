@@ -68,6 +68,17 @@ DEFAULT_FIELDS_MAPPING: Dict[str, List[str]] = {
         'Occupations',
         'Url',
     ],
+    'characters_images': [
+        'uid',
+        'CharacterID',
+        'ImageID',
+    ],
+    'characters_kinds': [
+        'uid',
+        'CharacterID',
+        'KindID',
+        'Comment',
+    ],
     'comics_issues': [
         'ComicsIssueID',
         'IssueNo',
@@ -131,6 +142,16 @@ DEFAULT_FIELDS_MAPPING: Dict[str, List[str]] = {
 
 RELATIONAL_FIELD_MAPPINGS: Dict[str, Dict[str, str]] = {
     'characters': {
+        'characters_images': 'characters_images',
+        'characters_kinds': 'characters_kinds',
+    },
+    'characters_images': {
+        'characters': 'characters',
+        'images': 'images',
+    },
+    'characters_kinds': {
+        'characters': 'characters',
+        'kinds': 'kinds',
     },
     'comics_issues': {
         'comics_stories': 'comics_stories',
@@ -148,10 +169,12 @@ RELATIONAL_FIELD_MAPPINGS: Dict[str, Dict[str, str]] = {
         'songs': 'songs',
     },
     'images': {
+        'characters_images': 'characters_images',
         'comics_stories': 'comics_stories',
         'episodes': 'episodes',
     },
     'kinds': {
+        'characters_kinds': 'characters_kinds',
     },
     'songs': {
         'episodes': 'episodes',
