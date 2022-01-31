@@ -1,3 +1,4 @@
+from typing import Any
 from .prisma import client
 
 class Client:
@@ -15,7 +16,9 @@ class Client:
         await self.connect()
         return self
 
-    async def __aexit__(self, *_):
+    async def __aexit__(self, e_type: BaseException, e_val: Any, e_tb: str):
+        if e_type is not None:
+            raise Exception(e_tb)
         await self.disconnect()
 
     @property
